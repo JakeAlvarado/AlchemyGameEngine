@@ -1,0 +1,541 @@
+# depslib dependency file v1.0
+1707790742 source:c:\users\nishu\desktop\178games\midterm\main.cpp
+	<windows.h>
+	<GLScene.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<iostream>
+	<windows.h>
+
+1710193110 c:\users\nishu\desktop\178games\midterm\include\glscene.h
+	<common.h>
+
+1710373200 c:\users\nishu\desktop\178games\midterm\include\common.h
+	<windows.h>
+	<iostream>
+	<gl/gl.h>
+	<GL/glut.h>
+	<time.h>
+	<math.h>
+	<SOIL.h>
+
+1706577399 c:\users\nishu\desktop\178games\common\include\gl\glut.h
+	<windows.h>
+	<stdlib.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1707185187 c:\users\nishu\desktop\178games\common\include\soil.h
+
+1710375120 source:c:\users\nishu\desktop\178games\midterm\src\glcheckcollision.cpp
+	"GLCheckCollision.h"
+
+1710374010 c:\users\nishu\desktop\178games\midterm\include\glcheckcollision.h
+	<common.h>
+
+1710374842 source:c:\users\nishu\desktop\178games\midterm\src\glenms.cpp
+	"GLEnms.h"
+
+1710201428 c:\users\nishu\desktop\178games\midterm\include\glenms.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+
+1710193110 c:\users\nishu\desktop\178games\midterm\include\gltexture.h
+	<common.h>
+
+1710193110 c:\users\nishu\desktop\178games\midterm\include\gltimer.h
+	<common.h>
+
+1710193085 source:c:\users\nishu\desktop\178games\midterm\src\glinputs.cpp
+	"GLInputs.h"
+
+1710193110 c:\users\nishu\desktop\178games\midterm\include\glinputs.h
+	<GLModel.h>
+	<GLParallax.h>
+	<GLPlayer.h>
+	<common.h>
+
+1710193110 c:\users\nishu\desktop\178games\midterm\include\glmodel.h
+	<common.h>
+
+1710193110 c:\users\nishu\desktop\178games\midterm\include\glparallax.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+
+1710193110 c:\users\nishu\desktop\178games\midterm\include\glplayer.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+
+1710193085 source:c:\users\nishu\desktop\178games\midterm\src\gllight.cpp
+	"GLLight.h"
+
+1710193110 c:\users\nishu\desktop\178games\midterm\include\gllight.h
+	<GLScene.h>
+
+1710193085 source:c:\users\nishu\desktop\178games\midterm\src\glmodel.cpp
+	"GLModel.h"
+
+1710193085 source:c:\users\nishu\desktop\178games\midterm\src\glparallax.cpp
+	"GLParallax.h"
+
+1710375318 source:c:\users\nishu\desktop\178games\midterm\src\glplayer.cpp
+	"GLPlayer.h"
+
+1710193085 source:c:\users\nishu\desktop\178games\midterm\src\gltexture.cpp
+	"GLTexture.h"
+
+1710193085 source:c:\users\nishu\desktop\178games\midterm\src\gltimer.cpp
+	"GLTimer.h"
+
+1710549294 source:c:\users\nishu\desktop\178games\midterm\src\glscene.cpp
+	"GLScene.h"
+	<GLLight.h>
+	<GLTexture.h>
+	<GLModel.h>
+	<GLInputs.h>
+	<GLParallax.h>
+	<GLPlayer.h>
+	<GLEnms.h>
+	<GLTimer.h>
+	<GLCheckCollision.h>
+
+1710787416 source:c:\users\jake\desktop\midterm\main.cpp
+	<windows.h>
+	<GLScene.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<iostream>
+	<windows.h>
+
+1710787416 c:\users\jake\desktop\midterm\include\glscene.h
+	<common.h>
+
+1710787416 c:\users\jake\desktop\midterm\include\common.h
+	<windows.h>
+	<iostream>
+	<gl/gl.h>
+	<GL/glut.h>
+	<time.h>
+	<math.h>
+	<SOIL.h>
+
+1710787417 source:c:\users\jake\desktop\midterm\src\glplayer.cpp
+	"GLPlayer.h"
+
+1710787416 c:\users\jake\desktop\midterm\include\glplayer.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+
+1710787416 c:\users\jake\desktop\midterm\include\gltexture.h
+	<common.h>
+
+1710787416 c:\users\jake\desktop\midterm\include\gltimer.h
+	<common.h>
+
+1710787417 source:c:\users\jake\desktop\midterm\src\glscene.cpp
+	<GLScene.h>
+	<GLLight.h>
+	<GLTexture.h>
+	<GLModel.h>
+	<GLInputs.h>
+	<GLParallax.h>
+	<GLPlayer.h>
+	<GLEnms.h>
+	<GLTimer.h>
+	<GLCheckCollision.h>
+
+1710787416 c:\users\jake\desktop\midterm\include\gllight.h
+	<GLScene.h>
+
+1710787416 c:\users\jake\desktop\midterm\include\glmodel.h
+	<common.h>
+
+1710787416 c:\users\jake\desktop\midterm\include\glinputs.h
+	<GLModel.h>
+	<GLParallax.h>
+	<GLPlayer.h>
+	<common.h>
+
+1710787416 c:\users\jake\desktop\midterm\include\glparallax.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+
+1710787416 c:\users\jake\desktop\midterm\include\glenms.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+
+1710787416 c:\users\jake\desktop\midterm\include\glcheckcollision.h
+	<common.h>
+
+1710787417 source:c:\users\jake\desktop\midterm\src\gltexture.cpp
+	"GLTexture.h"
+
+1710787417 source:c:\users\jake\desktop\midterm\src\gltimer.cpp
+	"GLTimer.h"
+
+1710788825 source:c:\users\jake\desktop\midterm-1 (1)\midterm\main.cpp
+	<windows.h>
+	<GLScene.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<iostream>
+	<windows.h>
+
+1710787416 c:\users\jake\desktop\midterm-1 (1)\midterm\include\glscene.h
+	<common.h>
+
+1710789291 c:\users\jake\desktop\midterm-1 (1)\midterm\include\common.h
+	<windows.h>
+	<iostream>
+	<gl/gl.h>
+	<GL/glut.h>
+	<time.h>
+	<math.h>
+	<vector>
+	<SOIL.h>
+
+1710189887 c:\users\jake\desktop\midterm-1 (1)\common\include\gl\glut.h
+	<windows.h>
+	<stdlib.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1710361914 c:\users\jake\desktop\midterm-1 (1)\common\include\soil.h
+
+1710787417 source:c:\users\jake\desktop\midterm-1 (1)\midterm\src\glplayer.cpp
+	"GLPlayer.h"
+
+1710787416 c:\users\jake\desktop\midterm-1 (1)\midterm\include\glplayer.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+
+1710787416 c:\users\jake\desktop\midterm-1 (1)\midterm\include\gltexture.h
+	<common.h>
+
+1710787416 c:\users\jake\desktop\midterm-1 (1)\midterm\include\gltimer.h
+	<common.h>
+
+1710790904 source:c:\users\jake\desktop\midterm-1 (1)\midterm\src\glscene.cpp
+	<GLScene.h>
+	<GLLight.h>
+	<GLTexture.h>
+	<GLModel.h>
+	<GLInputs.h>
+	<GLParallax.h>
+	<GLPlayer.h>
+	<GLEnms.h>
+	<GLTimer.h>
+	<GLCheckCollision.h>
+	<MenuScene.h>
+
+1710787416 c:\users\jake\desktop\midterm-1 (1)\midterm\include\gllight.h
+	<GLScene.h>
+
+1710787416 c:\users\jake\desktop\midterm-1 (1)\midterm\include\glmodel.h
+	<common.h>
+
+1710787416 c:\users\jake\desktop\midterm-1 (1)\midterm\include\glinputs.h
+	<GLModel.h>
+	<GLParallax.h>
+	<GLPlayer.h>
+	<common.h>
+
+1710787416 c:\users\jake\desktop\midterm-1 (1)\midterm\include\glparallax.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+
+1710787416 c:\users\jake\desktop\midterm-1 (1)\midterm\include\glenms.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+
+1710787416 c:\users\jake\desktop\midterm-1 (1)\midterm\include\glcheckcollision.h
+	<common.h>
+
+1710787417 source:c:\users\jake\desktop\midterm-1 (1)\midterm\src\gltexture.cpp
+	"GLTexture.h"
+
+1710787417 source:c:\users\jake\desktop\midterm-1 (1)\midterm\src\gltimer.cpp
+	"GLTimer.h"
+
+1710787417 source:c:\users\jake\desktop\midterm-1 (1)\midterm\src\glcheckcollision.cpp
+	"GLCheckCollision.h"
+
+1710787417 source:c:\users\jake\desktop\midterm-1 (1)\midterm\src\glenms.cpp
+	"GLEnms.h"
+
+1710787417 source:c:\users\jake\desktop\midterm-1 (1)\midterm\src\glinputs.cpp
+	"GLInputs.h"
+
+1710787417 source:c:\users\jake\desktop\midterm-1 (1)\midterm\src\gllight.cpp
+	"GLLight.h"
+
+1710787417 source:c:\users\jake\desktop\midterm-1 (1)\midterm\src\glmodel.cpp
+	"GLModel.h"
+
+1710787417 source:c:\users\jake\desktop\midterm-1 (1)\midterm\src\glparallax.cpp
+	"GLParallax.h"
+
+1710790798 source:c:\users\jake\desktop\midterm-1 (1)\midterm\src\menuscene.cpp
+	"MenuScene.h"
+	<GLScene.h>
+	<common.h>
+
+1710791229 c:\users\jake\desktop\midterm-1 (1)\midterm\include\menuscene.h
+
+1710973055 source:c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\main.cpp
+	<windows.h>
+	<GLScene.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<iostream>
+	<windows.h>
+
+1710975541 c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\include\glscene.h
+	<common.h>
+
+1710879479 c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\include\common.h
+	<windows.h>
+	<iostream>
+	<gl/gl.h>
+	<GL/glut.h>
+	<time.h>
+	<math.h>
+	<vector>
+	<SOIL.h>
+
+1710879479 c:\users\jakea\onedrive\desktop\178midterm\178midterm\common\include\gl\glut.h
+	<windows.h>
+	<stdlib.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1710879479 c:\users\jakea\onedrive\desktop\178midterm\178midterm\common\include\soil.h
+
+1710879479 source:c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\src\glcheckcollision.cpp
+	"GLCheckCollision.h"
+
+1710879479 c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\include\glcheckcollision.h
+	<common.h>
+
+1710879479 source:c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\src\glenms.cpp
+	"GLEnms.h"
+
+1710879479 c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\include\glenms.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+
+1710879479 c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\include\gltexture.h
+	<common.h>
+
+1710879479 c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\include\gltimer.h
+	<common.h>
+
+1711071924 source:c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\src\glinputs.cpp
+	"GLInputs.h"
+
+1711071924 c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\include\glinputs.h
+	<GLModel.h>
+	<GLParallax.h>
+	<GLPlayer.h>
+	<common.h>
+
+1710879479 c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\include\glmodel.h
+	<common.h>
+
+1710879479 c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\include\glparallax.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+
+1711071924 c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\include\glplayer.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+	<map>
+
+1710879479 source:c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\src\gllight.cpp
+	"GLLight.h"
+
+1710879479 c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\include\gllight.h
+	<GLScene.h>
+
+1710879479 source:c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\src\glmodel.cpp
+	"GLModel.h"
+
+1710879479 source:c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\src\glparallax.cpp
+	"GLParallax.h"
+
+1711071924 source:c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\src\glplayer.cpp
+	"GLPlayer.h"
+
+1711071924 source:c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\src\glscene.cpp
+	<GLScene.h>
+	<GLLight.h>
+	<GLTexture.h>
+	<GLModel.h>
+	<GLInputs.h>
+	<GLParallax.h>
+	<GLPlayer.h>
+	<GLEnms.h>
+	<GLTimer.h>
+	<GLCheckCollision.h>
+	<GLObject.h>
+	<MenuScene.h>
+
+1710973055 c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\include\menuscene.h
+
+1710879479 source:c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\src\gltexture.cpp
+	"GLTexture.h"
+
+1710879479 source:c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\src\gltimer.cpp
+	"GLTimer.h"
+
+1710879931 source:c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\src\menuscene.cpp
+	"MenuScene.h"
+	<GLScene.h>
+	<common.h>
+
+1710973055 source:c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\src\globject.cpp
+	"GLObject.h"
+
+1710881752 c:\users\jakea\onedrive\desktop\178midterm\178midterm\midterm\include\globject.h
+	<GLTexture.h>
+	<common.h>
+
+1710967461 source:c:\users\jake\documents\github\178midterm\178midterm\midterm\main.cpp
+	<windows.h>
+	<GLScene.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<iostream>
+	<windows.h>
+
+1710984567 c:\users\jake\documents\github\178midterm\178midterm\midterm\include\glscene.h
+	<common.h>
+
+1710904749 c:\users\jake\documents\github\178midterm\178midterm\midterm\include\common.h
+	<windows.h>
+	<iostream>
+	<gl/gl.h>
+	<GL/glut.h>
+	<time.h>
+	<math.h>
+	<vector>
+	<SOIL.h>
+
+1710904749 c:\users\jake\documents\github\178midterm\178midterm\common\include\gl\glut.h
+	<windows.h>
+	<stdlib.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1710904749 c:\users\jake\documents\github\178midterm\178midterm\common\include\soil.h
+
+1710904749 source:c:\users\jake\documents\github\178midterm\178midterm\midterm\src\glcheckcollision.cpp
+	"GLCheckCollision.h"
+
+1710904749 c:\users\jake\documents\github\178midterm\178midterm\midterm\include\glcheckcollision.h
+	<common.h>
+
+1710904749 source:c:\users\jake\documents\github\178midterm\178midterm\midterm\src\glenms.cpp
+	"GLEnms.h"
+
+1710904749 c:\users\jake\documents\github\178midterm\178midterm\midterm\include\glenms.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+
+1710904749 c:\users\jake\documents\github\178midterm\178midterm\midterm\include\gltexture.h
+	<common.h>
+
+1710904749 c:\users\jake\documents\github\178midterm\178midterm\midterm\include\gltimer.h
+	<common.h>
+
+1710988974 source:c:\users\jake\documents\github\178midterm\178midterm\midterm\src\glinputs.cpp
+	"GLInputs.h"
+
+1710989537 c:\users\jake\documents\github\178midterm\178midterm\midterm\include\glinputs.h
+	<GLModel.h>
+	<GLParallax.h>
+	<GLPlayer.h>
+	<common.h>
+
+1710904749 c:\users\jake\documents\github\178midterm\178midterm\midterm\include\glmodel.h
+	<common.h>
+
+1710904749 c:\users\jake\documents\github\178midterm\178midterm\midterm\include\glparallax.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+
+1710989703 c:\users\jake\documents\github\178midterm\178midterm\midterm\include\glplayer.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+	<map>
+
+1710904749 source:c:\users\jake\documents\github\178midterm\178midterm\midterm\src\gllight.cpp
+	"GLLight.h"
+
+1710904749 c:\users\jake\documents\github\178midterm\178midterm\midterm\include\gllight.h
+	<GLScene.h>
+
+1710904749 source:c:\users\jake\documents\github\178midterm\178midterm\midterm\src\glmodel.cpp
+	"GLModel.h"
+
+1710907546 source:c:\users\jake\documents\github\178midterm\178midterm\midterm\src\globject.cpp
+	"GLObject.h"
+
+1710904749 c:\users\jake\documents\github\178midterm\178midterm\midterm\include\globject.h
+	<GLTexture.h>
+	<common.h>
+
+1710904749 source:c:\users\jake\documents\github\178midterm\178midterm\midterm\src\glparallax.cpp
+	"GLParallax.h"
+
+1710989935 source:c:\users\jake\documents\github\178midterm\178midterm\midterm\src\glplayer.cpp
+	"GLPlayer.h"
+
+1710989998 source:c:\users\jake\documents\github\178midterm\178midterm\midterm\src\glscene.cpp
+	<GLScene.h>
+	<GLLight.h>
+	<GLTexture.h>
+	<GLModel.h>
+	<GLInputs.h>
+	<GLParallax.h>
+	<GLPlayer.h>
+	<GLEnms.h>
+	<GLTimer.h>
+	<GLCheckCollision.h>
+	<GLObject.h>
+	<MenuScene.h>
+
+1710972320 c:\users\jake\documents\github\178midterm\178midterm\midterm\include\menuscene.h
+
+1710904749 source:c:\users\jake\documents\github\178midterm\178midterm\midterm\src\gltexture.cpp
+	"GLTexture.h"
+
+1710904749 source:c:\users\jake\documents\github\178midterm\178midterm\midterm\src\gltimer.cpp
+	"GLTimer.h"
+
+1710904749 source:c:\users\jake\documents\github\178midterm\178midterm\midterm\src\menuscene.cpp
+	"MenuScene.h"
+	<GLScene.h>
+	<common.h>
+
