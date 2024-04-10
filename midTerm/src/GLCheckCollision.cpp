@@ -10,9 +10,9 @@ GLCheckCollision::~GLCheckCollision()
     //dtor
 }
 
-bool GLCheckCollision::isLinearCollision(vec2, vec2)
+bool GLCheckCollision::isLinearCollision(float player, float object, float threshold)
 {
-
+    return (sqrt(pow(player - object, 2)) < threshold || sqrt(pow(player - object, 2)) < threshold);
 }
 
 bool GLCheckCollision::isRadialCollision(vec2 p1, vec2 p2, float r1, float r2, float thresHold)
@@ -21,9 +21,9 @@ bool GLCheckCollision::isRadialCollision(vec2 p1, vec2 p2, float r1, float r2, f
     return(sqrt( pow( (p1.x - p2.x),2)+ pow( (p1.y - p2.y),2))- (r1+r2) < thresHold);
 }
 
-bool GLCheckCollision::isHitPlane(vec2, vec2)
+bool GLCheckCollision::isHitPlane(vec2 pl, vec2 obj, float threshold)
 {
-
+    return(sqrt(pow(pl.x - obj.x, 2)) < threshold || sqrt(pow(pl.y - obj.y, 2)) < threshold);
 }
 
 bool GLCheckCollision::isCubicCollision(vec3, vec3)

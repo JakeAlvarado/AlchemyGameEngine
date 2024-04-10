@@ -539,3 +539,127 @@
 	<GLScene.h>
 	<common.h>
 
+1712704841 source:c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\main.cpp
+	<windows.h>
+	<GLScene.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<iostream>
+	<windows.h>
+
+1712710743 c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\include\glscene.h
+	<common.h>
+
+1712709392 c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\include\common.h
+	<windows.h>
+	<iostream>
+	<gl/gl.h>
+	<GL/glut.h>
+	<time.h>
+	<math.h>
+	<vector>
+	<unordered_map>
+	<SOIL.h>
+
+1712704841 c:\users\joshu\onedrive\desktop\178games\alchemygameengine\common\include\gl\glut.h
+	<windows.h>
+	<stdlib.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1712704841 c:\users\joshu\onedrive\desktop\178games\alchemygameengine\common\include\soil.h
+
+1712712408 source:c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\src\glcheckcollision.cpp
+	"GLCheckCollision.h"
+
+1712712308 c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\include\glcheckcollision.h
+	<common.h>
+
+1712704841 source:c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\src\glenms.cpp
+	"GLEnms.h"
+
+1712704841 c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\include\glenms.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+
+1712704841 c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\include\gltexture.h
+	<common.h>
+
+1712704841 c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\include\gltimer.h
+	<common.h>
+
+1712704841 source:c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\src\glinputs.cpp
+	"GLInputs.h"
+
+1712704841 c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\include\glinputs.h
+	<GLModel.h>
+	<GLParallax.h>
+	<GLPlayer.h>
+	<common.h>
+
+1712704841 c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\include\glmodel.h
+	<common.h>
+
+1712704841 c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\include\glparallax.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+
+1712704841 c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\include\glplayer.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+	<map>
+
+1712704841 source:c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\src\gllight.cpp
+	"GLLight.h"
+
+1712704841 c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\include\gllight.h
+	<GLScene.h>
+
+1712704841 source:c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\src\glmodel.cpp
+	"GLModel.h"
+
+1712704841 source:c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\src\globject.cpp
+	"GLObject.h"
+
+1712704841 c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\include\globject.h
+	<GLTexture.h>
+	<common.h>
+
+1712704841 source:c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\src\glparallax.cpp
+	"GLParallax.h"
+
+1712704841 source:c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\src\glplayer.cpp
+	"GLPlayer.h"
+
+1712713102 source:c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\src\glscene.cpp
+	<GLScene.h>
+	<GLLight.h>
+	<GLTexture.h>
+	<GLModel.h>
+	<GLInputs.h>
+	<GLParallax.h>
+	<GLPlayer.h>
+	<GLEnms.h>
+	<GLTimer.h>
+	<GLCheckCollision.h>
+	<GLObject.h>
+	<MenuScene.h>
+
+1712704841 c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\include\menuscene.h
+
+1712704841 source:c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\src\gltexture.cpp
+	"GLTexture.h"
+
+1712704841 source:c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\src\gltimer.cpp
+	"GLTimer.h"
+
+1712704841 source:c:\users\joshu\onedrive\desktop\178games\alchemygameengine\midterm\src\menuscene.cpp
+	"MenuScene.h"
+	<GLScene.h>
+	<common.h>
+
