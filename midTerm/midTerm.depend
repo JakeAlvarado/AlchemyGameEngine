@@ -635,7 +635,7 @@
 1712956148 source:c:\users\jake\documents\github\alchemygameengine\midterm\src\glplayer.cpp
 	"GLPlayer.h"
 
-1712956876 source:c:\users\jake\documents\github\alchemygameengine\midterm\src\glscene.cpp
+1713207749 source:c:\users\jake\documents\github\alchemygameengine\midterm\src\glscene.cpp
 	<GLScene.h>
 	<GLLight.h>
 	<GLTexture.h>
@@ -648,9 +648,8 @@
 	<GLCheckCollision.h>
 	<GLObject.h>
 	<MenuScene.h>
-	<CircleObject.h>
 
-1713206907 c:\users\jake\documents\github\alchemygameengine\midterm\include\menuscene.h
+1713213657 c:\users\jake\documents\github\alchemygameengine\midterm\include\menuscene.h
 
 1712956148 source:c:\users\jake\documents\github\alchemygameengine\midterm\src\gltexture.cpp
 	"GLTexture.h"

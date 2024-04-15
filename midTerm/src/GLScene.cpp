@@ -19,6 +19,7 @@ GLParallax *tutorialMap = new GLParallax();
 GLParallax *pausePopup = new GLParallax();
 GLParallax *levelTwo = new GLParallax();
 GLParallax *levelThree = new GLParallax();
+GLParallax *levelFinal = new GLParallax();
 GLObject *startButton = new GLObject();
 GLObject *helpButton = new GLObject();
 GLObject *exitButton = new GLObject();
@@ -65,6 +66,7 @@ GLint GLScene::initGL()
     pausePopup->parallaxInit("images/PauseMenuDone.png"); // Pause menu popup during game
     levelTwo->parallaxInit("images/InsideCave.png"); //Level 2 Map Forge (Fire Enemies)
     levelThree->parallaxInit("images/Level2.png"); //Level 3 Transition Map (Hideout)
+    levelFinal->parallaxInit("images/Castle.png"); //Final Level (Castle)
     startButton->initObject(1, 1, "images/NewGameBannerBottles.png"); // Load start button object texture
     helpButton->initObject(1, 1, "images/HelpBanner.png"); // Load help button object texture
     exitButton->initObject(1, 1, "images/ExitBanner.png"); // Load exit button object texture
@@ -178,7 +180,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
        break;
 
    case State_Level2:
-       glPushMatrix();      //Loading tutorial map
+       glPushMatrix();      //Loading Level 2 map
         glScalef(3.5,3.5,1.0);
         glDisable(GL_LIGHTING);
         levelTwo->parallaxDraw(screenWidth, screenHeight);
@@ -197,7 +199,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
 
    case State_Level3:
 
-       glPushMatrix();      //Loading tutorial map
+       glPushMatrix();      //Loading Level 3 map
         glScalef(3.5,3.5,1.0);
         glDisable(GL_LIGHTING);
         levelThree->parallaxDraw(screenWidth, screenHeight);
@@ -213,6 +215,26 @@ GLint GLScene::drawScene()    // this function runs on a loop
        glPopMatrix();
 
         break;
+   case State_Final:
+
+
+       glPushMatrix();      //Loading Final Level map
+        glScalef(3.5,3.5,1.0);
+        glDisable(GL_LIGHTING);
+        levelFinal->parallaxDraw(screenWidth, screenHeight);
+        glEnable(GL_LIGHTING);
+       glPopMatrix();
+
+       glPushMatrix();
+        glScalef(0.5, 0.5, 1.0);
+        glDisable(GL_LIGHTING);
+        player->drawPlayer();
+        player->actions();
+        glEnable(GL_LIGHTING);
+       glPopMatrix();
+
+
+    break;
 
    case State_Help: // Help State
 
@@ -290,6 +312,10 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
                     {
                         menuState->gState = State_Level3;
                     }
+                    else if (menuState->gState == State_Level3)
+                    {
+                        menuState->gState = State_Final;
+                    }
                     break;
                 }
             case 'H':   // if press is 'H'
@@ -321,7 +347,7 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         switch (wParam)
         {
         case VK_ESCAPE:
-            if (menuState->gState == State_Game || menuState->gState == State_Level2 || menuState->gState == State_Level3)
+            if (menuState->gState == State_Game || menuState->gState == State_Level2 || menuState->gState == State_Level3 || menuState->gState == State_Final)
             {
                 if(isPaused == false)
                 {
@@ -334,7 +360,7 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
             }
             break;
         case 'H':
-            if ((menuState->gState == State_Game || menuState->gState == State_Level2 || menuState->gState == State_Level3) && needHelp == false)
+            if ((menuState->gState == State_Game || menuState->gState == State_Level2 || menuState->gState == State_Level3 || menuState->gState == State_Final) && needHelp == false)
             {
                 needHelp = true;
             }
