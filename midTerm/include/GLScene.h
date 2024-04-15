@@ -13,6 +13,7 @@ class GLScene
         GLint initGL();
         GLint drawScene();
         GLint pauseGame();
+        GLint needsHelp();
         GLvoid resizeScene(GLsizei, GLsizei);
 
         int windMsg(HWND,UINT,WPARAM,LPARAM);  // take windows inputs
