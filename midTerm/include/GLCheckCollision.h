@@ -10,9 +10,9 @@ class GLCheckCollision
         virtual ~GLCheckCollision();
 
 
-          bool isLinearCollision(vec2, vec2); // check x,x1 or y.y1 components
+          bool isLinearCollision(float, float, float); // check x,x1 or y.y1 components
           bool isRadialCollision(vec2,vec2,float,float,float); // element1 , element2 radius1, radius2
-          bool isHitPlane(vec2,vec2);// check object vs floor/wall
+          bool isHitPlane(vec2,vec2, float);// check object vs floor/wall
 
           bool isCubicCollision(vec3, vec3); // check x,y.z components of two models
           bool isSphereCollision(vec3,vec3,float,float,float); // element1 , element2 radius1, radius2

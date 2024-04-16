@@ -26,6 +26,7 @@ GLObject *exitButton = new GLObject();
 GLObject *titleBanner = new GLObject();
 MenuScene *menuState = new MenuScene();
 GLPlayer *player = new GLPlayer();
+GLCheckCollision *collision = new GLCheckCollision();
 bool isPaused = false;
 bool needHelp = false;
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -74,6 +75,24 @@ GLint GLScene::initGL()
     player->initPlayer(6, 10, "images/player.png"); // Load player texture
     player->actionTrigger = player->STAND; // Player does not move until player makes a keypress
 
+     // initialize invisible wall locations
+    float leftWall = -3.0;
+    float topWall = 1.8;
+    float rightWall = 3.0;
+    float bottomWall = -1.6;
+
+    // push into vector of walls
+    walls.push_back(0.0);   // this is dumb but i need one indexing for later lol
+    walls.push_back(leftWall);
+    walls.push_back(topWall);
+    walls.push_back(rightWall);
+    walls.push_back(bottomWall);
+
+    // unordered_map to quickly find new bounce back location
+    wall_bounce_back.insert(std::make_pair(1, -2.9));
+    wall_bounce_back.insert(std::make_pair(2, 1.7));
+    wall_bounce_back.insert(std::make_pair(3, 2.9));
+    wall_bounce_back.insert(std::make_pair(4, -1.5));
 
     return true;
 }
@@ -172,6 +191,24 @@ GLint GLScene::drawScene()    // this function runs on a loop
        glPushMatrix();
         glScalef(0.5, 0.5, 1.0);
         glDisable(GL_LIGHTING);
+
+        // current player position
+        vec2 playerPos;
+        playerPos.x = player->plPosition.x;
+        playerPos.y = player->plPosition.y;
+
+        for (int i = 1; i < walls.size(); i++) {
+            // even numbered walls refer to top/bottom
+            if (i % 2 == 0) {
+                if (collision->isLinearCollision(playerPos.y, walls.at(i), 0.1))
+                    player->plPosition.y = wall_bounce_back[i];
+            }
+            else {
+                if (collision->isLinearCollision(playerPos.x, walls.at(i), 0.1))
+                    player->plPosition.x = wall_bounce_back[i];
+            }
+        }
+
         player->drawPlayer();
         player->actions();
         glEnable(GL_LIGHTING);
