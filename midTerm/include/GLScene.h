@@ -15,8 +15,6 @@ class GLScene
         GLint pauseGame();
         GLint needsHelp();
         GLvoid resizeScene(GLsizei, GLsizei);
-        vector<float> walls;
-        unordered_map<int, float> wall_bounce_back;
 
         int windMsg(HWND,UINT,WPARAM,LPARAM);  // take windows inputs
 

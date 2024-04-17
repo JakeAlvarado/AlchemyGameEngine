@@ -26,6 +26,15 @@ bool GLCheckCollision::isHitPlane(vec2 pl, vec2 obj, float threshold)
     return(sqrt(pow(pl.x - obj.x, 2)) < threshold || sqrt(pow(pl.y - obj.y, 2)) < threshold);
 }
 
+bool GLCheckCollision::isAABBCollision(vec2 player, vec2 obj, float length, float width) {
+    return (
+        player.x >= obj.x - length &&
+        player.x <= obj.x + length &&
+        player.y >= obj.y - width  &&
+        player.y <= obj.y + width
+    );
+}
+
 bool GLCheckCollision::isCubicCollision(vec3, vec3)
 {
 

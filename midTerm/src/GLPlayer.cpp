@@ -36,6 +36,7 @@ void GLPlayer::initPlayer(int x, int y, char* fileName)
 
     actionTrigger=0;
     myTime->startTime = clock();
+    
 }
 
 void GLPlayer::drawPlayer()
@@ -218,4 +219,12 @@ void GLPlayer::update()
     }
 
     this->actions();
+}
+
+// follows pattern of left, up, right, down
+void GLPlayer::boundsCheck(int level) {
+    if (this->plPosition.x <= this->bounds[level][0]) this->plPosition.x = this->bounds[level][0];
+    else if (this->plPosition.y >= this->bounds[level][1]) this->plPosition.y = this->bounds[level][1];
+    else if (this->plPosition.x >= this->bounds[level][2]) this->plPosition.x = this->bounds[level][2];
+    else if (this->plPosition.y <= this->bounds[level][3]) this->plPosition.y = this->bounds[level][3];
 }

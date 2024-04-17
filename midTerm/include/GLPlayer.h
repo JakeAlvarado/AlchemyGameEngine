@@ -13,6 +13,7 @@ class GLPlayer
         virtual ~GLPlayer();
 
         enum {STAND, WALKLEFT,WALKRIGHT, WALKDOWN, WALKUP, RUN, JUMP, ATTACK};
+        vector<vector<float>> bounds;
 
         GLTexture *texture = new GLTexture();
         GLTimer   *myTime = new GLTimer();
@@ -21,6 +22,7 @@ class GLPlayer
         void drawPlayer();
         void actions();
         void update();
+        void boundsCheck(int);
 
         vec3 plPosition;
         vec3 plScale;

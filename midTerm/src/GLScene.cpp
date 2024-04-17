@@ -10,6 +10,7 @@
 #include<GLCheckCollision.h>
 #include<GLObject.h>
 #include<MenuScene.h>
+#include<GLCollisions.h>
 //Initializing Objects based on classes (parallax (static or background images), object (image that needs to be in front of background), MenuScene (state controller for navigation)
 GLInputs *KbMs = new GLInputs();
 GLParallax *landingPage = new GLParallax();
@@ -26,7 +27,8 @@ GLObject *exitButton = new GLObject();
 GLObject *titleBanner = new GLObject();
 MenuScene *menuState = new MenuScene();
 GLPlayer *player = new GLPlayer();
-GLCheckCollision *collision = new GLCheckCollision();
+GLCheckCollision *hit = new GLCheckCollision();
+GLCollisions *tutorialDoor = new GLCollisions();
 bool isPaused = false;
 bool needHelp = false;
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -75,24 +77,21 @@ GLint GLScene::initGL()
     player->initPlayer(6, 10, "images/player.png"); // Load player texture
     player->actionTrigger = player->STAND; // Player does not move until player makes a keypress
 
-     // initialize invisible wall locations
-    float leftWall = -3.0;
-    float topWall = 1.8;
-    float rightWall = 3.0;
-    float bottomWall = -1.6;
+    // resized to the number of gStates
+    player->bounds.resize(7);
 
-    // push into vector of walls
-    walls.push_back(0.0);   // this is dumb but i need one indexing for later lol
-    walls.push_back(leftWall);
-    walls.push_back(topWall);
-    walls.push_back(rightWall);
-    walls.push_back(bottomWall);
+    // follows pattern of left, top, right, down
+    player->bounds[2] = { -2.9, 1.7, 2.9, -1.5 };   // bounds of tutorial map
+    player->bounds[4] = { -2.9, 1.4, 2.9, -1.5 };   // bounds of level 2 
+    player->bounds[5] = { -2.0, 1.1, 2.0, -0.75 };  // bounds of level 3
+    player->bounds[6] = { -2.9, 1.55, 2.9, -1.55 }; // bounds of final level
 
-    // unordered_map to quickly find new bounce back location
-    wall_bounce_back.insert(std::make_pair(1, -2.9));
-    wall_bounce_back.insert(std::make_pair(2, 1.7));
-    wall_bounce_back.insert(std::make_pair(3, 2.9));
-    wall_bounce_back.insert(std::make_pair(4, -1.5));
+    // setting the door thats under the tree in tutorial map
+    tutorialDoor->pos = vec2({0.0, 1.0});
+    tutorialDoor->length = 0.25;
+    tutorialDoor->width = 0.05;
+
+    
 
     return true;
 }
@@ -191,25 +190,12 @@ GLint GLScene::drawScene()    // this function runs on a loop
        glPushMatrix();
         glScalef(0.5, 0.5, 1.0);
         glDisable(GL_LIGHTING);
-
-        // current player position
-        vec2 playerPos;
-        playerPos.x = player->plPosition.x;
-        playerPos.y = player->plPosition.y;
-
-        for (int i = 1; i < walls.size(); i++) {
-            // even numbered walls refer to top/bottom
-            if (i % 2 == 0) {
-                if (collision->isLinearCollision(playerPos.y, walls.at(i), 0.1))
-                    player->plPosition.y = wall_bounce_back[i];
-            }
-            else {
-                if (collision->isLinearCollision(playerPos.x, walls.at(i), 0.1))
-                    player->plPosition.x = wall_bounce_back[i];
-            }
+        player->boundsCheck(menuState->gState);
+        if (hit->isAABBCollision(vec2({player->plPosition.x, player->plPosition.y}), tutorialDoor->pos, tutorialDoor->length, tutorialDoor->width )) {
+            menuState->gState = State_Level2;
         }
-
         player->drawPlayer();
+        cout << player->plPosition.x << " " << player->plPosition.y << endl;
         player->actions();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -227,7 +213,9 @@ GLint GLScene::drawScene()    // this function runs on a loop
        glPushMatrix();
         glScalef(0.5, 0.5, 1.0);
         glDisable(GL_LIGHTING);
+        player->boundsCheck(menuState->gState);
         player->drawPlayer();
+        cout << player->plPosition.x << " " << player->plPosition.y << endl;
         player->actions();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -246,7 +234,9 @@ GLint GLScene::drawScene()    // this function runs on a loop
        glPushMatrix();
         glScalef(0.5, 0.5, 1.0);
         glDisable(GL_LIGHTING);
+        player->boundsCheck(menuState->gState);
         player->drawPlayer();
+        cout << player->plPosition.x << " " << player->plPosition.y << endl;
         player->actions();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -265,7 +255,9 @@ GLint GLScene::drawScene()    // this function runs on a loop
        glPushMatrix();
         glScalef(0.5, 0.5, 1.0);
         glDisable(GL_LIGHTING);
+        player->boundsCheck(menuState->gState);
         player->drawPlayer();
+        cout << player->plPosition.x << " " << player->plPosition.y << endl;
         player->actions();
         glEnable(GL_LIGHTING);
        glPopMatrix();
