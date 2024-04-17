@@ -29,6 +29,8 @@ MenuScene *menuState = new MenuScene();
 GLPlayer *player = new GLPlayer();
 GLCheckCollision *hit = new GLCheckCollision();
 GLCollisions *tutorialDoor = new GLCollisions();
+GLCollisions *levelThreeLeftCornerRightSide = new GLCollisions();
+GLCollisions *levelThreeLeftCornerTopSide = new GLCollisions();
 bool isPaused = false;
 bool needHelp = false;
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -91,7 +93,16 @@ GLint GLScene::initGL()
     tutorialDoor->length = 0.25;
     tutorialDoor->width = 0.05;
 
-    
+    // setting the door from second level to third level
+    levelThreeLeftCornerRightSide->pos = vec2({0.0, -0.45});
+    levelThreeLeftCornerRightSide->length = 0.05; 
+    levelThreeLeftCornerRightSide->width = 0.35;
+
+    // setting the door from second level to third level
+    levelThreeLeftCornerTopSide->pos = vec2({-1.4, -0.1});
+    levelThreeLeftCornerTopSide->length = 1.4; 
+    levelThreeLeftCornerTopSide->width = 0.05;
+
 
     return true;
 }
@@ -195,7 +206,6 @@ GLint GLScene::drawScene()    // this function runs on a loop
             menuState->gState = State_Level2;
         }
         player->drawPlayer();
-        cout << player->plPosition.x << " " << player->plPosition.y << endl;
         player->actions();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -215,7 +225,6 @@ GLint GLScene::drawScene()    // this function runs on a loop
         glDisable(GL_LIGHTING);
         player->boundsCheck(menuState->gState);
         player->drawPlayer();
-        cout << player->plPosition.x << " " << player->plPosition.y << endl;
         player->actions();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -235,8 +244,13 @@ GLint GLScene::drawScene()    // this function runs on a loop
         glScalef(0.5, 0.5, 1.0);
         glDisable(GL_LIGHTING);
         player->boundsCheck(menuState->gState);
+        if (hit->isAABBCollision(vec2({player->plPosition.x, player->plPosition.y}), levelThreeLeftCornerRightSide->pos, levelThreeLeftCornerRightSide->length, levelThreeLeftCornerRightSide->width )) {
+            player->plPosition.x = levelThreeLeftCornerRightSide->pos.x + levelThreeLeftCornerRightSide->length;
+        }
+        if (hit->isAABBCollision(vec2({player->plPosition.x, player->plPosition.y}), levelThreeLeftCornerTopSide->pos, levelThreeLeftCornerTopSide->length, levelThreeLeftCornerTopSide->width )) {
+            player->plPosition.y = levelThreeLeftCornerTopSide->pos.y + levelThreeLeftCornerTopSide->width;
+        }
         player->drawPlayer();
-        cout << player->plPosition.x << " " << player->plPosition.y << endl;
         player->actions();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -257,7 +271,6 @@ GLint GLScene::drawScene()    // this function runs on a loop
         glDisable(GL_LIGHTING);
         player->boundsCheck(menuState->gState);
         player->drawPlayer();
-        cout << player->plPosition.x << " " << player->plPosition.y << endl;
         player->actions();
         glEnable(GL_LIGHTING);
        glPopMatrix();
