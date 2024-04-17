@@ -10,6 +10,7 @@
 #include<GLCheckCollision.h>
 #include<GLObject.h>
 #include<MenuScene.h>
+#include<enemy.h>
 //Initializing Objects based on classes (parallax (static or background images), object (image that needs to be in front of background), MenuScene (state controller for navigation)
 GLInputs *KbMs = new GLInputs();
 GLParallax *landingPage = new GLParallax();
@@ -25,8 +26,13 @@ GLObject *exitButton = new GLObject();
 GLObject *titleBanner = new GLObject();
 MenuScene *menuState = new MenuScene();
 GLPlayer *player = new GLPlayer();
+enemy *en = new enemy();
+
 bool isPaused = false;
 bool needHelp = false;
+
+vec3 playerPos;
+
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 GLScene::GLScene()
@@ -71,6 +77,7 @@ GLint GLScene::initGL()
     titleBanner->initObject(1, 1, "images/Title.png"); // Load title banner object texture
     player->initPlayer(6, 10, "images/player.png"); // Load player texture
     player->actionTrigger = player->STAND; // Player does not move until player makes a keypress
+    en->initEnemy();
 
 
     return true;
@@ -172,7 +179,14 @@ GLint GLScene::drawScene()    // this function runs on a loop
         glDisable(GL_LIGHTING);
         player->drawPlayer();
         player->actions();
+        playerPos=player->getPos();
         glEnable(GL_LIGHTING);
+       glPopMatrix();
+
+       glPushMatrix();
+       glScalef(0.5, 0.5, 1.0);
+         en->setTarget(playerPos);
+         en->drawEnemy();
        glPopMatrix();
 
        break;

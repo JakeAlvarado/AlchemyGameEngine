@@ -22,6 +22,8 @@ class GLPlayer
         void actions();
         void update();
 
+        vec3 getPos();
+
         vec3 plPosition;
         vec3 plScale;
 

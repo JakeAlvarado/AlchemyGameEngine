@@ -219,3 +219,8 @@ void GLPlayer::update()
 
     this->actions();
 }
+vec3 GLPlayer::getPos()
+{
+    return plPosition;
+}
+
