@@ -84,7 +84,7 @@ GLint GLScene::initGL()
 
     // follows pattern of left, top, right, down
     player->bounds[2] = { -2.9, 1.7, 2.9, -1.5 };   // bounds of tutorial map
-    player->bounds[4] = { -2.9, 1.4, 2.9, -1.5 };   // bounds of level 2 
+    player->bounds[4] = { -2.9, 1.4, 2.9, -1.5 };   // bounds of level 2
     player->bounds[5] = { -2.0, 1.1, 2.0, -0.75 };  // bounds of level 3
     player->bounds[6] = { -2.9, 1.55, 2.9, -1.55 }; // bounds of final level
 
@@ -95,12 +95,12 @@ GLint GLScene::initGL()
 
     // setting the door from second level to third level
     levelThreeLeftCornerRightSide->pos = vec2({0.0, -0.45});
-    levelThreeLeftCornerRightSide->length = 0.05; 
+    levelThreeLeftCornerRightSide->length = 0.05;
     levelThreeLeftCornerRightSide->width = 0.35;
 
     // setting the door from second level to third level
     levelThreeLeftCornerTopSide->pos = vec2({-1.4, -0.1});
-    levelThreeLeftCornerTopSide->length = 1.4; 
+    levelThreeLeftCornerTopSide->length = 1.4;
     levelThreeLeftCornerTopSide->width = 0.05;
 
 
@@ -411,8 +411,6 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
                 needHelp = false;
             }
         }
-
-         break;
 
     case WM_LBUTTONDOWN:
         {

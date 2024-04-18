@@ -36,7 +36,7 @@ void GLPlayer::initPlayer(int x, int y, char* fileName)
 
     actionTrigger=0;
     myTime->startTime = clock();
-    
+
 }
 
 void GLPlayer::drawPlayer()
@@ -191,29 +191,104 @@ void GLPlayer::actions()
 
    case RUN: break;
    case JUMP: break;
-   case ATTACK: break;
+   case ATTACK:
+    if(clock() - myTime->startTime>60)
+    {
+        yMax = 8.0/(float)framesY;
+        yMin = yMax - 1.0/(float)framesY;
+
+        xMin += 1.0/(float)framesX;
+        xMax += 1.0/(float)framesX;
+
+    myTime->startTime =clock();
+    }
+        break;
+   case ATTACKLEFT:
+       if(clock() - myTime->startTime>60)
+    {
+        yMax = 8.0/(float)framesY;
+        yMin = yMax - 1.0/(float)framesY;
+
+        xMax += 1.0/(float)framesX;
+        xMin += 1.0/(float)framesX;
+
+
+    myTime->startTime =clock();
+    }
+    break;
+   case ATTACKUP:
+    if(clock() - myTime->startTime>60)
+    {
+        yMax = 9.0/(float)framesY;
+        yMin = yMax - 1.0/(float)framesY;
+
+        xMax += 1.0/(float)framesX;
+        xMin += 1.0/(float)framesX;
+
+
+    myTime->startTime =clock();
+    }
+
+    break;
+   case ATTACKDOWN:
+    if(clock() - myTime->startTime>60)
+    {
+        yMax = 7.0/(float)framesY;
+        yMin = yMax - 1.0/(float)framesY;
+
+        xMax += 1.0/(float)framesX;
+        xMin += 1.0/(float)framesX;
+
+
+    myTime->startTime =clock();
+    }
+
    default: break;
    }
 }
 void GLPlayer::update()
 {
+    bool isMoving = false;
     if (keyStates[VK_LEFT] || keyStates['A'])
     {
         this->actionTrigger = WALKLEFT;
+        isMoving = true;
     }
-    else if (keyStates[VK_UP] || keyStates['W'])
+    if (keyStates[VK_UP] || keyStates['W'])
     {
         this->actionTrigger = WALKUP;
+        isMoving = true;
     }
-    else if (keyStates[VK_DOWN] || keyStates['S'])
+    if (keyStates[VK_DOWN] || keyStates['S'])
     {
         this->actionTrigger = WALKDOWN;
+        isMoving = true;
     }
-    else if (keyStates[VK_RIGHT] || keyStates['D'])
+    if (keyStates[VK_RIGHT] || keyStates['D'])
     {
         this->actionTrigger = WALKRIGHT;
+        isMoving = true;
     }
-    else
+    if (keyStates[VK_SPACE])
+    {
+        if (keyStates['A'] || keyStates[VK_LEFT])
+        {
+            performAttackLeft();
+        }
+        else if (keyStates['W'] || keyStates[VK_UP])
+        {
+            performAttackUp();
+        }
+        else if (keyStates['S'] || keyStates[VK_DOWN])
+        {
+            performAttackDown();
+        }
+        else
+        {
+            performAttack();
+        }
+    }
+    if (isMoving == false && !keyStates[VK_SPACE])
     {
         this->actionTrigger = STAND;
     }
@@ -228,3 +303,22 @@ void GLPlayer::boundsCheck(int level) {
     else if (this->plPosition.x >= this->bounds[level][2]) this->plPosition.x = this->bounds[level][2];
     else if (this->plPosition.y <= this->bounds[level][3]) this->plPosition.y = this->bounds[level][3];
 }
+void GLPlayer::performAttack()
+{
+    this->actionTrigger = ATTACK;
+}
+
+void GLPlayer::performAttackLeft()
+{
+    this->actionTrigger = ATTACKLEFT;
+}
+void GLPlayer::performAttackDown()
+{
+    this->actionTrigger = ATTACKDOWN;
+}
+
+void GLPlayer::performAttackUp()
+{
+    this->actionTrigger = ATTACKUP;
+}
+
