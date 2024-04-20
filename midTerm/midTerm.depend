@@ -735,7 +735,7 @@
 	<GLTexture.h>
 	<GLTimer.h>
 
-1713384467 c:\users\15597\documents\game\alchemygameengine\midterm\include\glplayer.h
+1713396443 c:\users\15597\documents\game\alchemygameengine\midterm\include\glplayer.h
 	<common.h>
 	<GLTexture.h>
 	<GLTimer.h>
@@ -760,10 +760,10 @@
 1713210542 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\glparallax.cpp
 	"GLParallax.h"
 
-1713384455 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\glplayer.cpp
+1713398863 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\glplayer.cpp
 	"GLPlayer.h"
 
-1713384987 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\glscene.cpp
+1713399032 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\glscene.cpp
 	<GLScene.h>
 	<GLLight.h>
 	<GLTexture.h>
@@ -777,10 +777,11 @@
 	<GLObject.h>
 	<MenuScene.h>
 	<enemy.h>
+	<EnemyLevelHandler.h>
 
 1713380732 c:\users\15597\documents\game\alchemygameengine\midterm\include\menuscene.h
 
-1713210542 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\gltexture.cpp
+1713396976 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\gltexture.cpp
 	"GLTexture.h"
 
 1713210542 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\gltimer.cpp
@@ -791,11 +792,19 @@
 	<GLScene.h>
 	<common.h>
 
-1713384884 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\enemy.cpp
+1713399137 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\enemy.cpp
 	"enemy.h"
 
-1713385396 c:\users\15597\documents\game\alchemygameengine\midterm\include\enemy.h
+1713399259 c:\users\15597\documents\game\alchemygameengine\midterm\include\enemy.h
 	<common.h>
 	<GLTexture.h>
 	<GLTimer.h>
+	<random>
+
+1713398787 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\enemylevelhandler.cpp
+	"EnemyLevelHandler.h"
+
+1713398707 c:\users\15597\documents\game\alchemygameengine\midterm\include\enemylevelhandler.h
+	<enemy.h>
+	<common.h>
 

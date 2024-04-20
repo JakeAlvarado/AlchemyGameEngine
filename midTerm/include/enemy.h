@@ -4,15 +4,22 @@
 #include <GLTexture.h>
 #include <GLTimer.h>
 
+#include <random>
+
 class enemy
 {
     public:
-        enemy();
+        enemy(int t);
         virtual ~enemy();
 
         int type;
 
-        char *water_image_path = "images/enemies/AirElemental.png";
+
+
+        char *water_image_path = "images/enemies/WaterElemental.png";
+        char *earth_image_path = "images/enemies/EarthElemental.png";
+        char *fire_image_path = "images/enemies/FireElemental.png";
+        char *air_image_path = "images/enemies/AirElemental.png";
 
         vec3 spriteShape;
 

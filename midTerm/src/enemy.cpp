@@ -1,7 +1,8 @@
 #include "enemy.h"
 
-enemy::enemy()
+enemy::enemy(int t)
 {
+    type = t;
     vert[0].x =-0.5; vert[0].y = -0.5; vert[0].z =-1.0;
     vert[1].x = 0.5; vert[1].y = -0.5; vert[1].z =-1.0;
     vert[2].x = 0.5; vert[2].y =  0.5; vert[2].z =-1.0;
@@ -14,12 +15,29 @@ enemy::~enemy()
 }
 void enemy::initEnemy()
 {
-    type = 1;
-
     spriteShape.x = 1;
     spriteShape.y = 4;
 
-    enemyTex->loadTexture(water_image_path);
+    switch(type){
+
+    case 1:
+        enemyTex->loadTexture(earth_image_path);
+        break;
+    case 2:
+        enemyTex->loadTexture(fire_image_path);
+        break;
+    case 3:
+        enemyTex->loadTexture(water_image_path);
+        break;
+    case 4:
+        enemyTex->loadTexture(water_image_path);
+        break;
+    }
+
+
+
+
+
     myTime->startTime = clock();
     moveTime->startTime = clock();
 
@@ -36,14 +54,17 @@ void enemy::initEnemy()
 
 void enemy::drawEnemy()
 {
+
     updateFrame();
     updatePos();
+
+    glPushMatrix();
     glTranslatef(pos.x,pos.y,pos.z);
 
 
     glColor3f(1.0,1.0,1.0);    //white rectangle
     enemyTex->bindTexture();    //binding my background
-    glScalef(0.12,0.24,1.0);
+    glScalef(0.25,0.25,1.0);
 
 
     glBegin(GL_QUADS);
@@ -60,6 +81,7 @@ void enemy::drawEnemy()
       glVertex3f(vert[3].x,vert[3].y,vert[3].z);
 
     glEnd();
+    glPopMatrix();
 }
 
 void enemy::updateFrame() {
@@ -82,9 +104,6 @@ void enemy::updateFrame() {
             xMax=.25;
         }
 
-        cout<<"Xmin="<<xMin<<endl;
-        cout<<"XMax="<<xMax<<endl;
-
         myTime->startTime=clock();
 
 
@@ -101,9 +120,11 @@ void enemy::setTarget(vec3 t)
 
 void enemy::updatePos() {
 
-
+    if (type == 1 || type == 2) return;
     if(clock() - moveTime->startTime < 60) return;
 
+    cout << "TYPE:" << type <<endl;
+    cout << "t.x: " << Target.x << endl;
 
     float dx = Target.x-pos.x;
     float dy = Target.y-pos.y;

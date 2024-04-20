@@ -11,6 +11,8 @@
 #include<GLObject.h>
 #include<MenuScene.h>
 #include<enemy.h>
+#include<EnemyLevelHandler.h>
+
 //Initializing Objects based on classes (parallax (static or background images), object (image that needs to be in front of background), MenuScene (state controller for navigation)
 GLInputs *KbMs = new GLInputs();
 GLParallax *landingPage = new GLParallax();
@@ -26,7 +28,9 @@ GLObject *exitButton = new GLObject();
 GLObject *titleBanner = new GLObject();
 MenuScene *menuState = new MenuScene();
 GLPlayer *player = new GLPlayer();
-enemy *en = new enemy();
+enemy *en = new enemy(1);
+EnemyLevelHandler *enemies = new EnemyLevelHandler();
+
 
 bool isPaused = false;
 bool needHelp = false;
@@ -78,6 +82,7 @@ GLint GLScene::initGL()
     player->initPlayer(6, 10, "images/player.png"); // Load player texture
     player->actionTrigger = player->STAND; // Player does not move until player makes a keypress
     en->initEnemy();
+    enemies->initEnemies(3);
 
 
     return true;
@@ -185,8 +190,8 @@ GLint GLScene::drawScene()    // this function runs on a loop
 
        glPushMatrix();
        glScalef(0.5, 0.5, 1.0);
-         en->setTarget(playerPos);
-         en->drawEnemy();
+        enemies->setTarget(playerPos);
+         enemies->drawEnemies();
        glPopMatrix();
 
        break;
