@@ -7,7 +7,8 @@
      State_Game = 2,
      State_Help = 3,
      State_Level2 = 4,
-     State_Level3 =5
+     State_Level3 = 5,
+     State_Final = 6
     };
 
 class MenuScene

@@ -552,7 +552,7 @@
 1713207277 c:\users\jake\documents\github\alchemygameengine\midterm\include\glscene.h
 	<common.h>
 
-1712956148 c:\users\jake\documents\github\alchemygameengine\midterm\include\common.h
+1713409091 c:\users\jake\documents\github\alchemygameengine\midterm\include\common.h
 	<windows.h>
 	<iostream>
 	<gl/gl.h>
@@ -560,6 +560,7 @@
 	<time.h>
 	<math.h>
 	<vector>
+	<unordered_map>
 	<SOIL.h>
 
 1712956148 c:\users\jake\documents\github\alchemygameengine\common\include\gl\glut.h
@@ -570,10 +571,10 @@
 
 1712956148 c:\users\jake\documents\github\alchemygameengine\common\include\soil.h
 
-1712956148 source:c:\users\jake\documents\github\alchemygameengine\midterm\src\glcheckcollision.cpp
+1713409091 source:c:\users\jake\documents\github\alchemygameengine\midterm\src\glcheckcollision.cpp
 	"GLCheckCollision.h"
 
-1712956148 c:\users\jake\documents\github\alchemygameengine\midterm\include\glcheckcollision.h
+1713409091 c:\users\jake\documents\github\alchemygameengine\midterm\include\glcheckcollision.h
 	<common.h>
 
 1712956148 source:c:\users\jake\documents\github\alchemygameengine\midterm\src\glenms.cpp
@@ -607,7 +608,7 @@
 	<GLTexture.h>
 	<GLTimer.h>
 
-1712956148 c:\users\jake\documents\github\alchemygameengine\midterm\include\glplayer.h
+1713411848 c:\users\jake\documents\github\alchemygameengine\midterm\include\glplayer.h
 	<common.h>
 	<GLTexture.h>
 	<GLTimer.h>
@@ -632,10 +633,10 @@
 1712956148 source:c:\users\jake\documents\github\alchemygameengine\midterm\src\glparallax.cpp
 	"GLParallax.h"
 
-1712956148 source:c:\users\jake\documents\github\alchemygameengine\midterm\src\glplayer.cpp
+1713411437 source:c:\users\jake\documents\github\alchemygameengine\midterm\src\glplayer.cpp
 	"GLPlayer.h"
 
-1712956876 source:c:\users\jake\documents\github\alchemygameengine\midterm\src\glscene.cpp
+1713409601 source:c:\users\jake\documents\github\alchemygameengine\midterm\src\glscene.cpp
 	<GLScene.h>
 	<GLLight.h>
 	<GLTexture.h>
@@ -648,9 +649,9 @@
 	<GLCheckCollision.h>
 	<GLObject.h>
 	<MenuScene.h>
-	<CircleObject.h>
+	<GLCollisions.h>
 
-1713206907 c:\users\jake\documents\github\alchemygameengine\midterm\include\menuscene.h
+1713213657 c:\users\jake\documents\github\alchemygameengine\midterm\include\menuscene.h
 
 1712956148 source:c:\users\jake\documents\github\alchemygameengine\midterm\src\gltexture.cpp
 	"GLTexture.h"
@@ -667,144 +668,10 @@
 	<common.h>
 	<GLPlayer.h>
 
-1713210542 source:c:\users\15597\documents\game\alchemygameengine\midterm\main.cpp
-	<windows.h>
-	<GLScene.h>
-	<GL/gl.h>
-	<GL/glu.h>
-	<GL/glut.h>
-	<stdlib.h>
-	<iostream>
-	<windows.h>
-
-1713380732 c:\users\15597\documents\game\alchemygameengine\midterm\include\glscene.h
-	<common.h>
-
-1713380732 c:\users\15597\documents\game\alchemygameengine\midterm\include\common.h
-	<windows.h>
-	<iostream>
-	<gl/gl.h>
-	<GL/glut.h>
-	<time.h>
-	<math.h>
-	<vector>
-	<SOIL.h>
-
-1713210542 c:\users\15597\documents\game\alchemygameengine\common\include\gl\glut.h
-	<windows.h>
-	<stdlib.h>
-	<GL/gl.h>
-	<GL/glu.h>
-
-1713210542 c:\users\15597\documents\game\alchemygameengine\common\include\soil.h
-
-1713380732 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\glcheckcollision.cpp
-	"GLCheckCollision.h"
-
-1713380732 c:\users\15597\documents\game\alchemygameengine\midterm\include\glcheckcollision.h
-	<common.h>
-
-1713210542 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\glenms.cpp
-	"GLEnms.h"
-
-1713210542 c:\users\15597\documents\game\alchemygameengine\midterm\include\glenms.h
-	<common.h>
-	<GLTexture.h>
-	<GLTimer.h>
-
-1713210542 c:\users\15597\documents\game\alchemygameengine\midterm\include\gltexture.h
-	<common.h>
-
-1713210542 c:\users\15597\documents\game\alchemygameengine\midterm\include\gltimer.h
-	<common.h>
-
-1713210542 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\glinputs.cpp
-	"GLInputs.h"
-
-1713210542 c:\users\15597\documents\game\alchemygameengine\midterm\include\glinputs.h
-	<GLModel.h>
-	<GLParallax.h>
-	<GLPlayer.h>
-	<common.h>
-
-1713210542 c:\users\15597\documents\game\alchemygameengine\midterm\include\glmodel.h
-	<common.h>
-
-1713210542 c:\users\15597\documents\game\alchemygameengine\midterm\include\glparallax.h
-	<common.h>
-	<GLTexture.h>
-	<GLTimer.h>
-
-1713396443 c:\users\15597\documents\game\alchemygameengine\midterm\include\glplayer.h
-	<common.h>
-	<GLTexture.h>
-	<GLTimer.h>
-	<map>
-
-1713210542 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\gllight.cpp
-	"GLLight.h"
-
-1713210542 c:\users\15597\documents\game\alchemygameengine\midterm\include\gllight.h
-	<GLScene.h>
-
-1713210542 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\glmodel.cpp
-	"GLModel.h"
-
-1713210542 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\globject.cpp
-	"GLObject.h"
-
-1713210542 c:\users\15597\documents\game\alchemygameengine\midterm\include\globject.h
-	<GLTexture.h>
-	<common.h>
-
-1713210542 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\glparallax.cpp
-	"GLParallax.h"
-
-1713398863 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\glplayer.cpp
-	"GLPlayer.h"
-
-1713399032 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\glscene.cpp
-	<GLScene.h>
-	<GLLight.h>
-	<GLTexture.h>
-	<GLModel.h>
-	<GLInputs.h>
-	<GLParallax.h>
-	<GLPlayer.h>
-	<GLEnms.h>
-	<GLTimer.h>
+1713409091 c:\users\jake\documents\github\alchemygameengine\midterm\include\glcollisions.h
 	<GLCheckCollision.h>
-	<GLObject.h>
-	<MenuScene.h>
-	<enemy.h>
-	<EnemyLevelHandler.h>
-
-1713380732 c:\users\15597\documents\game\alchemygameengine\midterm\include\menuscene.h
-
-1713396976 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\gltexture.cpp
-	"GLTexture.h"
-
-1713210542 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\gltimer.cpp
-	"GLTimer.h"
-
-1713210542 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\menuscene.cpp
-	"MenuScene.h"
-	<GLScene.h>
 	<common.h>
 
-1713399137 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\enemy.cpp
-	"enemy.h"
-
-1713399259 c:\users\15597\documents\game\alchemygameengine\midterm\include\enemy.h
-	<common.h>
-	<GLTexture.h>
-	<GLTimer.h>
-	<random>
-
-1713398787 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\enemylevelhandler.cpp
-	"EnemyLevelHandler.h"
-
-1713398707 c:\users\15597\documents\game\alchemygameengine\midterm\include\enemylevelhandler.h
-	<enemy.h>
-	<common.h>
+1713409091 source:c:\users\jake\documents\github\alchemygameengine\midterm\src\glcollisions.cpp
+	"GLCollisions.h"
 

@@ -48,6 +48,7 @@
 		</Linker>
 		<Unit filename="include/EnemyLevelHandler.h" />
 		<Unit filename="include/GLCheckCollision.h" />
+		<Unit filename="include/GLCollisions.h" />
 		<Unit filename="include/GLEnms.h" />
 		<Unit filename="include/GLInputs.h" />
 		<Unit filename="include/GLLight.h" />
@@ -64,6 +65,7 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="src/EnemyLevelHandler.cpp" />
 		<Unit filename="src/GLCheckCollision.cpp" />
+		<Unit filename="src/GLCollisions.cpp" />
 		<Unit filename="src/GLEnms.cpp" />
 		<Unit filename="src/GLInputs.cpp" />
 		<Unit filename="src/GLLight.cpp" />
