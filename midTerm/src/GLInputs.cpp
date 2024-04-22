@@ -82,6 +82,13 @@ void GLInputs::mouseEventDown(GLModel* model, double x, double y)
     }
 }
 
+void GLInputs::mousEventDown(projectile* proj, double x, double y)
+{
+    proj->shoot_projectile(0,0,0,x, y);
+
+}
+
+
 void GLInputs::mouseEventUp()
 {
        mouse_Rotate =false;    // reset rotation flag

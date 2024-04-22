@@ -3,23 +3,28 @@
 #include <common.h>
 #include <GLTexture.h>
 #include <GLTimer.h>
+#include <projectile.h>
+#include<random>
 
 #include <random>
 
 class enemy
 {
     public:
-        enemy(int t);
+        enemy(int t, projectile* proj);
         virtual ~enemy();
 
         int type;
 
+        projectile *gameProjectiles;
 
 
         char *water_image_path = "images/enemies/WaterElemental.png";
         char *earth_image_path = "images/enemies/EarthElemental.png";
         char *fire_image_path = "images/enemies/FireElemental.png";
         char *air_image_path = "images/enemies/AirElemental.png";
+
+        bool dir = true;
 
         vec3 spriteShape;
 

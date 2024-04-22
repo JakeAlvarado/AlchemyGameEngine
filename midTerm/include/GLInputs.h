@@ -4,6 +4,7 @@
 #include<GLModel.h>
 #include<GLParallax.h>
 #include<GLPlayer.h>
+#include<projectile.h>
 #include<common.h>
 
 class GLInputs
@@ -18,6 +19,7 @@ class GLInputs
 
 
         void mouseEventDown(GLModel*, double, double); // mouse btn pressed
+        void mousEventDown(projectile*, double, double);
         void mouseEventUp();                                // mouse btn released
         void mouseWheel(GLModel*,double);              // mouse wheel rolled
         void mouseMove(GLModel*, double,double);       // mouse moved

@@ -33,14 +33,14 @@ void EnemyLevelHandler::drawEnemies()
 
 }
 
-void EnemyLevelHandler::initEnemies(int n)
+void EnemyLevelHandler::initEnemies(int n, projectile *proj)
 {
 
     n_enemies = n;
 
     for (int i=0;i<n_enemies;i++) {
 
-        enemyList[i] = new enemy((i%4)+1);
+        enemyList[i] = new enemy((i%4)+1, proj);
         enemyList[i]->initEnemy();
 
     }

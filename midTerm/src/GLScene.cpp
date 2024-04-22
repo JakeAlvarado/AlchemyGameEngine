@@ -12,6 +12,7 @@
 #include<MenuScene.h>
 #include<enemy.h>
 #include<EnemyLevelHandler.h>
+#include<projectile.h>
 
 #include<GLCollisions.h>
 //Initializing Objects based on classes (parallax (static or background images), object (image that needs to be in front of background), MenuScene (state controller for navigation)
@@ -30,8 +31,8 @@ GLObject *exitButton = new GLObject();
 GLObject *titleBanner = new GLObject();
 MenuScene *menuState = new MenuScene();
 GLPlayer *player = new GLPlayer();
-enemy *en = new enemy(1);
 EnemyLevelHandler *enemies = new EnemyLevelHandler();
+projectile *projectiles = new projectile();
 
 
 GLCheckCollision *hit = new GLCheckCollision();
@@ -88,8 +89,11 @@ GLint GLScene::initGL()
     titleBanner->initObject(1, 1, "images/Title.png"); // Load title banner object texture
     player->initPlayer(6, 10, "images/player.png"); // Load player texture
     player->actionTrigger = player->STAND; // Player does not move until player makes a keypress
-    en->initEnemy();
-    enemies->initEnemies(3);
+
+    projectiles->initProj();
+    enemies->initEnemies(3, projectiles);
+
+
 
     // resized to the number of gStates
     player->bounds.resize(7);
@@ -227,6 +231,11 @@ GLint GLScene::drawScene()    // this function runs on a loop
        glScalef(0.5, 0.5, 1.0);
         enemies->setTarget(playerPos);
          enemies->drawEnemies();
+
+       glPopMatrix();
+
+       glPushMatrix();
+        projectiles->draw_projectiles();
        glPopMatrix();
 
        break;
@@ -430,17 +439,40 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
                 needHelp = false;
             }
         }
+        break;
 
     case WM_LBUTTONDOWN:
         {
             int mouseX = LOWORD(lParam);
             int mouseY = HIWORD(lParam);
+            KbMs->mousEventDown(projectiles, LOWORD(lParam), HIWORD(lParam));
+
+            cout << LOWORD(lParam)<<endl;
+            cout << HIWORD(lParam)<<endl;
+
+            cout << screenWidth << endl;
+            cout << screenHeight <<endl;
+
+
+            cout << playerPos.x << endl;
+            cout << playerPos.y << endl;
+
+            cout <<"\n"<<endl;
+
+
+
+
             return 0;
+
+            break;
+
         }
 
-         break;
+
+
 
     case WM_RBUTTONDOWN:
+
 
          break;
 

@@ -3,6 +3,7 @@
 
 #include <enemy.h>
 #include <common.h>
+#include <projectile.h>
 
 
 class EnemyLevelHandler
@@ -18,7 +19,7 @@ class EnemyLevelHandler
 
         void setTarget(vec3 t);
         void drawEnemies();
-        void initEnemies(int n);
+        void initEnemies(int n, projectile *proj);
 
 
 
