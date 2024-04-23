@@ -4,23 +4,7 @@
 #include <GLTexture.h>
 #include <common.h>
 
-#define N_PROJ 10
 
-typedef struct{
-
-    vec2 sPos;
-    vec2 tPos;
-    vec2 pos;
-
-    float speed=0.01;
-    int type; // this will determine which tex to use
-
-    vec2 v;
-
-    clock_t stTime;
-    bool isLive = false;
-
-} proj;
 
 class projectile
 {

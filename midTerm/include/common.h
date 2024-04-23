@@ -13,7 +13,14 @@
 
 #include<SOIL.h>
 
+#define N_PROJ 10
+#define MAX_N_ENEMIES 10
+
+
 using namespace std;
+
+
+
 
 typedef struct{   // shader positions in 3D
     float x;
@@ -33,6 +40,20 @@ typedef struct{  //  positions in 3D graphics
     float x;
     float y;
 }vec2;
+typedef struct{
 
+    vec2 sPos;
+    vec2 tPos;
+    vec2 pos;
+
+    float speed=0.01;
+    int type; // this will determine which tex to use
+
+    vec2 v;
+
+    clock_t stTime;
+    bool isLive = false;
+
+} proj;
 
 #endif // COMMON_H_INCLUDED

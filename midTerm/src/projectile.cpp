@@ -48,10 +48,7 @@ void projectile::draw_projectiles()
         if(!projArr[i].isLive) {continue;}
 
         if(clock()-projArr[i].stTime>5000){
-
             projArr[i].isLive=false;
-
-
         }
 
         move_projectiles(i);

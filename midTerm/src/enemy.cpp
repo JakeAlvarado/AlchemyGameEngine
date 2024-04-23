@@ -15,10 +15,13 @@ enemy::~enemy()
 {
     //dtor
 }
-void enemy::initEnemy()
+void enemy::initEnemy(float x_init, float y_init)
 {
     spriteShape.x = 1;
     spriteShape.y = 4;
+
+    pos.x = x_init;
+    pos.y = y_init;
 
     switch(type){
 
@@ -37,25 +40,18 @@ void enemy::initEnemy()
     }
 
 
-
-
-
     myTime->startTime = clock();
     moveTime->startTime = clock();
 
-    pos.x =0.0;         // initialize positions
-    pos.y =-0.2;
     pos.z = -1.0;
-
     frame = 0;
     n_frames = spriteShape.x*spriteShape.y;
-
-
-
+    isLive=true;
 }
 
 void enemy::drawEnemy()
 {
+    if(!isLive)return;
 
     updateFrame();
     updatePos();
@@ -93,9 +89,17 @@ void enemy::drawEnemy()
 
 void enemy::updateFrame() {
 
+
+    if(!isLive)return;
+
     if(clock() - myTime->startTime > 200){
+
+        if(melleCounter>2) {
+            killEnemy();
+        }
+
         // inc frame
-        if(rand()%10==1){
+        if(rand()%20==1){
             gameProjectiles->shoot_projectile(1,Target.x,Target.y,pos.x,pos.y);
         }
         frame+=1;
@@ -122,12 +126,17 @@ void enemy::updateFrame() {
 
 void enemy::setTarget(vec3 t)
 {
+    if(!isLive)return;
     Target.x=t.x;
     Target.y=t.y;
 
 }
 
 void enemy::updatePos() {
+
+    if(!isLive) {
+        return;
+    }
 
     if (type == 1 || type == 2) return;
     if(clock() - moveTime->startTime < 600) return;
@@ -156,4 +165,8 @@ void enemy::updatePos() {
 }
 
 
+void enemy::killEnemy()
+{
+    isLive=false;
+}
 

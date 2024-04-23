@@ -30,19 +30,28 @@ GLObject *helpButton = new GLObject();
 GLObject *exitButton = new GLObject();
 GLObject *titleBanner = new GLObject();
 MenuScene *menuState = new MenuScene();
+
 GLPlayer *player = new GLPlayer();
+
 EnemyLevelHandler *enemies = new EnemyLevelHandler();
-projectile *projectiles = new projectile();
+
+projectile *enemy_projectiles = new projectile();
+projectile *player_projectiles = new projectile();
 
 
 GLCheckCollision *hit = new GLCheckCollision();
 GLCollisions *tutorialDoor = new GLCollisions();
 GLCollisions *levelThreeLeftCornerRightSide = new GLCollisions();
 GLCollisions *levelThreeLeftCornerTopSide = new GLCollisions();
+
 bool isPaused = false;
 bool needHelp = false;
 
 vec3 playerPos;
+
+MenuScene *prevGameState;
+
+
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -90,8 +99,9 @@ GLint GLScene::initGL()
     player->initPlayer(6, 10, "images/player.png"); // Load player texture
     player->actionTrigger = player->STAND; // Player does not move until player makes a keypress
 
-    projectiles->initProj();
-    enemies->initEnemies(3, projectiles);
+    enemy_projectiles->initProj();
+    enemies->initEnemies(1
+                         , enemy_projectiles);
 
 
 
@@ -119,6 +129,8 @@ GLint GLScene::initGL()
     levelThreeLeftCornerTopSide->length = 1.4;
     levelThreeLeftCornerTopSide->width = 0.05;
 
+    prevGameState=menuState;
+
 
     return true;
 }
@@ -126,6 +138,12 @@ GLint GLScene::initGL()
 GLint GLScene::drawScene()    // this function runs on a loop
                               // DO NOT ABUSE ME
 {
+
+
+
+    if(prevGameState->gState!=menuState->gState){
+        cout << "GAME STATE CHANGED"<<endl;
+    }
 
    if (isPaused)
    {
@@ -218,6 +236,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
         glScalef(0.5, 0.5, 1.0);
         glDisable(GL_LIGHTING);
         player->boundsCheck(menuState->gState);
+        player->hit_check(enemy_projectiles);
         if (hit->isAABBCollision(vec2({player->plPosition.x, player->plPosition.y}), tutorialDoor->pos, tutorialDoor->length, tutorialDoor->width )) {
             menuState->gState = State_Level2;
         }
@@ -235,7 +254,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
        glPopMatrix();
 
        glPushMatrix();
-        projectiles->draw_projectiles();
+        enemy_projectiles->draw_projectiles();
        glPopMatrix();
 
        break;
@@ -319,6 +338,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
 
 
    return true;
+   prevGameState=menuState;
 }
 
 GLvoid GLScene::resizeScene(GLsizei width, GLsizei height)
@@ -368,10 +388,22 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
                     }
                     break;
                 }
+            case VK_SPACE: // if press is 'N'
+                if(menuState->gState == State_Game){
+
+
+                    enemies->meleAttack(playerPos);
+
+
+                }
+
+
+                break;
             case 'N': // if press is 'N'
                 {
                     if(menuState->gState == State_MainMenu) // And if the current state is Main Menu
                         {
+                            // This is where we should initialize enemies
                             menuState->gState = State_Game;
                         }
                     else if (menuState->gState == State_Game)
@@ -445,7 +477,7 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         {
             int mouseX = LOWORD(lParam);
             int mouseY = HIWORD(lParam);
-            KbMs->mousEventDown(projectiles, LOWORD(lParam), HIWORD(lParam));
+            KbMs->mousEventDown(enemy_projectiles, LOWORD(lParam), HIWORD(lParam));
 
             cout << LOWORD(lParam)<<endl;
             cout << HIWORD(lParam)<<endl;

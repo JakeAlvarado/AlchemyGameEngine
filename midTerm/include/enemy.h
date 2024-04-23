@@ -32,6 +32,10 @@ class enemy
         GLTimer   *myTime = new GLTimer();
         GLTimer   *moveTime = new GLTimer();
 
+        bool isLive=false;
+
+        int melleCounter = 0;
+
         vec3 pos;
         vec3 Target;
 
@@ -39,10 +43,11 @@ class enemy
 
         void setTarget(vec3 t);
 
-        void initEnemy();
+        void initEnemy(float x_init, float y_init);
         void drawEnemy();
         void updateFrame();
         void updatePos();
+        void killEnemy();
 
 
         int n_frames;

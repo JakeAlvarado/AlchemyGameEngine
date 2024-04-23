@@ -271,6 +271,7 @@ void GLPlayer::update()
     }
     if (keyStates[VK_SPACE])
     {
+
         if (keyStates['A'] || keyStates[VK_LEFT])
         {
             performAttackLeft();
@@ -324,5 +325,28 @@ void GLPlayer::performAttackDown()
 void GLPlayer::performAttackUp()
 {
     this->actionTrigger = ATTACKUP;
+}
+
+
+bool GLPlayer::hit_check(projectile* projList)
+{
+
+    for(int i=0; i<N_PROJ; i++) {
+
+
+
+        if(!projList->projArr[i].isLive) {
+            continue;
+        }
+
+        float dx = plPosition.x- projList->projArr[i].pos.x;
+        float dy = plPosition.y- projList->projArr[i].pos.y;
+
+        float d = sqrt((dx*dx)+(dy*dy));
+
+
+        if (d<0.2) {cout << "PLAYER TOOK A HIT"<<endl;}
+
+    }
 }
 

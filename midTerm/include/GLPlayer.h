@@ -5,6 +5,7 @@
 #include<GLTexture.h>
 #include<GLTimer.h>
 #include<map>
+#include<projectile.h>
 
 class GLPlayer
 {
@@ -27,6 +28,8 @@ class GLPlayer
         void performAttackLeft();
         void performAttackDown();
         void performAttackUp();
+
+        bool hit_check(projectile *projList);
 
         vec3 getPos();
 

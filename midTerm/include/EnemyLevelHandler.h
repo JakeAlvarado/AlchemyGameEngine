@@ -6,20 +6,28 @@
 #include <projectile.h>
 
 
+
 class EnemyLevelHandler
 {
     public:
         EnemyLevelHandler();
+        EnemyLevelHandler(int level);
         virtual ~EnemyLevelHandler();
 
         vec3 target;
-        enemy *enemyList[3];
+        enemy *enemyList[MAX_N_ENEMIES];
 
         int n_enemies;
+
+        void meleAttack(vec3 playPos);
 
         void setTarget(vec3 t);
         void drawEnemies();
         void initEnemies(int n, projectile *proj);
+
+        void killAllEnemies();
+
+        void getEnempyPositions();
 
 
 
