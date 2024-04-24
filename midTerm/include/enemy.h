@@ -5,6 +5,7 @@
 #include <GLTimer.h>
 #include <projectile.h>
 #include<random>
+#include<time.h>
 
 #include <random>
 
@@ -25,6 +26,8 @@ class enemy
         char *air_image_path = "images/enemies/AirElemental.png";
 
         bool dir = true;
+
+        clock_t attackTimer;
 
         vec3 spriteShape;
 
@@ -57,6 +60,8 @@ class enemy
         float xMax =0.25;
         float yMin=0;
         float yMax=1;
+
+        float enemySpeed = 0.002;
 
 
 

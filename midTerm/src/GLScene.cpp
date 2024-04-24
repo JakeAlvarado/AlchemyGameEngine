@@ -100,7 +100,7 @@ GLint GLScene::initGL()
     player->actionTrigger = player->STAND; // Player does not move until player makes a keypress
 
     enemy_projectiles->initProj();
-    enemies->initEnemies(2, enemy_projectiles);
+    enemies->initEnemies(0, enemy_projectiles);
 
 
 
@@ -145,15 +145,19 @@ GLint GLScene::drawScene()    // this function runs on a loop
 
         if (prev_level==2) {
             enemies->startLevel(1);
+            enemy_projectiles->reset();
 
         } else if (prev_level==4) {
             enemies->startLevel(2);
+            enemy_projectiles->reset();
 
         } else if (prev_level==5) {
             enemies->startLevel(3);
+            enemy_projectiles->reset();
 
         } else if (prev_level==6) {
             enemies->startLevel(4);
+            enemy_projectiles->reset();
         }
 
 
@@ -292,6 +296,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
         player->boundsCheck(menuState->gState);
         player->drawPlayer();
         player->actions();
+        player->hit_check(enemy_projectiles);
         playerPos=player->getPos();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -300,6 +305,10 @@ GLint GLScene::drawScene()    // this function runs on a loop
        glScalef(0.5, 0.5, 1.0);
         enemies->setTarget(playerPos);
          enemies->drawEnemies();
+       glPopMatrix();
+
+       glPushMatrix();
+        enemy_projectiles->draw_projectiles();
        glPopMatrix();
 
         break;
@@ -325,7 +334,20 @@ GLint GLScene::drawScene()    // this function runs on a loop
         }
         player->drawPlayer();
         player->actions();
+        player->hit_check(enemy_projectiles);
+        playerPos=player->getPos();
         glEnable(GL_LIGHTING);
+       glPopMatrix();
+
+
+       glPushMatrix();
+       glScalef(0.5, 0.5, 1.0);
+        enemies->setTarget(playerPos);
+         enemies->drawEnemies();
+       glPopMatrix();
+
+       glPushMatrix();
+        enemy_projectiles->draw_projectiles();
        glPopMatrix();
 
         break;
@@ -345,7 +367,20 @@ GLint GLScene::drawScene()    // this function runs on a loop
         player->boundsCheck(menuState->gState);
         player->drawPlayer();
         player->actions();
+        player->hit_check(enemy_projectiles);
+        playerPos=player->getPos();
         glEnable(GL_LIGHTING);
+       glPopMatrix();
+
+
+       glPushMatrix();
+       glScalef(0.5, 0.5, 1.0);
+        enemies->setTarget(playerPos);
+         enemies->drawEnemies();
+       glPopMatrix();
+
+       glPushMatrix();
+        enemy_projectiles->draw_projectiles();
        glPopMatrix();
 
 

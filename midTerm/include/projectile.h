@@ -30,6 +30,8 @@ class projectile
 
         void move_projectiles(int i);
 
+        void reset();
+
 
 
 

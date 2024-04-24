@@ -29,6 +29,8 @@ class EnemyLevelHandler
         void initial_spawn();
 
         int n_enemies;
+        int level;
+
         bool safe_to_draw = false;
 
         void meleAttack(vec3 playPos);

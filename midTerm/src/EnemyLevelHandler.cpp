@@ -35,7 +35,6 @@ void EnemyLevelHandler::drawEnemies()
         return;
     }
 
-
     for (int i=0; i<n_enemies; i++) {
         enemyList[i]->drawEnemy();
 
@@ -46,7 +45,7 @@ void EnemyLevelHandler::initEnemies(int n, projectile *proj)
 {
     n_enemies = MAX_N_ENEMIES;
     for (int i=0;i<n_enemies;i++) {
-        enemyList[i] = new enemy(3, proj);
+        enemyList[i] = new enemy(4, proj);
         enemyList[i]->initEnemy(-1,.2, 3);
     }
     safe_to_draw = true;
@@ -110,10 +109,12 @@ void EnemyLevelHandler::resetEnemyHandler()
 
 }
 
-void EnemyLevelHandler::startLevel(int level)
+void EnemyLevelHandler::startLevel(int l)
 {
     level_timer = clock();
     killAllEnemies();
+    level = l;
+
 
     switch(level){
 
@@ -122,18 +123,19 @@ void EnemyLevelHandler::startLevel(int level)
 
             break;
         case 2:
-            initial_spawn();
+
             kill_counter=0;
             n_alive=0;
             max_enemies_spawned = 3;
             win_number=8;
-
+            initial_spawn();
             break;
         case 3:
             kill_counter=0;
             n_alive=0;
             max_enemies_spawned = 4;
             win_number=8;
+            initial_spawn();
 
             break;
         case 4:
@@ -141,6 +143,7 @@ void EnemyLevelHandler::startLevel(int level)
             n_alive=0;
             max_enemies_spawned = 5;
             win_number=8;
+            initial_spawn();
             break;
 
     }
@@ -149,7 +152,40 @@ void EnemyLevelHandler::startLevel(int level)
 void EnemyLevelHandler::initial_spawn()
 {
 
-    enemyList[0]->initEnemy(-1,.2,3);
+
+    switch (level) {
+        case 2:
+
+
+            enemyList[0]->initEnemy(-1,.2,4);
+            enemyList[1]->initEnemy(0,-.3,2);
+
+            break;
+
+        case 3:
+            enemyList[0]->initEnemy(-1,.2,4);
+            enemyList[1]->initEnemy(0,-.3,1);
+            enemyList[2]->initEnemy(.2,.3,1);
+            break;
+
+        case 4:
+
+            enemyList[0]->initEnemy(1,-.28,1);
+            enemyList[1]->initEnemy(1,.25,1);
+            enemyList[2]->initEnemy(-1,.3,2);
+            enemyList[3]->initEnemy(-1,-.2,2);
+            enemyList[4]->initEnemy(0,-.3,3);
+            enemyList[5]->initEnemy(.2,-.2,4);
+            break;
+
+
+
+    }
+
+
+    safe_to_draw=true;
+
+
 
 }
 

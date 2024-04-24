@@ -345,7 +345,7 @@ bool GLPlayer::hit_check(projectile* projList)
         float d = sqrt((dx*dx)+(dy*dy));
 
 
-        if (d<0.2) {cout << "PLAYER TOOK A HIT"<<endl;}
+        if (d<0.1) {cout << "PLAYER TOOK A HIT"<<endl;}
 
     }
 }
