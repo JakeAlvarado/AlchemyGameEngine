@@ -72,13 +72,36 @@ void GLPlayer::actions()
    switch(actionTrigger)
    {
    case STAND:
-
-       xMin =0;
-       xMax = 1.0/(float)framesX;
-       yMax =1.0/(float)framesY;
-       yMin =yMax-1.0/(float)framesY;
-
-       break;
+       switch(facing) {
+            case LEFT:
+                xMin = 1.0/(float)framesX;
+                xMax = 0;
+                yMax = 2.0/(float)framesY;
+                yMin = yMax-1.0/(float)framesY;
+                break;
+            case RIGHT:
+                xMax = 1.0/(float)framesX;
+                xMin = 0;
+                yMax = 2.0/(float)framesY;
+                yMin = yMax-1.0/(float)framesY;
+                break;
+            case UP:
+                xMin =0;
+                xMax = 1.0/(float)framesX;
+                yMax =3.0/(float)framesY;
+                yMin =yMax-1.0/(float)framesY;
+                break;
+            case DOWN:
+                xMin =0;
+                xMax = 1.0/(float)framesX;
+                yMax =1.0/(float)framesY;
+                yMin =yMax-1.0/(float)framesY;
+                break;
+            default:
+                break;
+        }
+        
+        break;
 
    case WALKLEFT:
 
@@ -97,10 +120,6 @@ void GLPlayer::actions()
             yMin = yMax - 1.0/(float)framesY;
         }
         this->plPosition.x -= 0.05;
-
-
-
-
         myTime->startTime =clock();
     }
 
@@ -253,21 +272,25 @@ void GLPlayer::update()
     {
         this->actionTrigger = WALKLEFT;
         isMoving = true;
+        facing = LEFT;
     }
     if (keyStates[VK_UP] || keyStates['W'])
     {
         this->actionTrigger = WALKUP;
         isMoving = true;
+        facing = UP;
     }
     if (keyStates[VK_DOWN] || keyStates['S'])
     {
         this->actionTrigger = WALKDOWN;
         isMoving = true;
+        facing = DOWN;
     }
     if (keyStates[VK_RIGHT] || keyStates['D'])
     {
         this->actionTrigger = WALKRIGHT;
         isMoving = true;
+        facing = RIGHT;
     }
     if (keyStates[VK_SPACE])
     {

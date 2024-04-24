@@ -47,6 +47,8 @@ GLCollisions *levelThreeLeftCornerTopSide = new GLCollisions();
 
 bool isPaused = false;
 bool needHelp = false;
+bool godmode = false; // for testing purposes
+
 
 vec3 playerPos;
 
@@ -241,7 +243,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
         player->boundsCheck(menuState->gState);
         if (player->hit_check(enemy_projectiles)) {
             
-            if (HUD->hearts > 0) {
+            if (HUD->hearts > 0 && !godmode) {
                 HUD->hearts--;
                 cout<<"HUD Hearts: " <<HUD->hearts<<endl;
             }
@@ -250,7 +252,8 @@ GLint GLScene::drawScene()    // this function runs on a loop
         if (hit->isAABBCollision(vec2({player->plPosition.x, player->plPosition.y}), tutorialDoor->pos, tutorialDoor->length, tutorialDoor->width )) {
             menuState->gState = State_Level2;
         }
-        player->drawPlayer();
+        if(HUD->hearts > 0)
+            player->drawPlayer();
         player->actions();
         playerPos=player->getPos();        
         glEnable(GL_LIGHTING);
@@ -289,7 +292,8 @@ GLint GLScene::drawScene()    // this function runs on a loop
         glScalef(0.5, 0.5, 1.0);
         glDisable(GL_LIGHTING);
         player->boundsCheck(menuState->gState);
-        player->drawPlayer();
+        if(HUD->hearts > 0)
+            player->drawPlayer();
         player->actions();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -315,7 +319,8 @@ GLint GLScene::drawScene()    // this function runs on a loop
         if (hit->isAABBCollision(vec2({player->plPosition.x, player->plPosition.y}), levelThreeLeftCornerTopSide->pos, levelThreeLeftCornerTopSide->length, levelThreeLeftCornerTopSide->width )) {
             player->plPosition.y = levelThreeLeftCornerTopSide->pos.y + levelThreeLeftCornerTopSide->width;
         }
-        player->drawPlayer();
+        if(HUD->hearts > 0)
+            player->drawPlayer();
         player->actions();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -335,7 +340,8 @@ GLint GLScene::drawScene()    // this function runs on a loop
         glScalef(0.5, 0.5, 1.0);
         glDisable(GL_LIGHTING);
         player->boundsCheck(menuState->gState);
-        player->drawPlayer();
+        if(HUD->hearts > 0)
+            player->drawPlayer();
         player->actions();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -454,6 +460,17 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
                         }
                     break;
                 }
+            case 'R':   // if press is 'R' reset hearts
+
+                HUD->hearts = 4;
+                break;
+            case 'T':
+                HUD->hearts--;
+                break;
+
+            case 'G': //godmode
+                godmode = !godmode;
+                break;
 
         }
          break;

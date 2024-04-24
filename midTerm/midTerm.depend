@@ -938,7 +938,7 @@
 	<GLTexture.h>
 	<GLTimer.h>
 
-1713941183 c:\users\zero\dev\alchemygameengine\midterm\include\glplayer.h
+1713944641 c:\users\zero\dev\alchemygameengine\midterm\include\glplayer.h
 	<common.h>
 	<GLTexture.h>
 	<GLTimer.h>
@@ -964,10 +964,10 @@
 1713912046 source:c:\users\zero\dev\alchemygameengine\midterm\src\glparallax.cpp
 	"GLParallax.h"
 
-1713941183 source:c:\users\zero\dev\alchemygameengine\midterm\src\glplayer.cpp
+1713945437 source:c:\users\zero\dev\alchemygameengine\midterm\src\glplayer.cpp
 	"GLPlayer.h"
 
-1713941183 source:c:\users\zero\dev\alchemygameengine\midterm\src\glscene.cpp
+1713946245 source:c:\users\zero\dev\alchemygameengine\midterm\src\glscene.cpp
 	<GLScene.h>
 	<GLLight.h>
 	<GLTexture.h>
@@ -988,7 +988,7 @@
 
 1713672995 c:\users\zero\dev\alchemygameengine\midterm\include\menuscene.h
 
-1713939447 c:\users\zero\dev\alchemygameengine\midterm\include\glhud.h
+1713944560 c:\users\zero\dev\alchemygameengine\midterm\include\glhud.h
 	<common.h>
 	<GLTexture.h>
 	<GL/glut.h>
@@ -1006,4 +1006,7 @@
 
 1713911076 source:c:\users\zero\dev\alchemygameengine\midterm\src\projectile.cpp
 	"projectile.h"
+
+1713945721 source:c:\users\zero\dev\alchemygameengine\midterm\src\glhud.cpp
+	"GLHUD.h"
 

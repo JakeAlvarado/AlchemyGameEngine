@@ -129,33 +129,34 @@ void GLHUD::healthDraw() {
             drawGraphicAtOGLPos(-1.0, -6.85, heart4, 0.0, 0.2, 0.0, 1.0);
             break;
         case 1: // 1 heart
-            drawGraphicAtOGLPos(-4.0, -6.85, heart1, 0.8, 1.0, 0, 1.0);
+            drawGraphicAtOGLPos(-4.0, -6.85, heart1, 0.8, 1.0, 0.0, 1.0);
             drawGraphicAtOGLPos(-3.0, -6.85, heart2, 0.0, 0.2, 0.0, 1.0);
             drawGraphicAtOGLPos(-2.0, -6.85, heart3, 0.0, 0.2, 0.0, 1.0);
             drawGraphicAtOGLPos(-1.0, -6.85, heart4, 0.0, 0.2, 0.0, 1.0);
             break;
         case 2: // 2 hearts
-            drawGraphicAtOGLPos(-4.0, -6.85, heart1, 0.8, 1.0, 0, 1);
-            drawGraphicAtOGLPos(-3.0, -6.85, heart2, 0.8, 1.0, 0, 1);
+            drawGraphicAtOGLPos(-4.0, -6.85, heart1, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-3.0, -6.85, heart2, 0.8, 1.0, 0.0, 1.0);
             drawGraphicAtOGLPos(-2.0, -6.85, heart3, 0.0, 0.2, 0.0, 1.0);
             drawGraphicAtOGLPos(-1.0, -6.85, heart4, 0.0, 0.2, 0.0, 1.0);
             break;
         case 3: // 3 hearts
-            drawGraphicAtOGLPos(-4.0, -6.85, heart1, 0.8, 1.0, 0, 1);
-            drawGraphicAtOGLPos(-3.0, -6.85, heart2, 0.8, 1.0, 0, 1);
-            drawGraphicAtOGLPos(-2.0, -6.85, heart3, 0.8, 1.0, 0, 1);
+            drawGraphicAtOGLPos(-4.0, -6.85, heart1, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-3.0, -6.85, heart2, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-2.0, -6.85, heart3, 0.8, 1.0, 0.0, 1.0);
             drawGraphicAtOGLPos(-1.0, -6.85, heart4, 0.0, 0.2, 0.0, 1.0);
             break;
         case 4: // 4 hearts
-            drawGraphicAtOGLPos(-4.0, -6.85, heart1, 0.8, 1.0, 0, 1);
-            drawGraphicAtOGLPos(-3.0, -6.85, heart2, 0.8, 1.0, 0, 1);
-            drawGraphicAtOGLPos(-2.0, -6.85, heart3, 0.8, 1.0, 0, 1);
-            drawGraphicAtOGLPos(-1.0, -6.85, heart4, 0.0, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-4.0, -6.85, heart1, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-3.0, -6.85, heart2, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-2.0, -6.85, heart3, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-1.0, -6.85, heart4, 0.8, 1.0, 0.0, 1.0);
             break;
-        default: // 3 hearts
-            drawGraphicAtOGLPos(-4.0, -6.85, heart1, 0.8, 1.0, 0, 1);
-            drawGraphicAtOGLPos(-3.0, -6.85, heart2, 0.8, 1.0, 0, 1);
-            drawGraphicAtOGLPos(-2.0, -6.85, heart3, 0.8, 1.0, 0, 1);
+        default: // 4 hearts
+            drawGraphicAtOGLPos(-4.0, -6.85, heart1, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-3.0, -6.85, heart2, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-2.0, -6.85, heart3, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-1.0, -6.85, heart4, 0.8, 1.0, 0.0, 1.0);
             break;
     }
 }
