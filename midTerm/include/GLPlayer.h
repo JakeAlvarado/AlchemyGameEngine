@@ -43,6 +43,8 @@ class GLPlayer
         int framesX,framesY;
 
         int actionTrigger;  // for load actions
+        int facing;         // for facing direction
+
 
         std::map<int, bool> keyStates; // Hash map for O(1) lookup.
 

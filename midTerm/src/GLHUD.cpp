@@ -135,9 +135,6 @@ void GLHUD::healthDraw() {
             drawGraphicAtOGLPos(-5.0, -6.85, heart3, 0.8, 1.0, 0, 1);
             break;
         default: // 3 hearts
-            drawGraphicAtOGLPos(-7.0, -6.85, heart1, 0.8, 1.0, 0, 1);
-            drawGraphicAtOGLPos(-6.0, -6.85, heart2, 0.8, 1.0, 0, 1);
-            drawGraphicAtOGLPos(-5.0, -6.85, heart3, 0.8, 1.0, 0, 1);
             break;
     }
 }

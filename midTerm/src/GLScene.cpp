@@ -245,12 +245,19 @@ GLint GLScene::drawScene()    // this function runs on a loop
                 HUD->hearts--;
                 cout<<"HUD Hearts: " <<HUD->hearts<<endl;
             }
+            
+            // if (HUD->hearts < 3) {
+            //     HUD->hearts++;
+            //     cout<<"HUD Hearts: " <<HUD->hearts<<endl;
+            // }
+
 
         }
         if (hit->isAABBCollision(vec2({player->plPosition.x, player->plPosition.y}), tutorialDoor->pos, tutorialDoor->length, tutorialDoor->width )) {
             menuState->gState = State_Level2;
         }
-        player->drawPlayer();
+        if(HUD->hearts > 0) 
+            player->drawPlayer();
         player->actions();
         playerPos=player->getPos();        
         glEnable(GL_LIGHTING);
@@ -289,7 +296,8 @@ GLint GLScene::drawScene()    // this function runs on a loop
         glScalef(0.5, 0.5, 1.0);
         glDisable(GL_LIGHTING);
         player->boundsCheck(menuState->gState);
-        player->drawPlayer();
+        if(HUD->hearts > 0)
+            player->drawPlayer(); 
         player->actions();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -315,7 +323,8 @@ GLint GLScene::drawScene()    // this function runs on a loop
         if (hit->isAABBCollision(vec2({player->plPosition.x, player->plPosition.y}), levelThreeLeftCornerTopSide->pos, levelThreeLeftCornerTopSide->length, levelThreeLeftCornerTopSide->width )) {
             player->plPosition.y = levelThreeLeftCornerTopSide->pos.y + levelThreeLeftCornerTopSide->width;
         }
-        player->drawPlayer();
+        if(HUD->hearts > 0) 
+            player->drawPlayer();
         player->actions();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -335,7 +344,8 @@ GLint GLScene::drawScene()    // this function runs on a loop
         glScalef(0.5, 0.5, 1.0);
         glDisable(GL_LIGHTING);
         player->boundsCheck(menuState->gState);
-        player->drawPlayer();
+        if(HUD->hearts > 0)
+            player->drawPlayer(); 
         player->actions();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -454,6 +464,12 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
                         }
                     break;
                 }
+            case 'R':   // if press is 'R'
+                HUD->hearts = 3;    // Reset hearts to 3
+                break;
+
+
+
 
         }
          break;
@@ -489,7 +505,9 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
                 needHelp = false;
             }
         }
-        break;
+        break;        
+
+
 
     case WM_LBUTTONDOWN:
         {
