@@ -15,8 +15,9 @@ enemy::~enemy()
 {
     //dtor
 }
-void enemy::initEnemy(float x_init, float y_init)
+void enemy::initEnemy(float x_init, float y_init, int t)
 {
+    type = t;
     spriteShape.x = 1;
     spriteShape.y = 4;
 
@@ -27,26 +28,34 @@ void enemy::initEnemy(float x_init, float y_init)
 
     case 1:
         enemyTex->loadTexture(earth_image_path);
+        enemySpeed=0.0004;
         break;
     case 2:
         enemyTex->loadTexture(fire_image_path);
+        enemySpeed=0.0005
+        ;
         break;
     case 3:
         enemyTex->loadTexture(water_image_path);
+        enemySpeed=0.0025;
         break;
     case 4:
-        enemyTex->loadTexture(water_image_path);
+        enemyTex->loadTexture(air_image_path);
+        enemySpeed=0.002;
         break;
     }
 
 
     myTime->startTime = clock();
     moveTime->startTime = clock();
+    attackTimer=clock();
 
     pos.z = -1.0;
     frame = 0;
     n_frames = spriteShape.x*spriteShape.y;
     isLive=true;
+    melleCounter=0;
+
 }
 
 void enemy::drawEnemy()
@@ -59,7 +68,6 @@ void enemy::drawEnemy()
     glPushMatrix();
 
     glTranslatef(pos.x,pos.y,pos.z);
-
 
     glColor3f(1.0,1.0,1.0);    //white rectangle
     enemyTex->bindTexture();    //binding my background
@@ -99,8 +107,14 @@ void enemy::updateFrame() {
         }
 
         // inc frame
-        if(rand()%20==1){
-            gameProjectiles->shoot_projectile(1,Target.x,Target.y,pos.x,pos.y);
+        if (clock() - attackTimer > 2500) {
+            bool shot = false;
+            if(rand()%2==1){
+                gameProjectiles->shoot_projectile(1,Target.x,Target.y,pos.x,pos.y);
+                shot = true;
+
+            }
+            if (shot) attackTimer = clock();
         }
         frame+=1;
         frame = frame%n_frames;
@@ -138,7 +152,7 @@ void enemy::updatePos() {
         return;
     }
 
-    if (type == 1 || type == 2) return;
+
     if(clock() - moveTime->startTime < 600) return;
 
 
@@ -149,24 +163,26 @@ void enemy::updatePos() {
         return;
     }
     if (dx>0){
-        pos.x+=0.002;
+        pos.x+=enemySpeed;
         dir = true;
     }
     if(dx<0) {
-        pos.x-=0.002;
+        pos.x-=enemySpeed;
         dir = false;
     }
     if(dy>0) {
-        pos.y+=0.002;
+        pos.y+=enemySpeed;
     }
     if(dy<0) {
-        pos.y-=0.002;
+        pos.y-=enemySpeed
+        ;
     }
 }
 
 
 void enemy::killEnemy()
 {
+    pos.x = 100;
     isLive=false;
 }
 

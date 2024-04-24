@@ -86,4 +86,13 @@ void projectile::move_projectiles(int i)
     projArr[i].pos.x+=projArr[i].v.x;
     projArr[i].pos.y+=projArr[i].v.y;
 }
+void projectile::reset()
+{
+    for(int i=0;i<N_PROJ;i++) {
+
+        projArr[i].isLive=false;
+
+    }
+}
+
 
