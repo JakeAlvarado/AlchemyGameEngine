@@ -12,13 +12,14 @@
 #include <unordered_map>
 
 #include<SOIL.h>
+#include<SNDS/irrKlang.h>
 
 #define N_PROJ 10
 #define MAX_N_ENEMIES 10
 
 
 using namespace std;
-
+using namespace irrklang;
 
 
 
