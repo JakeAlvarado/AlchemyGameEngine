@@ -61,6 +61,9 @@ MenuScene *prevGameState;
 
 GLHUD *HUD = new GLHUD(); // initializing hud
 GLSounds *snds = new GLSounds();
+=======
+
+GLTimer *Timer = new GLTimer(); // Timer object
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -151,7 +154,7 @@ GLint GLScene::initGL()
     snds->initSounds();
     snds->playMusic("sounds/Power_Surge.mp3");
 
-
+    Timer->startTime = clock(); // start the timer
 
     return true;
 }
@@ -257,13 +260,14 @@ GLint GLScene::drawScene()    // this function runs on a loop
         glScalef(0.5, 0.5, 1.0);
         glDisable(GL_LIGHTING);
         player->boundsCheck(menuState->gState);
-        if (player->hit_check(enemy_projectiles)) {
-            
-            if (HUD->hearts > 0 && !godmode) {
-                HUD->hearts--;
-                cout<<"HUD Hearts: " <<HUD->hearts<<endl;
-            }
+        if (player->hit_check(enemy_projectiles) && (clock() - Timer->startTime > 60))
+        {
 
+          if (HUD->hearts > 0 && !godmode)
+          {
+            HUD->hearts--;
+            cout << "HUD Hearts: " << HUD->hearts << endl;
+          }
         }
         if (hit->isAABBCollision(vec2({player->plPosition.x, player->plPosition.y}), tutorialDoor->pos, tutorialDoor->length, tutorialDoor->width )) {
             menuState->gState = State_Level2;
@@ -321,7 +325,14 @@ GLint GLScene::drawScene()    // this function runs on a loop
         glEnable(GL_LIGHTING);
        glPopMatrix();
 
-        break;
+       glPushMatrix(); // drawing HUD
+        glScalef(0.1, 0.1, 1.0);
+        glDisable(GL_LIGHTING);
+        HUD->hudDraw();
+        glEnable(GL_LIGHTING);
+       glPopMatrix();
+
+       break;
 
    case State_Level3:
 
@@ -353,7 +364,14 @@ GLint GLScene::drawScene()    // this function runs on a loop
         glEnable(GL_LIGHTING);
        glPopMatrix();
 
-        break;
+       glPushMatrix(); // drawing HUD
+        glScalef(0.1, 0.1, 1.0);
+        glDisable(GL_LIGHTING);
+        HUD->hudDraw();
+        glEnable(GL_LIGHTING);
+       glPopMatrix();
+
+       break;
    case State_Final:
 
 
@@ -374,8 +392,14 @@ GLint GLScene::drawScene()    // this function runs on a loop
         glEnable(GL_LIGHTING);
        glPopMatrix();
 
+       glPushMatrix(); // drawing HUD
+        glScalef(0.1, 0.1, 1.0);
+        glDisable(GL_LIGHTING);
+        HUD->hudDraw();
+        glEnable(GL_LIGHTING);
+       glPopMatrix();
 
-    break;
+       break;
 
    case State_Help: // Help State
 

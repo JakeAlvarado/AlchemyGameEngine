@@ -123,48 +123,48 @@ void GLHUD::healthDraw() {
     // logic based on hearts
     switch(hearts) {
         case 0: // no hearts
-            drawGraphicAtOGLPos(-4.0, -6.85, heart1, 0.0, 0.2, 0.0, 1.0);
-            drawGraphicAtOGLPos(-3.0, -6.85, heart2, 0.0, 0.2, 0.0, 1.0);
-            drawGraphicAtOGLPos(-2.0, -6.85, heart3, 0.0, 0.2, 0.0, 1.0);
-            drawGraphicAtOGLPos(-1.0, -6.85, heart4, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-4.0, -7.5, heart1, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-3.0, -7.5, heart2, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-2.0, -7.5, heart3, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-1.0, -7.5, heart4, 0.0, 0.2, 0.0, 1.0);
             break;
         case 1: // 1 heart
-            drawGraphicAtOGLPos(-4.0, -6.85, heart1, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-3.0, -6.85, heart2, 0.0, 0.2, 0.0, 1.0);
-            drawGraphicAtOGLPos(-2.0, -6.85, heart3, 0.0, 0.2, 0.0, 1.0);
-            drawGraphicAtOGLPos(-1.0, -6.85, heart4, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-4.0, -7.5, heart1, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-3.0, -7.5, heart2, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-2.0, -7.5, heart3, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-1.0, -7.5, heart4, 0.0, 0.2, 0.0, 1.0);
             break;
         case 2: // 2 hearts
-            drawGraphicAtOGLPos(-4.0, -6.85, heart1, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-3.0, -6.85, heart2, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-2.0, -6.85, heart3, 0.0, 0.2, 0.0, 1.0);
-            drawGraphicAtOGLPos(-1.0, -6.85, heart4, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-4.0, -7.5, heart1, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-3.0, -7.5, heart2, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-2.0, -7.5, heart3, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-1.0, -7.5, heart4, 0.0, 0.2, 0.0, 1.0);
             break;
         case 3: // 3 hearts
-            drawGraphicAtOGLPos(-4.0, -6.85, heart1, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-3.0, -6.85, heart2, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-2.0, -6.85, heart3, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-1.0, -6.85, heart4, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-4.0, -7.5, heart1, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-3.0, -7.5, heart2, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-2.0, -7.5, heart3, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-1.0, -7.5, heart4, 0.0, 0.2, 0.0, 1.0);
             break;
         case 4: // 4 hearts
-            drawGraphicAtOGLPos(-4.0, -6.85, heart1, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-3.0, -6.85, heart2, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-2.0, -6.85, heart3, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-1.0, -6.85, heart4, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-4.0, -7.5, heart1, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-3.0, -7.5, heart2, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-2.0, -7.5, heart3, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-1.0, -7.5, heart4, 0.8, 1.0, 0.0, 1.0);
             break;
         default: // 4 hearts
-            drawGraphicAtOGLPos(-4.0, -6.85, heart1, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-3.0, -6.85, heart2, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-2.0, -6.85, heart3, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-1.0, -6.85, heart4, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-4.0, -7.5, heart1, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-3.0, -7.5, heart2, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-2.0, -7.5, heart3, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-1.0, -7.5, heart4, 0.8, 1.0, 0.0, 1.0);
             break;
     }
 }
 
 void GLHUD::equipmentDraw() {
     // logic based on inventory array
-    drawGraphicAtOGLPos(1.0, -6.85, equipment1, 0.0, 0.5, 0.0, 1.0);
-    drawGraphicAtOGLPos(2.0, -6.85, equipment2, 0.0, 0.5, 0.0, 1.0);
-    drawGraphicAtOGLPos(3.0, -6.85, equipment3, 0.0, 0.5, 0.0, 1.0);
-    drawGraphicAtOGLPos(4.0, -6.85, equipment4, 0.0, 0.5, 0.0, 1.0);
+    drawGraphicAtOGLPos(1.0, -7.5, equipment1, 0.0, 0.5, 0.0, 1.0);
+    drawGraphicAtOGLPos(2.0, -7.5, equipment2, 0.0, 0.5, 0.0, 1.0);
+    drawGraphicAtOGLPos(3.0, -7.5, equipment3, 0.0, 0.5, 0.0, 1.0);
+    drawGraphicAtOGLPos(4.0, -7.5, equipment4, 0.0, 0.5, 0.0, 1.0);
 }
