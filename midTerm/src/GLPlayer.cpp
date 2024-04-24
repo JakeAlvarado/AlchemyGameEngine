@@ -370,6 +370,7 @@ bool GLPlayer::hit_check(projectile* projList)
 
         if (d<0.2) {
             cout << "PLAYER TOOK A HIT"<<endl;
+            projList->projArr[i].isLive = false;
             return(true);
             }
         else {
