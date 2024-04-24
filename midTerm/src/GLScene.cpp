@@ -14,6 +14,7 @@
 #include<EnemyLevelHandler.h>
 #include<projectile.h>
 #include<GLHUD.h>
+#include<GLSounds.h>
 
 #include<GLCollisions.h>
 //Initializing Objects based on classes (parallax (static or background images), object (image that needs to be in front of background), MenuScene (state controller for navigation)
@@ -59,6 +60,8 @@ MenuScene *prevGameState;
 
 
 GLHUD *HUD = new GLHUD(); // initializing hud
+GLSounds *snds = new GLSounds();
+=======
 
 GLTimer *Timer = new GLTimer(); // Timer object
 
@@ -148,6 +151,8 @@ GLint GLScene::initGL()
     prevGameState=menuState;
 
     HUD->initHUD(); // initializing hud
+    snds->initSounds();
+    snds->playMusic("sounds/Power_Surge.mp3");
 
     Timer->startTime = clock(); // start the timer
 
