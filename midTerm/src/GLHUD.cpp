@@ -18,7 +18,7 @@ GLHUD::~GLHUD()
 }
 
 void GLHUD::initHUD() {
-    initHealth(5, 1, "./images/hud/player_health.png"); // loading player hud health texture
+    initHealth(5, 1, "images/hud/player_health.png"); // loading player hud health texture
     initEquipment(2, 1, "images/hud/player_equipment.png"); // loading player hud equipment texture
 }
 
@@ -32,10 +32,18 @@ void GLHUD::initHealth(int x,int y, char* fileName)
     framesXHealth = x;
     framesYHealth = y;
 
-    xMinHealth =0;
-    yMaxHealth =2.0/(float)framesYHealth;
-    xMaxHealth =1.0/(float)framesXHealth;
-    yMinHealth =yMaxHealth-1.0/(float)framesYHealth;    
+    xMinHealth = 0;
+    xMaxHealth = 1.0/(float)framesXHealth;
+    yMaxHealth = 1.0/(float)framesYHealth;
+    yMinHealth = yMaxHealth-1.0/(float)framesYHealth;    
+
+    cout << "xMinHealth: " << xMinHealth << endl;
+    cout << "xMaxHealth: " << xMaxHealth << endl;
+    cout << "yMinHealth: " << yMinHealth << endl;
+    cout << "yMaxHealth: " << yMaxHealth << endl;
+    cout << "framesXHealth: " << framesXHealth << endl;
+    cout << "framesYHealth: " << framesYHealth << endl;
+
 }
 
 void GLHUD::initEquipment(int x, int y, char* fileName)
@@ -60,27 +68,29 @@ void GLHUD::hudDraw()
 
 void GLHUD::drawGraphicAtOGLPos(int xPos, int yPos, GLTexture *graphic, int xMin, int xMax, int yMin, int yMax)
 {
-    GLint viewport[4];
-    GLdouble modelview[16];
-    GLdouble projection[16];
-    GLfloat winX, winY, winZ;
-    GLdouble posX, posY, posZ;
+    // GLint viewport[4];
+    // GLdouble modelview[16];
+    // GLdouble projection[16];
+    // GLfloat winX, winY, winZ;
+    // GLdouble posX, posY, posZ;
 
-    glGetDoublev(GL_MODELVIEW_MATRIX, modelview);
-    glGetDoublev(GL_PROJECTION_MATRIX, projection);
-    glGetIntegerv(GL_VIEWPORT, viewport);
+    // glGetDoublev(GL_MODELVIEW_MATRIX, modelview);
+    // glGetDoublev(GL_PROJECTION_MATRIX, projection);
+    // glGetIntegerv(GL_VIEWPORT, viewport);
 
-    winX = static_cast<float>(xPos);
-    winY = static_cast<float>(viewport[3] - yPos);
-    glReadPixels(xPos, int(winY), 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &winZ);
+    // winX = static_cast<float>(xPos);
+    // winY = static_cast<float>(viewport[3] - yPos);
+    // glReadPixels(xPos, int(winY), 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &winZ);
 
-    gluUnProject(winX, winY, winZ, modelview, projection, viewport, &posX, &posY, &posZ);
+    // gluUnProject(winX, winY, winZ, modelview, projection, viewport, &posX, &posY, &posZ);
     // xPos =(int) (posX *M->getGridSize()/2 +M->getGridSize()/2); // update graphic position X
     // yPos =(int) (posY *M->getGridSize()/2 +M->getGridSize()/2);
 
     // Draw the graphic at the unprojected world position
+    glTranslatef(0, 0, -1.0);
+    //glTranslatef(0, -2.6, -1.0);
     glScalef(2.0f, 2.0f, 2.0f);
-    glColor3f(1.0, 1.0, 1.0); // Assuming the graphic is white
+    glColor3f(1.0, 1.0, 1.0);
     graphic->bindTexture();
 
     glBegin(GL_QUADS);
