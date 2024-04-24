@@ -13,7 +13,9 @@ GLHUD::GLHUD()
 GLHUD::~GLHUD()
 {
     //dtor
-    delete health;
+    delete heart1;
+    delete heart2;
+    delete heart3;
     delete equipment;
 }
 
@@ -24,7 +26,9 @@ void GLHUD::initHUD() {
 
 void GLHUD::initHealth(int x,int y, char* fileName)
 {
-    health->loadTexture(fileName); //loading player hud health texture
+    heart1->loadTexture(fileName); //loading player hud health texture
+    heart2->loadTexture(fileName); //loading player hud health texture
+    heart3->loadTexture(fileName); //loading player hud health texture
 
     // Init Health Variables
     hearts = 3;
@@ -59,7 +63,7 @@ void GLHUD::hudDraw()
     //equipmentDraw(equipment);
 }
 
-void GLHUD::drawGraphicAtOGLPos(int xPos, int yPos, GLTexture *graphic, float xMin, float xMax, float yMin, float yMax)
+void GLHUD::drawGraphicAtOGLPos(float xPos, float yPos, GLTexture *graphic, float xMin, float xMax, float yMin, float yMax)
 {
     // GLint viewport[4];
     // GLdouble modelview[16];
@@ -79,14 +83,16 @@ void GLHUD::drawGraphicAtOGLPos(int xPos, int yPos, GLTexture *graphic, float xM
     // xPos =(int) (posX *M->getGridSize()/2 +M->getGridSize()/2); // update graphic position X
     // yPos =(int) (posY *M->getGridSize()/2 +M->getGridSize()/2);
 
-    // Draw the graphic at the unprojected world position
+    // Draw the graphic at the unprojected world position    
+
+    glPushMatrix();
 
     glTranslatef(xPos, yPos, -1.0);
     //glTranslatef(0, -2.6, -1.0);
     //glScalef(2.0f, 2.0f, 2.0f);
     glColor3f(1.0, 1.0, 1.0);
     graphic->bindTexture();
-
+    
     glBegin(GL_QUADS);
       glTexCoord2f(xMin,yMax);
       glVertex3f(vert[0].x,vert[0].y,vert[0].z);
@@ -101,14 +107,42 @@ void GLHUD::drawGraphicAtOGLPos(int xPos, int yPos, GLTexture *graphic, float xM
       glVertex3f(vert[3].x,vert[3].y,vert[3].z);
 
     glEnd();
+    glPopMatrix();
+
 }
 
 void GLHUD::healthDraw() {
     // logic based on hearts
-    drawGraphicAtOGLPos(-1.2, -1.2, health, xMinHealth, xMaxHealth, yMinHealth, yMaxHealth);
+    switch(hearts) {
+        case 0: // no hearts
+            drawGraphicAtOGLPos(-7.0, -6.85, heart1, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-6.0, -6.85, heart2, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-5.0, -6.85, heart3, 0.0, 0.2, 0.0, 1.0);
+            break;
+        case 1: // 1 heart
+            drawGraphicAtOGLPos(-7.0, -6.85, heart1, 0.8, 1.0, 0, 1.0);
+            drawGraphicAtOGLPos(-6.0, -6.85, heart2, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-5.0, -6.85, heart3, 0.0, 0.2, 0.0, 1.0);
+            break;
+        case 2: // 2 hearts
+            drawGraphicAtOGLPos(-7.0, -6.85, heart1, 0.8, 1.0, 0, 1);
+            drawGraphicAtOGLPos(-6.0, -6.85, heart2, 0.8, 1.0, 0, 1);
+            drawGraphicAtOGLPos(-5.0, -6.85, heart3, 0.0, 0.2, 0.0, 1.0);
+            break;
+        case 3: // 3 hearts
+            drawGraphicAtOGLPos(-7.0, -6.85, heart1, 0.8, 1.0, 0, 1);
+            drawGraphicAtOGLPos(-6.0, -6.85, heart2, 0.8, 1.0, 0, 1);
+            drawGraphicAtOGLPos(-5.0, -6.85, heart3, 0.8, 1.0, 0, 1);
+            break;
+        default: // 3 hearts
+            drawGraphicAtOGLPos(-7.0, -6.85, heart1, 0.8, 1.0, 0, 1);
+            drawGraphicAtOGLPos(-6.0, -6.85, heart2, 0.8, 1.0, 0, 1);
+            drawGraphicAtOGLPos(-5.0, -6.85, heart3, 0.8, 1.0, 0, 1);
+            break;
+    }
 }
 
 void GLHUD::equipmentDraw() {
-    // logic based on inventory
+    // logic based on inventory array
     drawGraphicAtOGLPos(0, 0, equipment, xMinEquipment, xMaxEquipment, yMinEquipment, yMaxEquipment);
 }

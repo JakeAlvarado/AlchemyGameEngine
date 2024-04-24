@@ -268,7 +268,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
        glPopMatrix();
 
        glPushMatrix();          // drawing HUD
-        glScalef(0.25, 0.25, 1.0);
+        glScalef(0.1, 0.1, 1.0);
         glDisable(GL_LIGHTING);
         HUD->hudDraw();
         glEnable(GL_LIGHTING);

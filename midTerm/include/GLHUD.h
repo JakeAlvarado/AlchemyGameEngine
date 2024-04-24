@@ -11,7 +11,10 @@ class GLHUD
         GLHUD();
         virtual ~GLHUD();
 
-        GLTexture *health = new GLTexture();
+        GLTexture *heart1 = new GLTexture();
+        GLTexture *heart2 = new GLTexture();
+        GLTexture *heart3 = new GLTexture();
+
         GLTexture *equipment = new GLTexture();
 
         void initHUD(); // init HUD files
@@ -20,7 +23,7 @@ class GLHUD
         void healthDraw(); // hearts
         void equipmentDraw();
         void hudDraw(); // width and height
-        void drawGraphicAtOGLPos(int x, int y, GLTexture *, float, float, float, float); // Desired screen coordinates
+        void drawGraphicAtOGLPos(float x, float y, GLTexture *, float, float, float, float); // Desired screen coordinates
 
         vec3 vert[4];
 
