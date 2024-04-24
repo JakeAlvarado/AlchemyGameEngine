@@ -13,6 +13,7 @@
 #include<enemy.h>
 #include<EnemyLevelHandler.h>
 #include<projectile.h>
+#include<GLHUD.h>
 
 #include<GLCollisions.h>
 //Initializing Objects based on classes (parallax (static or background images), object (image that needs to be in front of background), MenuScene (state controller for navigation)
@@ -51,6 +52,8 @@ vec3 playerPos;
 
 MenuScene *prevGameState;
 
+
+GLHUD *HUD = new GLHUD(); // initializing hud
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -100,10 +103,7 @@ GLint GLScene::initGL()
     player->actionTrigger = player->STAND; // Player does not move until player makes a keypress
 
     enemy_projectiles->initProj();
-    enemies->initEnemies(1
-                         , enemy_projectiles);
-
-
+    enemies->initEnemies(1, enemy_projectiles);
 
     // resized to the number of gStates
     player->bounds.resize(7);
@@ -130,6 +130,9 @@ GLint GLScene::initGL()
     levelThreeLeftCornerTopSide->width = 0.05;
 
     prevGameState=menuState;
+
+    HUD->initHUD(); // initializing hud
+
 
 
     return true;
@@ -232,7 +235,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
         glEnable(GL_LIGHTING);
        glPopMatrix();
 
-       glPushMatrix();
+       glPushMatrix();          // drawing player
         glScalef(0.5, 0.5, 1.0);
         glDisable(GL_LIGHTING);
         player->boundsCheck(menuState->gState);
@@ -242,20 +245,28 @@ GLint GLScene::drawScene()    // this function runs on a loop
         }
         player->drawPlayer();
         player->actions();
-        playerPos=player->getPos();
+        playerPos=player->getPos();        
         glEnable(GL_LIGHTING);
        glPopMatrix();
 
-       glPushMatrix();
+       glPushMatrix();          // drawing enemies
        glScalef(0.5, 0.5, 1.0);
         enemies->setTarget(playerPos);
          enemies->drawEnemies();
 
        glPopMatrix();
 
-       glPushMatrix();
+       glPushMatrix();          // drawing projectiles
         enemy_projectiles->draw_projectiles();
        glPopMatrix();
+
+       glPushMatrix();          // drawing HUD
+        glScalef(0.5, 0.5, 1.0);
+        glDisable(GL_LIGHTING);
+        HUD->hudDraw();
+        glEnable(GL_LIGHTING);
+       glPopMatrix();
+
 
        break;
 
