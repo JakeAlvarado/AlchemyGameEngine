@@ -42,6 +42,9 @@ projectile *player_projectiles = new projectile();
 
 GLCheckCollision *hit = new GLCheckCollision();
 GLCollisions *tutorialDoor = new GLCollisions();
+GLCollisions *levelTwoThreeDoor = new GLCollisions();
+GLCollisions *levelThreeFourDoor = new GLCollisions();
+
 GLCollisions *levelThreeLeftCornerRightSide = new GLCollisions();
 GLCollisions *levelThreeLeftCornerTopSide = new GLCollisions();
 
@@ -116,17 +119,27 @@ GLint GLScene::initGL()
     player->bounds[5] = { -2.0, 1.1, 2.0, -0.75 };  // bounds of level 3
     player->bounds[6] = { -2.9, 1.55, 2.9, -1.55 }; // bounds of final level
 
-    // setting the door thats under the tree in tutorial map
+    // setting the door that goes from level 1 -> 2
     tutorialDoor->pos = vec2({0.0, 1.0});
     tutorialDoor->length = 0.25;
     tutorialDoor->width = 0.05;
 
-    // setting the door from second level to third level
+    // setting the door that goes from level 2 -> 3
+    levelTwoThreeDoor->pos = vec2({-2.8, -0.75});
+    levelTwoThreeDoor->length = 0.1;
+    levelTwoThreeDoor->width = 0.05;
+
+    // setting the door that goes from level 3 -> 4
+    levelThreeFourDoor->pos = vec2({-1.65, 1.1});
+    levelThreeFourDoor->length = 0.05;
+    levelThreeFourDoor->width = 0.05;
+
+    // setting the boundary of the nook on level three, from the right side
     levelThreeLeftCornerRightSide->pos = vec2({0.0, -0.45});
     levelThreeLeftCornerRightSide->length = 0.05;
     levelThreeLeftCornerRightSide->width = 0.35;
 
-    // setting the door from second level to third level
+    // setting the boundary of the nook on level three, from the top side
     levelThreeLeftCornerTopSide->pos = vec2({-1.4, -0.1});
     levelThreeLeftCornerTopSide->length = 1.4;
     levelThreeLeftCornerTopSide->width = 0.05;
@@ -251,6 +264,8 @@ GLint GLScene::drawScene()    // this function runs on a loop
         }
         if (hit->isAABBCollision(vec2({player->plPosition.x, player->plPosition.y}), tutorialDoor->pos, tutorialDoor->length, tutorialDoor->width )) {
             menuState->gState = State_Level2;
+            player->plPosition.x = -0.7;
+            player->plPosition.y = 1.3;
         }
         if(HUD->hearts > 0)
             player->drawPlayer();
@@ -292,6 +307,11 @@ GLint GLScene::drawScene()    // this function runs on a loop
         glScalef(0.5, 0.5, 1.0);
         glDisable(GL_LIGHTING);
         player->boundsCheck(menuState->gState);
+        if (hit->isAABBCollision(vec2({player->plPosition.x, player->plPosition.y}), levelTwoThreeDoor->pos, levelTwoThreeDoor->length, levelTwoThreeDoor->width )) {
+            menuState->gState = State_Level3;
+            player->plPosition.x = 0.6;
+            player->plPosition.y = 1;
+        }
         if(HUD->hearts > 0)
             player->drawPlayer();
         player->actions();
@@ -313,6 +333,11 @@ GLint GLScene::drawScene()    // this function runs on a loop
         glScalef(0.5, 0.5, 1.0);
         glDisable(GL_LIGHTING);
         player->boundsCheck(menuState->gState);
+        if (hit->isAABBCollision(vec2({player->plPosition.x, player->plPosition.y}), levelThreeFourDoor->pos, levelThreeFourDoor->length, levelThreeFourDoor->width )) {
+            menuState->gState = State_Final;
+            player->plPosition.x = 1.9;
+            player->plPosition.y = -1.45;
+        }
         if (hit->isAABBCollision(vec2({player->plPosition.x, player->plPosition.y}), levelThreeLeftCornerRightSide->pos, levelThreeLeftCornerRightSide->length, levelThreeLeftCornerRightSide->width )) {
             player->plPosition.x = levelThreeLeftCornerRightSide->pos.x + levelThreeLeftCornerRightSide->length;
         }

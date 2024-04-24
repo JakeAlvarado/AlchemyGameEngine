@@ -327,9 +327,9 @@ vec3 GLPlayer::getPos()
 // follows pattern of left, up, right, down
 void GLPlayer::boundsCheck(int level) {
     if (this->plPosition.x <= this->bounds[level][0]) this->plPosition.x = this->bounds[level][0];
-    else if (this->plPosition.y >= this->bounds[level][1]) this->plPosition.y = this->bounds[level][1];
-    else if (this->plPosition.x >= this->bounds[level][2]) this->plPosition.x = this->bounds[level][2];
-    else if (this->plPosition.y <= this->bounds[level][3]) this->plPosition.y = this->bounds[level][3];
+    if (this->plPosition.y >= this->bounds[level][1]) this->plPosition.y = this->bounds[level][1];
+    if (this->plPosition.x >= this->bounds[level][2]) this->plPosition.x = this->bounds[level][2];
+    if (this->plPosition.y <= this->bounds[level][3]) this->plPosition.y = this->bounds[level][3];
 }
 void GLPlayer::performAttack()
 {
