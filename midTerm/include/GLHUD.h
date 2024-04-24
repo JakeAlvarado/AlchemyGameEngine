@@ -14,8 +14,13 @@ class GLHUD
         GLTexture *heart1 = new GLTexture();
         GLTexture *heart2 = new GLTexture();
         GLTexture *heart3 = new GLTexture();
+        GLTexture *heart4 = new GLTexture();
 
-        GLTexture *equipment = new GLTexture();
+
+        GLTexture *equipment1 = new GLTexture();
+        GLTexture *equipment2 = new GLTexture();
+        GLTexture *equipment3 = new GLTexture();
+        GLTexture *equipment4 = new GLTexture();
 
         void initHUD(); // init HUD files
         void initHealth(int,int,char* fileName); // load hud file

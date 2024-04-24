@@ -16,12 +16,16 @@ GLHUD::~GLHUD()
     delete heart1;
     delete heart2;
     delete heart3;
-    delete equipment;
+    delete heart4;
+    delete equipment1;
+    delete equipment2;
+    delete equipment3;
+    delete equipment4;
 }
 
 void GLHUD::initHUD() {
     initHealth(5, 1, "images/hud/player_health.png"); // loading player hud health texture
-    //initEquipment(2, 1, "images/hud/player_equipment.png"); // loading player hud equipment texture
+    initEquipment(2, 1, "images/hud/player_equipment.png"); // loading player hud equipment texture
 }
 
 void GLHUD::initHealth(int x,int y, char* fileName)
@@ -29,9 +33,10 @@ void GLHUD::initHealth(int x,int y, char* fileName)
     heart1->loadTexture(fileName); //loading player hud health texture
     heart2->loadTexture(fileName); //loading player hud health texture
     heart3->loadTexture(fileName); //loading player hud health texture
+    heart4->loadTexture(fileName); //loading player hud health texture
 
     // Init Health Variables
-    hearts = 3;
+    hearts = 4;
 
     framesXHealth = x;
     framesYHealth = y;
@@ -45,22 +50,25 @@ void GLHUD::initHealth(int x,int y, char* fileName)
 
 void GLHUD::initEquipment(int x, int y, char* fileName)
 {
-    equipment->loadTexture(fileName); //loading player hud equipment texture
+    equipment1->loadTexture(fileName); //loading player hud equipment texture
+    equipment2->loadTexture(fileName); //loading player hud equipment texture
+    equipment3->loadTexture(fileName); //loading player hud equipment texture
+    equipment4->loadTexture(fileName); //loading player hud equipment texture
 
     // Init equipment variables
     framesXEquipment = x;
     framesYEquipment = y;
 
     xMinEquipment =0;
-    yMaxEquipment =2.0/(float)framesYEquipment;
-    xMaxEquipment =1.0/(float)framesXEquipment;
+    yMaxEquipment =1.0/(float)framesYEquipment;
+    xMaxEquipment =2.0/(float)framesXEquipment;
     yMinEquipment =yMaxEquipment-1.0/(float)framesYEquipment;
 }
 
 void GLHUD::hudDraw()
 {
     healthDraw();
-    //equipmentDraw(equipment);
+    equipmentDraw();
 }
 
 void GLHUD::drawGraphicAtOGLPos(float xPos, float yPos, GLTexture *graphic, float xMin, float xMax, float yMin, float yMax)
@@ -115,34 +123,47 @@ void GLHUD::healthDraw() {
     // logic based on hearts
     switch(hearts) {
         case 0: // no hearts
-            drawGraphicAtOGLPos(-7.0, -6.85, heart1, 0.0, 0.2, 0.0, 1.0);
-            drawGraphicAtOGLPos(-6.0, -6.85, heart2, 0.0, 0.2, 0.0, 1.0);
-            drawGraphicAtOGLPos(-5.0, -6.85, heart3, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-4.0, -6.85, heart1, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-3.0, -6.85, heart2, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-2.0, -6.85, heart3, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-1.0, -6.85, heart4, 0.0, 0.2, 0.0, 1.0);
             break;
         case 1: // 1 heart
-            drawGraphicAtOGLPos(-7.0, -6.85, heart1, 0.8, 1.0, 0, 1.0);
-            drawGraphicAtOGLPos(-6.0, -6.85, heart2, 0.0, 0.2, 0.0, 1.0);
-            drawGraphicAtOGLPos(-5.0, -6.85, heart3, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-4.0, -6.85, heart1, 0.8, 1.0, 0, 1.0);
+            drawGraphicAtOGLPos(-3.0, -6.85, heart2, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-2.0, -6.85, heart3, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-1.0, -6.85, heart4, 0.0, 0.2, 0.0, 1.0);
             break;
         case 2: // 2 hearts
-            drawGraphicAtOGLPos(-7.0, -6.85, heart1, 0.8, 1.0, 0, 1);
-            drawGraphicAtOGLPos(-6.0, -6.85, heart2, 0.8, 1.0, 0, 1);
-            drawGraphicAtOGLPos(-5.0, -6.85, heart3, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-4.0, -6.85, heart1, 0.8, 1.0, 0, 1);
+            drawGraphicAtOGLPos(-3.0, -6.85, heart2, 0.8, 1.0, 0, 1);
+            drawGraphicAtOGLPos(-2.0, -6.85, heart3, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-1.0, -6.85, heart4, 0.0, 0.2, 0.0, 1.0);
             break;
         case 3: // 3 hearts
-            drawGraphicAtOGLPos(-7.0, -6.85, heart1, 0.8, 1.0, 0, 1);
-            drawGraphicAtOGLPos(-6.0, -6.85, heart2, 0.8, 1.0, 0, 1);
-            drawGraphicAtOGLPos(-5.0, -6.85, heart3, 0.8, 1.0, 0, 1);
+            drawGraphicAtOGLPos(-4.0, -6.85, heart1, 0.8, 1.0, 0, 1);
+            drawGraphicAtOGLPos(-3.0, -6.85, heart2, 0.8, 1.0, 0, 1);
+            drawGraphicAtOGLPos(-2.0, -6.85, heart3, 0.8, 1.0, 0, 1);
+            drawGraphicAtOGLPos(-1.0, -6.85, heart4, 0.0, 0.2, 0.0, 1.0);
+            break;
+        case 4: // 4 hearts
+            drawGraphicAtOGLPos(-4.0, -6.85, heart1, 0.8, 1.0, 0, 1);
+            drawGraphicAtOGLPos(-3.0, -6.85, heart2, 0.8, 1.0, 0, 1);
+            drawGraphicAtOGLPos(-2.0, -6.85, heart3, 0.8, 1.0, 0, 1);
+            drawGraphicAtOGLPos(-1.0, -6.85, heart4, 0.0, 1.0, 0.0, 1.0);
             break;
         default: // 3 hearts
-            drawGraphicAtOGLPos(-7.0, -6.85, heart1, 0.8, 1.0, 0, 1);
-            drawGraphicAtOGLPos(-6.0, -6.85, heart2, 0.8, 1.0, 0, 1);
-            drawGraphicAtOGLPos(-5.0, -6.85, heart3, 0.8, 1.0, 0, 1);
+            drawGraphicAtOGLPos(-4.0, -6.85, heart1, 0.8, 1.0, 0, 1);
+            drawGraphicAtOGLPos(-3.0, -6.85, heart2, 0.8, 1.0, 0, 1);
+            drawGraphicAtOGLPos(-2.0, -6.85, heart3, 0.8, 1.0, 0, 1);
             break;
     }
 }
 
 void GLHUD::equipmentDraw() {
     // logic based on inventory array
-    drawGraphicAtOGLPos(0, 0, equipment, xMinEquipment, xMaxEquipment, yMinEquipment, yMaxEquipment);
+    drawGraphicAtOGLPos(1.0, -6.85, equipment1, 0.0, 0.5, 0.0, 1.0);
+    drawGraphicAtOGLPos(2.0, -6.85, equipment2, 0.0, 0.5, 0.0, 1.0);
+    drawGraphicAtOGLPos(3.0, -6.85, equipment3, 0.0, 0.5, 0.0, 1.0);
+    drawGraphicAtOGLPos(4.0, -6.85, equipment4, 0.0, 0.5, 0.0, 1.0);
 }
