@@ -284,6 +284,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
         glScalef(0.5, 0.5, 1.0);
         glDisable(GL_LIGHTING);
         player->boundsCheck(menuState->gState);
+        /*
         if (player->hit_check(enemy_projectiles) && (clock() - Timer->startTime > 60))
         {
 
@@ -293,6 +294,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
             cout << "HUD Hearts: " << HUD->hearts << endl;
           }
         }
+        */
         if (hit->isAABBCollision(vec2({player->plPosition.x, player->plPosition.y}), tutorialDoor->pos, tutorialDoor->length, tutorialDoor->width )) {
             menuState->gState = State_Level2;
             player->plPosition.x = -0.7;
@@ -346,7 +348,17 @@ GLint GLScene::drawScene()    // this function runs on a loop
         if(HUD->hearts > 0)
             player->drawPlayer();
         player->actions();
-        player->hit_check(enemy_projectiles);
+        //player->hit_check(enemy_projectiles);
+        if (player->hit_check(enemy_projectiles) && (clock() - Timer->startTime > 60))
+        {
+
+                if (HUD->hearts > 0 && !godmode)
+                {
+                    HUD->hearts--;
+                    cout << "HUD Hearts: " << HUD->hearts << endl;
+                }
+        }
+        
         playerPos=player->getPos();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -397,7 +409,15 @@ GLint GLScene::drawScene()    // this function runs on a loop
         if(HUD->hearts > 0)
             player->drawPlayer();
         player->actions();
-        player->hit_check(enemy_projectiles);
+        if (player->hit_check(enemy_projectiles) && (clock() - Timer->startTime > 60))
+        {
+
+                if (HUD->hearts > 0 && !godmode)
+                {
+                    HUD->hearts--;
+                    cout << "HUD Hearts: " << HUD->hearts << endl;
+                }
+        }
         playerPos=player->getPos();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -437,7 +457,15 @@ GLint GLScene::drawScene()    // this function runs on a loop
         if(HUD->hearts > 0)
             player->drawPlayer();
         player->actions();
-        player->hit_check(enemy_projectiles);
+        if (player->hit_check(enemy_projectiles) && (clock() - Timer->startTime > 60))
+        {
+
+                if (HUD->hearts > 0 && !godmode)
+                {
+                    HUD->hearts--;
+                    cout << "HUD Hearts: " << HUD->hearts << endl;
+                }
+        }
         playerPos=player->getPos();
         glEnable(GL_LIGHTING);
        glPopMatrix();
