@@ -19,7 +19,7 @@ GLHUD::~GLHUD()
 
 void GLHUD::initHUD() {
     initHealth(5, 1, "images/hud/player_health.png"); // loading player hud health texture
-    initEquipment(2, 1, "images/hud/player_equipment.png"); // loading player hud equipment texture
+    //initEquipment(2, 1, "images/hud/player_equipment.png"); // loading player hud equipment texture
 }
 
 void GLHUD::initHealth(int x,int y, char* fileName)
@@ -32,17 +32,10 @@ void GLHUD::initHealth(int x,int y, char* fileName)
     framesXHealth = x;
     framesYHealth = y;
 
-    xMinHealth = 0;
-    xMaxHealth = 1.0/(float)framesXHealth;
+    xMinHealth = 0.8;
+    xMaxHealth = 1.0;
     yMaxHealth = 1.0/(float)framesYHealth;
-    yMinHealth = yMaxHealth-1.0/(float)framesYHealth;    
-
-    cout << "xMinHealth: " << xMinHealth << endl;
-    cout << "xMaxHealth: " << xMaxHealth << endl;
-    cout << "yMinHealth: " << yMinHealth << endl;
-    cout << "yMaxHealth: " << yMaxHealth << endl;
-    cout << "framesXHealth: " << framesXHealth << endl;
-    cout << "framesYHealth: " << framesYHealth << endl;
+    yMinHealth = 0.0;
 
 }
 
@@ -66,7 +59,7 @@ void GLHUD::hudDraw()
     //equipmentDraw(equipment);
 }
 
-void GLHUD::drawGraphicAtOGLPos(int xPos, int yPos, GLTexture *graphic, int xMin, int xMax, int yMin, int yMax)
+void GLHUD::drawGraphicAtOGLPos(int xPos, int yPos, GLTexture *graphic, float xMin, float xMax, float yMin, float yMax)
 {
     // GLint viewport[4];
     // GLdouble modelview[16];
@@ -87,9 +80,10 @@ void GLHUD::drawGraphicAtOGLPos(int xPos, int yPos, GLTexture *graphic, int xMin
     // yPos =(int) (posY *M->getGridSize()/2 +M->getGridSize()/2);
 
     // Draw the graphic at the unprojected world position
-    glTranslatef(0, 0, -1.0);
+
+    glTranslatef(xPos, yPos, -1.0);
     //glTranslatef(0, -2.6, -1.0);
-    glScalef(2.0f, 2.0f, 2.0f);
+    //glScalef(2.0f, 2.0f, 2.0f);
     glColor3f(1.0, 1.0, 1.0);
     graphic->bindTexture();
 
@@ -111,7 +105,7 @@ void GLHUD::drawGraphicAtOGLPos(int xPos, int yPos, GLTexture *graphic, int xMin
 
 void GLHUD::healthDraw() {
     // logic based on hearts
-    drawGraphicAtOGLPos(-1, -10, health, xMinHealth, xMaxHealth, yMinHealth, yMaxHealth);
+    drawGraphicAtOGLPos(-1.2, -1.2, health, xMinHealth, xMaxHealth, yMinHealth, yMaxHealth);
 }
 
 void GLHUD::equipmentDraw() {

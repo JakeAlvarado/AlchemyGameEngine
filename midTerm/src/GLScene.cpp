@@ -239,7 +239,14 @@ GLint GLScene::drawScene()    // this function runs on a loop
         glScalef(0.5, 0.5, 1.0);
         glDisable(GL_LIGHTING);
         player->boundsCheck(menuState->gState);
-        player->hit_check(enemy_projectiles);
+        if (player->hit_check(enemy_projectiles)) {
+            
+            if (HUD->hearts > 0) {
+                HUD->hearts--;
+                cout<<"HUD Hearts: " <<HUD->hearts<<endl;
+            }
+
+        }
         if (hit->isAABBCollision(vec2({player->plPosition.x, player->plPosition.y}), tutorialDoor->pos, tutorialDoor->length, tutorialDoor->width )) {
             menuState->gState = State_Level2;
         }
@@ -261,7 +268,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
        glPopMatrix();
 
        glPushMatrix();          // drawing HUD
-        glScalef(0.5, 0.5, 1.0);
+        glScalef(0.25, 0.25, 1.0);
         glDisable(GL_LIGHTING);
         HUD->hudDraw();
         glEnable(GL_LIGHTING);

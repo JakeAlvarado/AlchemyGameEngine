@@ -20,7 +20,7 @@ class GLHUD
         void healthDraw(); // hearts
         void equipmentDraw();
         void hudDraw(); // width and height
-        void drawGraphicAtOGLPos(int x, int y, GLTexture *, int, int, int, int); // Desired screen coordinates
+        void drawGraphicAtOGLPos(int x, int y, GLTexture *, float, float, float, float); // Desired screen coordinates
 
         vec3 vert[4];
 
