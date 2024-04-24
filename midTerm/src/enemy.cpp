@@ -15,8 +15,9 @@ enemy::~enemy()
 {
     //dtor
 }
-void enemy::initEnemy(float x_init, float y_init)
+void enemy::initEnemy(float x_init, float y_init, int t)
 {
+    type = t;
     spriteShape.x = 1;
     spriteShape.y = 4;
 
@@ -47,6 +48,7 @@ void enemy::initEnemy(float x_init, float y_init)
     frame = 0;
     n_frames = spriteShape.x*spriteShape.y;
     isLive=true;
+
 }
 
 void enemy::drawEnemy()
@@ -59,7 +61,6 @@ void enemy::drawEnemy()
     glPushMatrix();
 
     glTranslatef(pos.x,pos.y,pos.z);
-
 
     glColor3f(1.0,1.0,1.0);    //white rectangle
     enemyTex->bindTexture();    //binding my background
@@ -167,6 +168,7 @@ void enemy::updatePos() {
 
 void enemy::killEnemy()
 {
+    pos.x = 100;
     isLive=false;
 }
 

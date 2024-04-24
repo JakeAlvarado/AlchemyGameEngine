@@ -49,7 +49,7 @@ bool needHelp = false;
 
 vec3 playerPos;
 
-MenuScene *prevGameState;
+int prev_level;
 
 
 
@@ -100,8 +100,7 @@ GLint GLScene::initGL()
     player->actionTrigger = player->STAND; // Player does not move until player makes a keypress
 
     enemy_projectiles->initProj();
-    enemies->initEnemies(1
-                         , enemy_projectiles);
+    enemies->initEnemies(2, enemy_projectiles);
 
 
 
@@ -129,7 +128,7 @@ GLint GLScene::initGL()
     levelThreeLeftCornerTopSide->length = 1.4;
     levelThreeLeftCornerTopSide->width = 0.05;
 
-    prevGameState=menuState;
+    prev_level=menuState->gState;
 
 
     return true;
@@ -139,11 +138,31 @@ GLint GLScene::drawScene()    // this function runs on a loop
                               // DO NOT ABUSE ME
 {
 
+    if(prev_level!=menuState->gState) {
+
+        cout<<"Game State Change"<<endl;
+        prev_level=menuState->gState;
+
+        if (prev_level==2) {
+            enemies->startLevel(1);
+
+        } else if (prev_level==4) {
+            enemies->startLevel(2);
+
+        } else if (prev_level==5) {
+            enemies->startLevel(3);
+
+        } else if (prev_level==6) {
+            enemies->startLevel(4);
+        }
 
 
-    if(prevGameState->gState!=menuState->gState){
-        cout << "GAME STATE CHANGED"<<endl;
+        cout<<"GS = " <<prev_level<<endl;
+        cout<<"\n"<<endl;
     }
+
+
+
 
    if (isPaused)
    {
@@ -273,7 +292,14 @@ GLint GLScene::drawScene()    // this function runs on a loop
         player->boundsCheck(menuState->gState);
         player->drawPlayer();
         player->actions();
+        playerPos=player->getPos();
         glEnable(GL_LIGHTING);
+       glPopMatrix();
+
+       glPushMatrix();
+       glScalef(0.5, 0.5, 1.0);
+        enemies->setTarget(playerPos);
+         enemies->drawEnemies();
        glPopMatrix();
 
         break;
@@ -338,7 +364,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
 
 
    return true;
-   prevGameState=menuState;
+
 }
 
 GLvoid GLScene::resizeScene(GLsizei width, GLsizei height)
@@ -389,10 +415,11 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
                     break;
                 }
             case VK_SPACE: // if press is 'N'
-                if(menuState->gState == State_Game){
+                if(menuState->gState == State_Game || menuState->gState == State_Level2 || menuState->gState == State_Level3 || menuState->gState == State_Final){
 
 
                     enemies->meleAttack(playerPos);
+
 
 
                 }

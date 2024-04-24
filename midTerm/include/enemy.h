@@ -43,7 +43,7 @@ class enemy
 
         void setTarget(vec3 t);
 
-        void initEnemy(float x_init, float y_init);
+        void initEnemy(float x_init, float y_init, int t);
         void drawEnemy();
         void updateFrame();
         void updatePos();
