@@ -14,6 +14,8 @@ class GLPlayer
         virtual ~GLPlayer();
 
         enum {STAND, WALKLEFT,WALKRIGHT, WALKDOWN, WALKUP, RUN, JUMP, ATTACK, ATTACKLEFT, ATTACKDOWN, ATTACKUP};
+        enum {LEFT, RIGHT, UP, DOWN};
+
         vector<vector<float>> bounds;
 
         GLTexture *texture = new GLTexture();
