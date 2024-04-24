@@ -18,7 +18,7 @@ GLHUD::~GLHUD()
 }
 
 void GLHUD::initHUD() {
-    initHealth(5, 1, "images/player.png"); // loading player hud health texture
+    initHealth(5, 1, "./images/hud/player_health.png"); // loading player hud health texture
     initEquipment(2, 1, "images/hud/player_equipment.png"); // loading player hud equipment texture
 }
 
