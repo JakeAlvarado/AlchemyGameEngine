@@ -303,7 +303,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
         if(HUD->hearts > 0)
             player->drawPlayer();
         player->actions();
-        playerPos=player->getPos();        
+        playerPos=player->getPos();
         glEnable(GL_LIGHTING);
        glPopMatrix();
 
@@ -349,6 +349,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
             player->drawPlayer();
         player->actions();
         //player->hit_check(enemy_projectiles);
+        /*
         if (player->hit_check(enemy_projectiles) && (clock() - Timer->startTime > 60))
         {
 
@@ -358,7 +359,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
                     cout << "HUD Hearts: " << HUD->hearts << endl;
                 }
         }
-        
+        */
         playerPos=player->getPos();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -409,6 +410,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
         if(HUD->hearts > 0)
             player->drawPlayer();
         player->actions();
+        /*
         if (player->hit_check(enemy_projectiles) && (clock() - Timer->startTime > 60))
         {
 
@@ -418,6 +420,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
                     cout << "HUD Hearts: " << HUD->hearts << endl;
                 }
         }
+        */
         playerPos=player->getPos();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -457,6 +460,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
         if(HUD->hearts > 0)
             player->drawPlayer();
         player->actions();
+        /*
         if (player->hit_check(enemy_projectiles) && (clock() - Timer->startTime > 60))
         {
 
@@ -466,6 +470,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
                     cout << "HUD Hearts: " << HUD->hearts << endl;
                 }
         }
+        */
         playerPos=player->getPos();
         glEnable(GL_LIGHTING);
        glPopMatrix();
