@@ -61,7 +61,6 @@ MenuScene *prevGameState;
 
 GLHUD *HUD = new GLHUD(); // initializing hud
 GLSounds *snds = new GLSounds();
-=======
 
 GLTimer *Timer = new GLTimer(); // Timer object
 
