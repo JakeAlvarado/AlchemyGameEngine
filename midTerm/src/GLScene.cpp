@@ -55,7 +55,7 @@ bool godmode = false; // for testing purposes
 
 vec3 playerPos;
 
-MenuScene *prevGameState;
+int prev_level;
 
 
 GLHUD *HUD = new GLHUD(); // initializing hud
@@ -144,9 +144,10 @@ GLint GLScene::initGL()
     levelThreeLeftCornerTopSide->length = 1.4;
     levelThreeLeftCornerTopSide->width = 0.05;
 
-    prevGameState=menuState;
+    prev_level=menuState->gState;
 
     HUD->initHUD(); // initializing hud
+
 
 
 
@@ -157,11 +158,35 @@ GLint GLScene::drawScene()    // this function runs on a loop
                               // DO NOT ABUSE ME
 {
 
+    if(prev_level!=menuState->gState) {
+
+        cout<<"Game State Change"<<endl;
+        prev_level=menuState->gState;
+
+        if (prev_level==2) {
+            enemies->startLevel(1);
+            enemy_projectiles->reset();
+
+        } else if (prev_level==4) {
+            enemies->startLevel(2);
+            enemy_projectiles->reset();
+
+        } else if (prev_level==5) {
+            enemies->startLevel(3);
+            enemy_projectiles->reset();
+
+        } else if (prev_level==6) {
+            enemies->startLevel(4);
+            enemy_projectiles->reset();
+        }
 
 
-    if(prevGameState->gState!=menuState->gState){
-        cout << "GAME STATE CHANGED"<<endl;
+        cout<<"GS = " <<prev_level<<endl;
+        cout<<"\n"<<endl;
     }
+
+
+
 
    if (isPaused)
    {
@@ -315,7 +340,19 @@ GLint GLScene::drawScene()    // this function runs on a loop
         if(HUD->hearts > 0)
             player->drawPlayer();
         player->actions();
+        player->hit_check(enemy_projectiles);
+        playerPos=player->getPos();
         glEnable(GL_LIGHTING);
+       glPopMatrix();
+
+       glPushMatrix();
+       glScalef(0.5, 0.5, 1.0);
+        enemies->setTarget(playerPos);
+         enemies->drawEnemies();
+       glPopMatrix();
+
+       glPushMatrix();
+        enemy_projectiles->draw_projectiles();
        glPopMatrix();
 
         break;
@@ -347,7 +384,20 @@ GLint GLScene::drawScene()    // this function runs on a loop
         if(HUD->hearts > 0)
             player->drawPlayer();
         player->actions();
+        player->hit_check(enemy_projectiles);
+        playerPos=player->getPos();
         glEnable(GL_LIGHTING);
+       glPopMatrix();
+
+
+       glPushMatrix();
+       glScalef(0.5, 0.5, 1.0);
+        enemies->setTarget(playerPos);
+         enemies->drawEnemies();
+       glPopMatrix();
+
+       glPushMatrix();
+        enemy_projectiles->draw_projectiles();
        glPopMatrix();
 
         break;
@@ -368,7 +418,20 @@ GLint GLScene::drawScene()    // this function runs on a loop
         if(HUD->hearts > 0)
             player->drawPlayer();
         player->actions();
+        player->hit_check(enemy_projectiles);
+        playerPos=player->getPos();
         glEnable(GL_LIGHTING);
+       glPopMatrix();
+
+
+       glPushMatrix();
+       glScalef(0.5, 0.5, 1.0);
+        enemies->setTarget(playerPos);
+         enemies->drawEnemies();
+       glPopMatrix();
+
+       glPushMatrix();
+        enemy_projectiles->draw_projectiles();
        glPopMatrix();
 
 
@@ -387,7 +450,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
 
 
    return true;
-   prevGameState=menuState;
+
 }
 
 GLvoid GLScene::resizeScene(GLsizei width, GLsizei height)
@@ -438,10 +501,11 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
                     break;
                 }
             case VK_SPACE: // if press is 'N'
-                if(menuState->gState == State_Game){
+                if(menuState->gState == State_Game || menuState->gState == State_Level2 || menuState->gState == State_Level3 || menuState->gState == State_Final){
 
 
                     enemies->meleAttack(playerPos);
+
 
 
                 }

@@ -62,6 +62,7 @@
 		<Unit filename="include/MenuScene.h" />
 		<Unit filename="include/common.h" />
 		<Unit filename="include/enemy.h" />
+		<Unit filename="include/projectile.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/EnemyLevelHandler.cpp" />
 		<Unit filename="src/GLCheckCollision.cpp" />
@@ -78,6 +79,7 @@
 		<Unit filename="src/GLTimer.cpp" />
 		<Unit filename="src/MenuScene.cpp" />
 		<Unit filename="src/enemy.cpp" />
+		<Unit filename="src/projectile.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

@@ -2,6 +2,8 @@
 #define MENUSCENE_H
 
  enum State{
+     // KEEP THE NUMBERS THE SAME FOR LEVELS.
+     // ENEMY HANDLER DEPENDENT ON THAT
      State_LandingPage = 0,
      State_MainMenu = 1,
      State_Game = 2,
