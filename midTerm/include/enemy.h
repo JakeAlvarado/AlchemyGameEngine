@@ -5,6 +5,7 @@
 #include <GLTimer.h>
 #include <projectile.h>
 #include<random>
+#include<time.h>
 
 #include <random>
 
@@ -26,6 +27,8 @@ class enemy
 
         bool dir = true;
 
+        clock_t attackTimer;
+
         vec3 spriteShape;
 
         GLTexture *enemyTex = new GLTexture();
@@ -43,7 +46,7 @@ class enemy
 
         void setTarget(vec3 t);
 
-        void initEnemy(float x_init, float y_init);
+        void initEnemy(float x_init, float y_init, int t);
         void drawEnemy();
         void updateFrame();
         void updatePos();
@@ -57,6 +60,8 @@ class enemy
         float xMax =0.25;
         float yMin=0;
         float yMax=1;
+
+        float enemySpeed = 0.002;
 
 
 
