@@ -100,7 +100,7 @@ void GLPlayer::actions()
             default:
                 break;
         }
-        
+
         break;
 
    case WALKLEFT:
@@ -354,29 +354,31 @@ void GLPlayer::performAttackUp()
 bool GLPlayer::hit_check(projectile* projList)
 {
 
+
     for(int i=0; i<N_PROJ; i++) {
-
-
 
         if(!projList->projArr[i].isLive) {
             continue;
         }
+
+        cout << "PROJECTILE LIVE !!" << endl;
 
         float dx = plPosition.x- projList->projArr[i].pos.x;
         float dy = plPosition.y- projList->projArr[i].pos.y;
 
         float d = sqrt((dx*dx)+(dy*dy));
 
+        cout << d << endl;
 
-        if (d<0.1) {
-            cout << "PLAYER TOOK A HIT"<<endl;
+        if (d<1) {
+
             projList->projArr[i].isLive = false;
-            return(true);
+            return true;
             }
         else {
-            return(false);
+            continue;
         }
-
     }
+    return false;
 }
 

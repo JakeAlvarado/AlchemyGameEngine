@@ -3,8 +3,9 @@
 
 #include <GLTexture.h>
 #include <common.h>
+#include <chrono>
 
-
+using namespace std::chrono;
 
 class projectile
 {
@@ -20,6 +21,7 @@ class projectile
 
         proj projArr[N_PROJ]; // increase this value to handle more projectiles
 
+        chrono::steady_clock::time_point hit_check_clock;
 
         int idx = 0;
 
@@ -29,6 +31,8 @@ class projectile
         void draw_projectiles();
 
         void move_projectiles(int i);
+
+        bool check_colision(vec3 playerPos);
 
         void reset();
 

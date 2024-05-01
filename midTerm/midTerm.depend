@@ -688,7 +688,7 @@
 1713380732 c:\users\15597\documents\game\alchemygameengine\midterm\include\glscene.h
 	<common.h>
 
-1713904709 c:\users\15597\documents\game\alchemygameengine\midterm\include\common.h
+1714590450 c:\users\15597\documents\game\alchemygameengine\midterm\include\common.h
 	<windows.h>
 	<iostream>
 	<gl/gl.h>
@@ -698,6 +698,7 @@
 	<vector>
 	<unordered_map>
 	<SOIL.h>
+	<SNDS/irrKlang.h>
 
 1713210542 c:\users\15597\documents\game\alchemygameengine\common\include\gl\glut.h
 	<windows.h>
@@ -707,10 +708,10 @@
 
 1713210542 c:\users\15597\documents\game\alchemygameengine\common\include\soil.h
 
-1713986556 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\enemy.cpp
+1713987042 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\enemy.cpp
 	"enemy.h"
 
-1713986008 c:\users\15597\documents\game\alchemygameengine\midterm\include\enemy.h
+1713987042 c:\users\15597\documents\game\alchemygameengine\midterm\include\enemy.h
 	<common.h>
 	<GLTexture.h>
 	<GLTimer.h>
@@ -725,10 +726,10 @@
 1713210542 c:\users\15597\documents\game\alchemygameengine\midterm\include\gltimer.h
 	<common.h>
 
-1713986750 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\enemylevelhandler.cpp
+1713987042 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\enemylevelhandler.cpp
 	"EnemyLevelHandler.h"
 
-1713985421 c:\users\15597\documents\game\alchemygameengine\midterm\include\enemylevelhandler.h
+1713987042 c:\users\15597\documents\game\alchemygameengine\midterm\include\enemylevelhandler.h
 	<enemy.h>
 	<common.h>
 	<projectile.h>
@@ -773,7 +774,7 @@
 	<GLTexture.h>
 	<GLTimer.h>
 
-1713908095 c:\users\15597\documents\game\alchemygameengine\midterm\include\glplayer.h
+1714589747 c:\users\15597\documents\game\alchemygameengine\midterm\include\glplayer.h
 	<common.h>
 	<GLTexture.h>
 	<GLTimer.h>
@@ -792,17 +793,17 @@
 1713210542 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\globject.cpp
 	"GLObject.h"
 
-1713210542 c:\users\15597\documents\game\alchemygameengine\midterm\include\globject.h
+1714589747 c:\users\15597\documents\game\alchemygameengine\midterm\include\globject.h
 	<GLTexture.h>
 	<common.h>
 
 1713210542 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\glparallax.cpp
 	"GLParallax.h"
 
-1713986456 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\glplayer.cpp
+1714592167 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\glplayer.cpp
 	"GLPlayer.h"
 
-1713985158 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\glscene.cpp
+1714592765 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\glscene.cpp
 	<GLScene.h>
 	<GLLight.h>
 	<GLTexture.h>
@@ -818,9 +819,11 @@
 	<enemy.h>
 	<EnemyLevelHandler.h>
 	<projectile.h>
+	<GLHUD.h>
+	<GLSounds.h>
 	<GLCollisions.h>
 
-1713981627 c:\users\15597\documents\game\alchemygameengine\midterm\include\menuscene.h
+1713987042 c:\users\15597\documents\game\alchemygameengine\midterm\include\menuscene.h
 
 1713810721 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\gltexture.cpp
 	"GLTexture.h"
@@ -833,12 +836,13 @@
 	<GLScene.h>
 	<common.h>
 
-1713985110 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\projectile.cpp
+1714593875 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\projectile.cpp
 	"projectile.h"
 
-1713985068 c:\users\15597\documents\game\alchemygameengine\midterm\include\projectile.h
+1714592981 c:\users\15597\documents\game\alchemygameengine\midterm\include\projectile.h
 	<GLTexture.h>
 	<common.h>
+	<chrono>
 
 1713672995 source:c:\users\zero\dev\alchemygameengine\midterm\main.cpp
 	<windows.h>
@@ -1011,4 +1015,115 @@
 
 1713945721 source:c:\users\zero\dev\alchemygameengine\midterm\src\glhud.cpp
 	"GLHUD.h"
+
+1714590450 c:\users\15597\documents\game\alchemygameengine\common\include\snds\irrklang.h
+	"ik_irrKlangTypes.h"
+	"ik_vec3d.h"
+	"ik_IRefCounted.h"
+	"ik_IVirtualRefCounted.h"
+	"ik_ESoundOutputDrivers.h"
+	"ik_ESoundEngineOptions.h"
+	"ik_EStreamModes.h"
+	"ik_SAudioStreamFormat.h"
+	"ik_ISoundEngine.h"
+	"ik_ISoundSource.h"
+	"ik_ISound.h"
+	"ik_IAudioStream.h"
+	"ik_IAudioStreamLoader.h"
+	"ik_ISoundEffectControl.h"
+	"ik_ISoundStopEventReceiver.h"
+	"ik_IFileFactory.h"
+	"ik_IFileReader.h"
+	"ik_ISoundDeviceList.h"
+	"ik_IAudioRecorder.h"
+	"ik_ISoundMixedOutputReceiver.h"
+
+1714590450 c:\users\15597\documents\game\alchemygameengine\common\include\snds\ik_irrklangtypes.h
+	<wchar.h>
+
+1714590450 c:\users\15597\documents\game\alchemygameengine\common\include\snds\ik_vec3d.h
+	<math.h>
+	"ik_irrKlangTypes.h"
+
+1714590450 c:\users\15597\documents\game\alchemygameengine\common\include\snds\ik_irefcounted.h
+	"ik_irrKlangTypes.h"
+
+1714590450 c:\users\15597\documents\game\alchemygameengine\common\include\snds\ik_ivirtualrefcounted.h
+	"ik_irrKlangTypes.h"
+
+1714590450 c:\users\15597\documents\game\alchemygameengine\common\include\snds\ik_esoundoutputdrivers.h
+
+1714590450 c:\users\15597\documents\game\alchemygameengine\common\include\snds\ik_esoundengineoptions.h
+
+1714590450 c:\users\15597\documents\game\alchemygameengine\common\include\snds\ik_estreammodes.h
+
+1714590450 c:\users\15597\documents\game\alchemygameengine\common\include\snds\ik_saudiostreamformat.h
+	"ik_IRefCounted.h"
+
+1714590450 c:\users\15597\documents\game\alchemygameengine\common\include\snds\ik_isoundengine.h
+	"ik_IRefCounted.h"
+	"ik_vec3d.h"
+	"ik_ISoundSource.h"
+	"ik_ISound.h"
+	"ik_EStreamModes.h"
+	"ik_IFileFactory.h"
+	"ik_ISoundMixedOutputReceiver.h"
+
+1714590450 c:\users\15597\documents\game\alchemygameengine\common\include\snds\ik_isoundsource.h
+	"ik_IVirtualRefCounted.h"
+	"ik_vec3d.h"
+	"ik_EStreamModes.h"
+	"ik_SAudioStreamFormat.h"
+
+1714590450 c:\users\15597\documents\game\alchemygameengine\common\include\snds\ik_isound.h
+	"ik_IVirtualRefCounted.h"
+	"ik_ISoundEffectControl.h"
+	"ik_vec3d.h"
+
+1714590450 c:\users\15597\documents\game\alchemygameengine\common\include\snds\ik_isoundeffectcontrol.h
+	"ik_IVirtualRefCounted.h"
+	"ik_vec3d.h"
+
+1714590450 c:\users\15597\documents\game\alchemygameengine\common\include\snds\ik_ifilefactory.h
+	"ik_IRefCounted.h"
+
+1714590450 c:\users\15597\documents\game\alchemygameengine\common\include\snds\ik_isoundmixedoutputreceiver.h
+	"ik_IRefCounted.h"
+	"ik_SAudioStreamFormat.h"
+
+1714590450 c:\users\15597\documents\game\alchemygameengine\common\include\snds\ik_iaudiostream.h
+	"ik_IRefCounted.h"
+	"ik_SAudioStreamFormat.h"
+
+1714590450 c:\users\15597\documents\game\alchemygameengine\common\include\snds\ik_iaudiostreamloader.h
+	"ik_IRefCounted.h"
+	"ik_IFileReader.h"
+
+1714590450 c:\users\15597\documents\game\alchemygameengine\common\include\snds\ik_ifilereader.h
+	"ik_IRefCounted.h"
+
+1714590450 c:\users\15597\documents\game\alchemygameengine\common\include\snds\ik_isoundstopeventreceiver.h
+	"ik_IRefCounted.h"
+	"ik_SAudioStreamFormat.h"
+
+1714590450 c:\users\15597\documents\game\alchemygameengine\common\include\snds\ik_isounddevicelist.h
+	"ik_IRefCounted.h"
+
+1714590450 c:\users\15597\documents\game\alchemygameengine\common\include\snds\ik_iaudiorecorder.h
+	"ik_IRefCounted.h"
+	"ik_ISoundSource.h"
+
+1714590450 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\glhud.cpp
+	"GLHUD.h"
+
+1714589747 c:\users\15597\documents\game\alchemygameengine\midterm\include\glhud.h
+	<common.h>
+	<GLTexture.h>
+	<GL/glut.h>
+
+1714590450 c:\users\15597\documents\game\alchemygameengine\midterm\include\glsounds.h
+	<common.h>
+
+1714590450 source:c:\users\15597\documents\game\alchemygameengine\midterm\src\glsounds.cpp
+	"GLSounds.h"
 

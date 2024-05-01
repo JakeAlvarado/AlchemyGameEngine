@@ -50,6 +50,7 @@
 		<Unit filename="include/GLCheckCollision.h" />
 		<Unit filename="include/GLCollisions.h" />
 		<Unit filename="include/GLEnms.h" />
+		<Unit filename="include/GLHUD.h" />
 		<Unit filename="include/GLInputs.h" />
 		<Unit filename="include/GLLight.h" />
 		<Unit filename="include/GLModel.h" />
@@ -68,6 +69,7 @@
 		<Unit filename="src/GLCheckCollision.cpp" />
 		<Unit filename="src/GLCollisions.cpp" />
 		<Unit filename="src/GLEnms.cpp" />
+		<Unit filename="src/GLHUD.cpp" />
 		<Unit filename="src/GLInputs.cpp" />
 		<Unit filename="src/GLLight.cpp" />
 		<Unit filename="src/GLModel.cpp" />

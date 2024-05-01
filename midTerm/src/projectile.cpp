@@ -14,10 +14,14 @@ void projectile::initProj()
     projTex->loadTexture("images/cannon_ball.png");
     charProjTex->loadTexture("images/cannon_ball.png");
     enemProjTex->loadTexture("images/fire_ball.png");
+    hit_check_clock = chrono::steady_clock::now();
+
 }
 
 void projectile::shoot_projectile(int type, float tx, float ty, float sx, float sy)
 {
+
+
     projArr[idx].isLive=true;
     projArr[idx].stTime=clock();
     projArr[idx].sPos.x=sx;
@@ -94,5 +98,47 @@ void projectile::reset()
 
     }
 }
+
+bool projectile::check_colision(vec3 plPosition)
+{
+    chrono::steady_clock::time_point rn = steady_clock::now();
+
+    auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(rn - hit_check_clock);
+
+    if (elapsed.count()<100) {
+        return false;
+    };
+
+    hit_check_clock = steady_clock::now();
+
+    for(int i=0; i<N_PROJ; i++) {
+
+        if(!projArr[i].isLive) {
+            continue;
+        }
+
+        float dx = plPosition.x- projArr[i].pos.x;
+        float dy = plPosition.y- projArr[i].pos.y;
+
+        float d = sqrt((dx*dx)+(dy*dy));
+
+        cout << d << endl;
+
+        if (d<0.1) {
+
+            projArr[i].isLive = false;
+            return true;
+            }
+        else {
+            continue;
+        }
+    }
+
+
+
+
+    return false;
+}
+
 
 
