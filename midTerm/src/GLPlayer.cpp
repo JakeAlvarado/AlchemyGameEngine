@@ -351,32 +351,33 @@ void GLPlayer::performAttackUp()
 }
 
 
-bool GLPlayer::hit_check(projectile* projList)
-{
+bool GLPlayer::hit_check(projectile* projList) {
+    bool hitDetected = false;
 
-    for(int i=0; i<N_PROJ; i++) {
-
-
-
-        if(!projList->projArr[i].isLive) {
-            continue;
+    for (int i = 0; i < N_PROJ; i++) {
+        if (!projList->projArr[i].isLive) {
+            continue;  
         }
 
-        float dx = plPosition.x- projList->projArr[i].pos.x;
-        float dy = plPosition.y- projList->projArr[i].pos.y;
+        float dx = plPosition.x - projList->projArr[i].pos.x;
+        float dy = plPosition.y - projList->projArr[i].pos.y;
+        float d = sqrt((dx * dx) + (dy * dy));
 
-        float d = sqrt((dx*dx)+(dy*dy));
-
-
-        if (d<0.1) {
-            cout << "PLAYER TOOK A HIT"<<endl;
-            projList->projArr[i].isLive = false;
-            return(true);
-            }
-        else {
-            return(false);
+        if (d < 0.1) {  
+            cout << "PLAYER TOOK A HIT" << endl;
+            projList->projArr[i].isLive = false;  
+            hitDetected = true;
+            break;  
         }
-
     }
+
+    return hitDetected;  
 }
 
+void GLPlayer::initProjectile(projectile *projectile) {
+    playerProjectiles = projectile;
+}
+
+void GLPlayer::shootProjectile(float mouseX, float mouseY) {
+    playerProjectiles->shoot_projectile(0, mouseX, mouseY, plPosition.x, plPosition.y);
+}

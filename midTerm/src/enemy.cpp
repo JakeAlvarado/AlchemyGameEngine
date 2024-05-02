@@ -186,3 +186,25 @@ void enemy::killEnemy()
     isLive=false;
 }
 
+bool enemy::hit_check(projectile* projList) {
+    bool hitDetected = false;
+
+    for (int i = 0; i < N_PROJ; i++) {
+        if (!projList->projArr[i].isLive) {
+            continue;  
+        }
+
+        float dx = pos.x - projList->projArr[i].pos.x;
+        float dy = pos.y - projList->projArr[i].pos.y;
+        float d = sqrt((dx * dx) + (dy * dy));
+
+        if (d < 0.1) {  
+            cout << "ENEMY TOOK A HIT" << endl;
+            projList->projArr[i].isLive = false;  
+            hitDetected = true;  
+            break;  
+        }
+    }
+
+    return hitDetected;  
+}
