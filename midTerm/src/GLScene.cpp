@@ -27,6 +27,7 @@ GLParallax *pausePopup = new GLParallax();
 GLParallax *levelTwo = new GLParallax();
 GLParallax *levelThree = new GLParallax();
 GLParallax *levelFinal = new GLParallax();
+GLParallax *gameOverPage = new GLParallax();
 GLObject *startButton = new GLObject();
 GLObject *helpButton = new GLObject();
 GLObject *exitButton = new GLObject();
@@ -52,6 +53,7 @@ GLCollisions *levelThreeLeftCornerTopSide = new GLCollisions();
 bool isPaused = false;
 bool needHelp = false;
 bool godmode = false; // for testing purposes
+bool isGameOver = false;
 
 
 vec3 playerPos;
@@ -98,6 +100,7 @@ GLint GLScene::initGL()
     landingPage->parallaxInit("images/forestWithMushroomsLanding.png"); // Load static Landing image
     mainMenu->parallaxInit("images/forestWithMushrooms.png"); // load parallax main menu image
     helpPage->parallaxInit("images/helpPage.png"); // Load static help page image
+    gameOverPage->parallaxInit("images/GameOver.png"); // Load game over screen
     tutorialMap->parallaxInit("images/SpawnNoEnmHighRes.png"); // Load tutorial map
     pausePopup->parallaxInit("images/PauseMenuDone.png"); // Pause menu popup during game
     levelTwo->parallaxInit("images/InsideCave.png"); //Level 2 Map Forge (Fire Enemies)
@@ -165,6 +168,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
                               // DO NOT ABUSE ME
 {
 
+
     if(prev_level!=menuState->gState) {
 
         //cout<<"Game State Change"<<endl;
@@ -202,6 +206,11 @@ GLint GLScene::drawScene()    // this function runs on a loop
    if (isPaused)
    {
        pauseGame();
+       return true;
+   }
+   if (isGameOver)
+   {
+       gameOver();
        return true;
    }
    if(needHelp)
@@ -339,6 +348,10 @@ GLint GLScene::drawScene()    // this function runs on a loop
        break;
 
    case State_Level2:
+
+       if (HUD->hearts <= 0) //end game if player dies
+        isGameOver = true;
+
        glPushMatrix();      //Loading Level 2 map
         glScalef(3.5,3.5,1.0);
         glDisable(GL_LIGHTING);
@@ -373,7 +386,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
 
        for (int i = 0; i < enemies->max_enemies_spawned; i++) {
             if (enemies->enemyList[i]->hit_check(player_projectiles) && (clock() - Timer->startTime > 60))
-            {   
+            {
                 enemies->enemyList[i]->melleCounter++;
             }
         }
@@ -406,6 +419,9 @@ GLint GLScene::drawScene()    // this function runs on a loop
         break;
 
    case State_Level3:
+
+       if (HUD->hearts <= 0) // end game if player dies
+        isGameOver = true;
 
        glPushMatrix();      //Loading Level 3 map
         glScalef(3.5,3.5,1.0);
@@ -444,7 +460,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
 
        for (int i = 0; i < enemies->max_enemies_spawned; i++) {
             if (enemies->enemyList[i]->hit_check(player_projectiles) && (clock() - Timer->startTime > 60))
-            {   
+            {
                 enemies->enemyList[i]->melleCounter++;
             }
         }
@@ -477,6 +493,9 @@ GLint GLScene::drawScene()    // this function runs on a loop
         break;
    case State_Final:
 
+    if (HUD->hearts <= 0) // end game if player dies
+        isGameOver = true;
+
        glPushMatrix();      //Loading Final Level map
         glScalef(3.5,3.5,1.0);
         glDisable(GL_LIGHTING);
@@ -503,7 +522,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
 
        for (int i = 0; i < enemies->max_enemies_spawned; i++) {
             if (enemies->enemyList[i]->hit_check(player_projectiles) && (clock() - Timer->startTime > 60))
-            {   
+            {
                 enemies->enemyList[i]->melleCounter++;
             }
         }
@@ -577,13 +596,20 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         {
             case VK_RETURN: // if press is 'Enter'
                 {
-                    if(menuState->gState == State_LandingPage) // And if the current state is at the Landing Page
+                    if (isGameOver == true)
+                    {
+                        isGameOver = false;
+                        menuState->gState = State_MainMenu;
+                        HUD->hearts = 4;
+                    }
+                    else if(menuState->gState == State_LandingPage) // And if the current state is at the Landing Page
                         {
                             menuState->gState = State_MainMenu; // Change to Main Menu page
                         }
                     else if(isPaused == true)
                     {
-                        requestExit = true;
+                        isPaused = false;
+                        menuState->gState = State_MainMenu;
                     }
                     break;
                 }
@@ -671,7 +697,13 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
         switch (wParam)
         {
+
         case VK_ESCAPE:
+
+            if (isGameOver == true)
+            {
+                requestExit = true;
+            }
             if (menuState->gState == State_Game || menuState->gState == State_Level2 || menuState->gState == State_Level3 || menuState->gState == State_Final)
             {
                 if(isPaused == false)
@@ -701,7 +733,7 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
             int mouseX = LOWORD(lParam);
             int mouseY = HIWORD(lParam);
 
-            float xScaler = 5.8 / float(screenWidth); 
+            float xScaler = 5.8 / float(screenWidth);
             float yScaler = 3.4 / float(screenHeight);
             float mouseTransX = (mouseX * xScaler) - 2.9;
             float mouseTransY = ((mouseY * yScaler) - 1.7) * -1;
@@ -709,7 +741,7 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
             KbMs->mousEventDown(enemy_projectiles, LOWORD(lParam), HIWORD(lParam));
             player->shootProjectile(mouseTransX, mouseTransY);
-            
+
             //player->plPosition.x = mouseTransX;
             //player->plPosition.y = mouseTransY;
 
@@ -775,6 +807,16 @@ GLint GLScene::needsHelp()
         helpPage->parallaxDraw(screenWidth, screenHeight);
         glEnable(GL_LIGHTING);
        glPopMatrix();
+}
+
+GLint GLScene::gameOver()
+{
+    glPushMatrix();  //Loading static game over screen
+        glScalef(3.0,3.0,1.0);
+        glDisable(GL_LIGHTING);
+        gameOverPage->parallaxDraw(screenWidth, screenHeight);
+        glEnable(GL_LIGHTING);
+    glPopMatrix();
 }
 
 
