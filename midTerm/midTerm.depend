@@ -549,7 +549,7 @@
 	<iostream>
 	<windows.h>
 
-1714688718 c:\users\jake\documents\github\alchemygameengine\midterm\include\glscene.h
+1714692476 c:\users\jake\documents\github\alchemygameengine\midterm\include\glscene.h
 	<common.h>
 
 1713986326 c:\users\jake\documents\github\alchemygameengine\midterm\include\common.h
@@ -639,7 +639,7 @@
 1714687132 source:c:\users\jake\documents\github\alchemygameengine\midterm\src\glplayer.cpp
 	"GLPlayer.h"
 
-1714690184 source:c:\users\jake\documents\github\alchemygameengine\midterm\src\glscene.cpp
+1714692777 source:c:\users\jake\documents\github\alchemygameengine\midterm\src\glscene.cpp
 	<GLScene.h>
 	<GLLight.h>
 	<GLTexture.h>

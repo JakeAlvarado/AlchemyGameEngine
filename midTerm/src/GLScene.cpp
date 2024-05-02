@@ -28,6 +28,7 @@ GLParallax *levelTwo = new GLParallax();
 GLParallax *levelThree = new GLParallax();
 GLParallax *levelFinal = new GLParallax();
 GLParallax *gameOverPage = new GLParallax();
+GLParallax *youWinPage = new GLParallax();
 GLObject *startButton = new GLObject();
 GLObject *helpButton = new GLObject();
 GLObject *exitButton = new GLObject();
@@ -54,6 +55,7 @@ bool isPaused = false;
 bool needHelp = false;
 bool godmode = false; // for testing purposes
 bool isGameOver = false;
+bool playerWon = false;
 
 
 vec3 playerPos;
@@ -101,6 +103,7 @@ GLint GLScene::initGL()
     mainMenu->parallaxInit("images/forestWithMushrooms.png"); // load parallax main menu image
     helpPage->parallaxInit("images/helpPage.png"); // Load static help page image
     gameOverPage->parallaxInit("images/GameOver.png"); // Load game over screen
+    youWinPage->parallaxInit("images/YouWin.png"); // Load you win screen
     tutorialMap->parallaxInit("images/SpawnNoEnmHighRes.png"); // Load tutorial map
     pausePopup->parallaxInit("images/PauseMenuDone.png"); // Pause menu popup during game
     levelTwo->parallaxInit("images/InsideCave.png"); //Level 2 Map Forge (Fire Enemies)
@@ -211,6 +214,11 @@ GLint GLScene::drawScene()    // this function runs on a loop
    if (isGameOver)
    {
        gameOver();
+       return true;
+   }
+   if (playerWon)
+   {
+       playerWins();
        return true;
    }
    if(needHelp)
@@ -594,11 +602,21 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         player->update();
         switch(wParam)
         {
+            case VK_DECIMAL:
+                {
+                    if (menuState->gState != State_MainMenu && menuState->gState != State_LandingPage && menuState->gState != State_Help)
+                    {
+                        playerWon = true;
+                        break;
+                    }
+                }
+
             case VK_RETURN: // if press is 'Enter'
                 {
-                    if (isGameOver == true)
+                    if (isGameOver == true || playerWon == true)
                     {
                         isGameOver = false;
+                        playerWon = false;
                         menuState->gState = State_MainMenu;
                         HUD->hearts = 4;
                     }
@@ -700,7 +718,7 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
         case VK_ESCAPE:
 
-            if (isGameOver == true)
+            if (isGameOver == true || playerWon == true)
             {
                 requestExit = true;
             }
@@ -815,6 +833,16 @@ GLint GLScene::gameOver()
         glScalef(3.0,3.0,1.0);
         glDisable(GL_LIGHTING);
         gameOverPage->parallaxDraw(screenWidth, screenHeight);
+        glEnable(GL_LIGHTING);
+    glPopMatrix();
+}
+
+GLint GLScene::playerWins()
+{
+    glPushMatrix();  //Loading static you win screen
+        glScalef(3.0,3.0,1.0);
+        glDisable(GL_LIGHTING);
+        youWinPage->parallaxDraw(screenWidth, screenHeight);
         glEnable(GL_LIGHTING);
     glPopMatrix();
 }
