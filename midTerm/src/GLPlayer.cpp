@@ -48,6 +48,12 @@ void GLPlayer::drawPlayer()
     glColor3f(1.0,1.0,1.0);    //white rectangle
     texture->bindTexture();    //binding my background
 
+    if (isHit) {
+        glColor3f(1.0, 0.0, 0.0);  // Red color
+    } 
+    else {
+        glColor3f(1.0, 1.0, 1.0);  // White color
+    }
 
     glBegin(GL_QUADS);
       glTexCoord2f(xMin,yMax);
@@ -267,6 +273,14 @@ void GLPlayer::actions()
 }
 void GLPlayer::update()
 {
+    if (isHit) 
+    {
+        if (clock() - myTime->startTime > hitEffectWindow)
+        {
+            isHit = false;
+        }
+    }
+
     bool isMoving = false;
     if (keyStates[VK_LEFT] || keyStates['A'])
     {
@@ -364,9 +378,11 @@ bool GLPlayer::hit_check(projectile* projList) {
         float d = sqrt((dx * dx) + (dy * dy));
 
         if (d < 0.1) {  
-            cout << "PLAYER TOOK A HIT" << endl;
+            //cout << "PLAYER TOOK A HIT" << endl;
             projList->projArr[i].isLive = false;  
             hitDetected = true;
+            isHit = true;
+            myTime->startTime = clock();
             break;  
         }
     }

@@ -199,7 +199,7 @@ bool enemy::hit_check(projectile* projList) {
         float d = sqrt((dx * dx) + (dy * dy));
 
         if (d < 0.1) {  
-            cout << "ENEMY TOOK A HIT" << endl;
+            //cout << "ENEMY TOOK A HIT" << endl;
             projList->projArr[i].isLive = false;  
             hitDetected = true;  
             break;  

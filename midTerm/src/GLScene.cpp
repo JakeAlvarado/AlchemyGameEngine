@@ -365,11 +365,9 @@ GLint GLScene::drawScene()    // this function runs on a loop
 
         if (player->hit_check(enemy_projectiles) && (clock() - Timer->startTime > 60))
         {
-                cout << "player hit check in scene happened" << endl;
                 if (HUD->hearts > 0 && !godmode)
                 {
                     HUD->hearts--;
-                    cout << "hud hearts: " << HUD->hearts << endl;
                 }
         }
 

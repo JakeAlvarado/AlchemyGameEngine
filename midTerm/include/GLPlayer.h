@@ -22,6 +22,9 @@ class GLPlayer
         GLTexture *texture = new GLTexture();
         GLTimer   *myTime = new GLTimer();
 
+        bool isHit = false;
+        float hitEffectWindow = 2.0;
+
         void initPlayer(int,int,char* fileName); // number of x, y frames
         void drawPlayer();
         void actions();
