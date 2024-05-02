@@ -51,7 +51,7 @@ class enemy
         void updateFrame();
         void updatePos();
         void killEnemy();
-
+        bool hit_check(projectile *projList);
 
         int n_frames;
         int frame;

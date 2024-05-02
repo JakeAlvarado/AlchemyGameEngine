@@ -15,8 +15,8 @@
 #include<projectile.h>
 #include<GLHUD.h>
 #include<GLSounds.h>
-
 #include<GLCollisions.h>
+
 //Initializing Objects based on classes (parallax (static or background images), object (image that needs to be in front of background), MenuScene (state controller for navigation)
 GLInputs *KbMs = new GLInputs();
 GLParallax *landingPage = new GLParallax();
@@ -107,7 +107,9 @@ GLint GLScene::initGL()
     helpButton->initObject(1, 1, "images/HelpBanner.png"); // Load help button object texture
     exitButton->initObject(1, 1, "images/ExitBanner.png"); // Load exit button object texture
     titleBanner->initObject(1, 1, "images/Title.png"); // Load title banner object texture
+    player_projectiles->initProj();
     player->initPlayer(6, 10, "images/player.png"); // Load player texture
+    player->initProjectile(player_projectiles);
     player->actionTrigger = player->STAND; // Player does not move until player makes a keypress
 
     enemy_projectiles->initProj();
@@ -151,7 +153,7 @@ GLint GLScene::initGL()
 
     HUD->initHUD(); // initializing hud
     snds->initSounds();
-    snds->playMusic("sounds/Power_Surge.mp3");
+    //snds->playMusic("sounds/Power_Surge.mp3");
 
     Timer->startTime = clock(); // start the timer
 
@@ -165,29 +167,33 @@ GLint GLScene::drawScene()    // this function runs on a loop
 
     if(prev_level!=menuState->gState) {
 
-        cout<<"Game State Change"<<endl;
+        //cout<<"Game State Change"<<endl;
         prev_level=menuState->gState;
 
         if (prev_level==2) {
             enemies->startLevel(1);
             enemy_projectiles->reset();
+            player_projectiles->reset();
 
         } else if (prev_level==4) {
             enemies->startLevel(2);
             enemy_projectiles->reset();
+            player_projectiles->reset();
 
         } else if (prev_level==5) {
             enemies->startLevel(3);
             enemy_projectiles->reset();
+            player_projectiles->reset();
 
         } else if (prev_level==6) {
             enemies->startLevel(4);
             enemy_projectiles->reset();
+            player_projectiles->reset();
         }
 
 
-        cout<<"GS = " <<prev_level<<endl;
-        cout<<"\n"<<endl;
+        //cout<<"GS = " <<prev_level<<endl;
+        //cout<<"\n"<<endl;
     }
 
 
@@ -291,7 +297,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
           if (HUD->hearts > 0 && !godmode)
           {
             HUD->hearts--;
-            cout << "HUD Hearts: " << HUD->hearts << endl;
+            //cout << "HUD Hearts: " << HUD->hearts << endl;
           }
         }
         */
@@ -313,6 +319,10 @@ GLint GLScene::drawScene()    // this function runs on a loop
          enemies->drawEnemies();
 
        glPopMatrix();
+
+       glPushMatrix();
+        player_projectiles->draw_projectiles();
+        glPopMatrix();
 
        glPushMatrix();          // drawing projectiles
         enemy_projectiles->draw_projectiles();
@@ -339,6 +349,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
        glPushMatrix();
         glScalef(0.5, 0.5, 1.0);
         glDisable(GL_LIGHTING);
+
         player->boundsCheck(menuState->gState);
         if (hit->isAABBCollision(vec2({player->plPosition.x, player->plPosition.y}), levelTwoThreeDoor->pos, levelTwoThreeDoor->length, levelTwoThreeDoor->width )) {
             menuState->gState = State_Level3;
@@ -346,20 +357,27 @@ GLint GLScene::drawScene()    // this function runs on a loop
             player->plPosition.y = 1;
         }
         if(HUD->hearts > 0)
+        {
             player->drawPlayer();
+        }
+
         player->actions();
-        //player->hit_check(enemy_projectiles);
-        /*
+
         if (player->hit_check(enemy_projectiles) && (clock() - Timer->startTime > 60))
         {
-
                 if (HUD->hearts > 0 && !godmode)
                 {
                     HUD->hearts--;
-                    cout << "HUD Hearts: " << HUD->hearts << endl;
                 }
         }
-        */
+
+       for (int i = 0; i < enemies->max_enemies_spawned; i++) {
+            if (enemies->enemyList[i]->hit_check(player_projectiles) && (clock() - Timer->startTime > 60))
+            {   
+                enemies->enemyList[i]->melleCounter++;
+            }
+        }
+
         playerPos=player->getPos();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -376,6 +394,10 @@ GLint GLScene::drawScene()    // this function runs on a loop
         enemies->setTarget(playerPos);
          enemies->drawEnemies();
        glPopMatrix();
+
+       glPushMatrix();
+        player_projectiles->draw_projectiles();
+        glPopMatrix();
 
        glPushMatrix();
         enemy_projectiles->draw_projectiles();
@@ -410,17 +432,23 @@ GLint GLScene::drawScene()    // this function runs on a loop
         if(HUD->hearts > 0)
             player->drawPlayer();
         player->actions();
-        /*
+
         if (player->hit_check(enemy_projectiles) && (clock() - Timer->startTime > 60))
         {
 
                 if (HUD->hearts > 0 && !godmode)
                 {
                     HUD->hearts--;
-                    cout << "HUD Hearts: " << HUD->hearts << endl;
                 }
         }
-        */
+
+       for (int i = 0; i < enemies->max_enemies_spawned; i++) {
+            if (enemies->enemyList[i]->hit_check(player_projectiles) && (clock() - Timer->startTime > 60))
+            {   
+                enemies->enemyList[i]->melleCounter++;
+            }
+        }
+
         playerPos=player->getPos();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -439,12 +467,15 @@ GLint GLScene::drawScene()    // this function runs on a loop
        glPopMatrix();
 
        glPushMatrix();
+        player_projectiles->draw_projectiles();
+        glPopMatrix();
+
+       glPushMatrix();
         enemy_projectiles->draw_projectiles();
        glPopMatrix();
 
         break;
    case State_Final:
-
 
        glPushMatrix();      //Loading Final Level map
         glScalef(3.5,3.5,1.0);
@@ -460,17 +491,23 @@ GLint GLScene::drawScene()    // this function runs on a loop
         if(HUD->hearts > 0)
             player->drawPlayer();
         player->actions();
-        /*
+
         if (player->hit_check(enemy_projectiles) && (clock() - Timer->startTime > 60))
         {
 
                 if (HUD->hearts > 0 && !godmode)
                 {
                     HUD->hearts--;
-                    cout << "HUD Hearts: " << HUD->hearts << endl;
                 }
         }
-        */
+
+       for (int i = 0; i < enemies->max_enemies_spawned; i++) {
+            if (enemies->enemyList[i]->hit_check(player_projectiles) && (clock() - Timer->startTime > 60))
+            {   
+                enemies->enemyList[i]->melleCounter++;
+            }
+        }
+
         playerPos=player->getPos();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -487,6 +524,10 @@ GLint GLScene::drawScene()    // this function runs on a loop
         enemies->setTarget(playerPos);
          enemies->drawEnemies();
        glPopMatrix();
+
+       glPushMatrix();
+        player_projectiles->draw_projectiles();
+        glPopMatrix();
 
        glPushMatrix();
         enemy_projectiles->draw_projectiles();
@@ -659,19 +700,30 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         {
             int mouseX = LOWORD(lParam);
             int mouseY = HIWORD(lParam);
+
+            float xScaler = 5.8 / float(screenWidth); 
+            float yScaler = 3.4 / float(screenHeight);
+            float mouseTransX = (mouseX * xScaler) - 2.9;
+            float mouseTransY = ((mouseY * yScaler) - 1.7) * -1;
+            //cout << mouseTransX << " " << mouseTransY << endl;
+
             KbMs->mousEventDown(enemy_projectiles, LOWORD(lParam), HIWORD(lParam));
+            player->shootProjectile(mouseTransX, mouseTransY);
+            
+            //player->plPosition.x = mouseTransX;
+            //player->plPosition.y = mouseTransY;
 
-            cout << LOWORD(lParam)<<endl;
-            cout << HIWORD(lParam)<<endl;
+            //cout << LOWORD(lParam)<<endl;
+            //cout << HIWORD(lParam)<<endl;
 
-            cout << screenWidth << endl;
-            cout << screenHeight <<endl;
+            //cout << screenWidth << endl;
+            //cout << screenHeight <<endl;
 
 
-            cout << playerPos.x << endl;
-            cout << playerPos.y << endl;
+            //cout << playerPos.x << endl;
+            //cout << playerPos.y << endl;
 
-            cout <<"\n"<<endl;
+            //cout <<"\n"<<endl;
 
 
 

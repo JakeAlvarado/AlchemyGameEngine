@@ -17,9 +17,13 @@ class GLPlayer
         enum {LEFT, RIGHT, UP, DOWN};
 
         vector<vector<float>> bounds;
+        projectile *playerProjectiles;
 
         GLTexture *texture = new GLTexture();
         GLTimer   *myTime = new GLTimer();
+
+        bool isHit = false;
+        float hitEffectWindow = 2.0;
 
         void initPlayer(int,int,char* fileName); // number of x, y frames
         void drawPlayer();
@@ -30,7 +34,8 @@ class GLPlayer
         void performAttackLeft();
         void performAttackDown();
         void performAttackUp();
-
+        void initProjectile(projectile *projectile);
+        void shootProjectile(float mouseX, float mouseY);
         bool hit_check(projectile *projList);
 
         vec3 getPos();

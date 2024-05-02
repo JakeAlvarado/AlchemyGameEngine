@@ -48,6 +48,12 @@ void GLPlayer::drawPlayer()
     glColor3f(1.0,1.0,1.0);    //white rectangle
     texture->bindTexture();    //binding my background
 
+    if (isHit) {
+        glColor3f(1.0, 0.0, 0.0);  // Red color
+    } 
+    else {
+        glColor3f(1.0, 1.0, 1.0);  // White color
+    }
 
     glBegin(GL_QUADS);
       glTexCoord2f(xMin,yMax);
@@ -267,6 +273,14 @@ void GLPlayer::actions()
 }
 void GLPlayer::update()
 {
+    if (isHit) 
+    {
+        if (clock() - myTime->startTime > hitEffectWindow)
+        {
+            isHit = false;
+        }
+    }
+
     bool isMoving = false;
     if (keyStates[VK_LEFT] || keyStates['A'])
     {
@@ -351,32 +365,35 @@ void GLPlayer::performAttackUp()
 }
 
 
-bool GLPlayer::hit_check(projectile* projList)
-{
+bool GLPlayer::hit_check(projectile* projList) {
+    bool hitDetected = false;
 
-    for(int i=0; i<N_PROJ; i++) {
-
-
-
-        if(!projList->projArr[i].isLive) {
-            continue;
+    for (int i = 0; i < N_PROJ; i++) {
+        if (!projList->projArr[i].isLive) {
+            continue;  
         }
 
-        float dx = plPosition.x- projList->projArr[i].pos.x;
-        float dy = plPosition.y- projList->projArr[i].pos.y;
+        float dx = plPosition.x - projList->projArr[i].pos.x;
+        float dy = plPosition.y - projList->projArr[i].pos.y;
+        float d = sqrt((dx * dx) + (dy * dy));
 
-        float d = sqrt((dx*dx)+(dy*dy));
-
-
-        if (d<0.1) {
-            cout << "PLAYER TOOK A HIT"<<endl;
-            projList->projArr[i].isLive = false;
-            return(true);
-            }
-        else {
-            return(false);
+        if (d < 0.1) {  
+            //cout << "PLAYER TOOK A HIT" << endl;
+            projList->projArr[i].isLive = false;  
+            hitDetected = true;
+            isHit = true;
+            myTime->startTime = clock();
+            break;  
         }
-
     }
+
+    return hitDetected;  
 }
 
+void GLPlayer::initProjectile(projectile *projectile) {
+    playerProjectiles = projectile;
+}
+
+void GLPlayer::shootProjectile(float mouseX, float mouseY) {
+    playerProjectiles->shoot_projectile(0, mouseX, mouseY, plPosition.x, plPosition.y);
+}
