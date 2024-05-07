@@ -40,6 +40,7 @@
 		<Linker>
 			<Add library="../common/lib/libSOIL.a" />
 			<Add library="../common/lib/glut32.lib" />
+			<Add library="../common/lib/libirrKlang.a" />
 			<Add library="opengl32" />
 			<Add library="glu32" />
 			<Add library="winmm" />
@@ -58,6 +59,7 @@
 		<Unit filename="include/GLParallax.h" />
 		<Unit filename="include/GLPlayer.h" />
 		<Unit filename="include/GLScene.h" />
+		<Unit filename="include/GLSounds.h" />
 		<Unit filename="include/GLTexture.h" />
 		<Unit filename="include/GLTimer.h" />
 		<Unit filename="include/MenuScene.h" />
@@ -77,6 +79,7 @@
 		<Unit filename="src/GLParallax.cpp" />
 		<Unit filename="src/GLPlayer.cpp" />
 		<Unit filename="src/GLScene.cpp" />
+		<Unit filename="src/GLSounds.cpp" />
 		<Unit filename="src/GLTexture.cpp" />
 		<Unit filename="src/GLTimer.cpp" />
 		<Unit filename="src/MenuScene.cpp" />

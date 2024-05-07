@@ -15,8 +15,8 @@
 #include<projectile.h>
 #include<GLHUD.h>
 #include<GLSounds.h>
-
 #include<GLCollisions.h>
+
 //Initializing Objects based on classes (parallax (static or background images), object (image that needs to be in front of background), MenuScene (state controller for navigation)
 GLInputs *KbMs = new GLInputs();
 GLParallax *landingPage = new GLParallax();
@@ -27,6 +27,8 @@ GLParallax *pausePopup = new GLParallax();
 GLParallax *levelTwo = new GLParallax();
 GLParallax *levelThree = new GLParallax();
 GLParallax *levelFinal = new GLParallax();
+GLParallax *gameOverPage = new GLParallax();
+GLParallax *youWinPage = new GLParallax();
 GLObject *startButton = new GLObject();
 GLObject *helpButton = new GLObject();
 GLObject *exitButton = new GLObject();
@@ -52,6 +54,8 @@ GLCollisions *levelThreeLeftCornerTopSide = new GLCollisions();
 bool isPaused = false;
 bool needHelp = false;
 bool godmode = false; // for testing purposes
+bool isGameOver = false;
+bool playerWon = false;
 
 
 vec3 playerPos;
@@ -98,6 +102,8 @@ GLint GLScene::initGL()
     landingPage->parallaxInit("images/forestWithMushroomsLanding.png"); // Load static Landing image
     mainMenu->parallaxInit("images/forestWithMushrooms.png"); // load parallax main menu image
     helpPage->parallaxInit("images/helpPage.png"); // Load static help page image
+    gameOverPage->parallaxInit("images/GameOver.png"); // Load game over screen
+    youWinPage->parallaxInit("images/YouWin.png"); // Load you win screen
     tutorialMap->parallaxInit("images/SpawnNoEnmHighRes.png"); // Load tutorial map
     pausePopup->parallaxInit("images/PauseMenuDone.png"); // Pause menu popup during game
     levelTwo->parallaxInit("images/InsideCave.png"); //Level 2 Map Forge (Fire Enemies)
@@ -107,7 +113,9 @@ GLint GLScene::initGL()
     helpButton->initObject(1, 1, "images/HelpBanner.png"); // Load help button object texture
     exitButton->initObject(1, 1, "images/ExitBanner.png"); // Load exit button object texture
     titleBanner->initObject(1, 1, "images/Title.png"); // Load title banner object texture
+    player_projectiles->initProj();
     player->initPlayer(6, 10, "images/player.png"); // Load player texture
+    player->initProjectile(player_projectiles);
     player->actionTrigger = player->STAND; // Player does not move until player makes a keypress
 
     enemy_projectiles->initProj();
@@ -151,7 +159,7 @@ GLint GLScene::initGL()
 
     HUD->initHUD(); // initializing hud
     snds->initSounds();
-    snds->playMusic("sounds/Power_Surge.mp3");
+    //snds->playMusic("sounds/Power_Surge.mp3");
 
     Timer->startTime = clock(); // start the timer
 
@@ -163,31 +171,36 @@ GLint GLScene::drawScene()    // this function runs on a loop
                               // DO NOT ABUSE ME
 {
 
+
     if(prev_level!=menuState->gState) {
 
-        cout<<"Game State Change"<<endl;
+        //cout<<"Game State Change"<<endl;
         prev_level=menuState->gState;
 
         if (prev_level==2) {
             enemies->startLevel(1);
             enemy_projectiles->reset();
+            player_projectiles->reset();
 
         } else if (prev_level==4) {
             enemies->startLevel(2);
             enemy_projectiles->reset();
+            player_projectiles->reset();
 
         } else if (prev_level==5) {
             enemies->startLevel(3);
             enemy_projectiles->reset();
+            player_projectiles->reset();
 
         } else if (prev_level==6) {
             enemies->startLevel(4);
             enemy_projectiles->reset();
+            player_projectiles->reset();
         }
 
 
-        cout<<"GS = " <<prev_level<<endl;
-        cout<<"\n"<<endl;
+        //cout<<"GS = " <<prev_level<<endl;
+        //cout<<"\n"<<endl;
     }
 
 
@@ -196,6 +209,16 @@ GLint GLScene::drawScene()    // this function runs on a loop
    if (isPaused)
    {
        pauseGame();
+       return true;
+   }
+   if (isGameOver)
+   {
+       gameOver();
+       return true;
+   }
+   if (playerWon)
+   {
+       playerWins();
        return true;
    }
    if(needHelp)
@@ -291,6 +314,9 @@ GLint GLScene::drawScene()    // this function runs on a loop
           if (HUD->hearts > 0 && !godmode)
           {
             HUD->hearts--;
+            //cout << "HUD Hearts: " << HUD->hearts << endl;
+          }
+        }
             cout << "HUD Hearts: " << HUD->hearts << endl;
           }
         */
@@ -308,6 +334,20 @@ GLint GLScene::drawScene()    // this function runs on a loop
         glEnable(GL_LIGHTING);
        glPopMatrix();
 
+       glPushMatrix();          // drawing enemies
+       glScalef(0.5, 0.5, 1.0);
+        enemies->setTarget(playerPos);
+         enemies->drawEnemies();
+
+       glPopMatrix();
+
+       glPushMatrix();
+        player_projectiles->draw_projectiles();
+        glPopMatrix();
+
+       glPushMatrix();          // drawing projectiles
+        enemy_projectiles->draw_projectiles();
+       glPopMatrix();
 
 
        glPushMatrix();          // drawing HUD
@@ -321,6 +361,10 @@ GLint GLScene::drawScene()    // this function runs on a loop
        break;
 
    case State_Level2:
+
+       if (HUD->hearts <= 0) //end game if player dies
+        isGameOver = true;
+
        glPushMatrix();      //Loading Level 2 map
         glScalef(3.5,3.5,1.0);
         glDisable(GL_LIGHTING);
@@ -331,6 +375,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
        glPushMatrix();
         glScalef(0.5, 0.5, 1.0);
         glDisable(GL_LIGHTING);
+
         player->boundsCheck(menuState->gState);
         if (hit->isAABBCollision(vec2({player->plPosition.x, player->plPosition.y}), levelTwoThreeDoor->pos, levelTwoThreeDoor->length, levelTwoThreeDoor->width )) {
             menuState->gState = State_Level3;
@@ -338,20 +383,27 @@ GLint GLScene::drawScene()    // this function runs on a loop
             player->plPosition.y = 1;
         }
         if(HUD->hearts > 0)
+        {
             player->drawPlayer();
+        }
+
         player->actions();
-        //player->hit_check(enemy_projectiles);
-        /*
+
         if (player->hit_check(enemy_projectiles) && (clock() - Timer->startTime > 60))
         {
-
                 if (HUD->hearts > 0 && !godmode)
                 {
                     HUD->hearts--;
-                    cout << "HUD Hearts: " << HUD->hearts << endl;
                 }
         }
-        */
+
+       for (int i = 0; i < enemies->max_enemies_spawned; i++) {
+            if (enemies->enemyList[i]->hit_check(player_projectiles) && (clock() - Timer->startTime > 60))
+            {
+                enemies->enemyList[i]->melleCounter++;
+            }
+        }
+
         playerPos=player->getPos();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -370,6 +422,10 @@ GLint GLScene::drawScene()    // this function runs on a loop
        glPopMatrix();
 
        glPushMatrix();
+        player_projectiles->draw_projectiles();
+        glPopMatrix();
+
+       glPushMatrix();
         if (enemy_projectiles->check_colision(playerPos)) {
             if (HUD->hearts > 0 && !godmode)
                 {
@@ -383,6 +439,9 @@ GLint GLScene::drawScene()    // this function runs on a loop
         break;
 
    case State_Level3:
+
+       if (HUD->hearts <= 0) // end game if player dies
+        isGameOver = true;
 
        glPushMatrix();      //Loading Level 3 map
         glScalef(3.5,3.5,1.0);
@@ -409,17 +468,23 @@ GLint GLScene::drawScene()    // this function runs on a loop
         if(HUD->hearts > 0)
             player->drawPlayer();
         player->actions();
-        /*
+
         if (player->hit_check(enemy_projectiles) && (clock() - Timer->startTime > 60))
         {
 
                 if (HUD->hearts > 0 && !godmode)
                 {
                     HUD->hearts--;
-                    cout << "HUD Hearts: " << HUD->hearts << endl;
                 }
         }
-        */
+
+       for (int i = 0; i < enemies->max_enemies_spawned; i++) {
+            if (enemies->enemyList[i]->hit_check(player_projectiles) && (clock() - Timer->startTime > 60))
+            {
+                enemies->enemyList[i]->melleCounter++;
+            }
+        }
+
         playerPos=player->getPos();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -438,19 +503,18 @@ GLint GLScene::drawScene()    // this function runs on a loop
        glPopMatrix();
 
        glPushMatrix();
-        if (enemy_projectiles->check_colision(playerPos)) {
-            if (HUD->hearts > 0 && !godmode)
-                {
-                    HUD->hearts--;
-                    cout << "HUD Hearts: " << HUD->hearts << endl;
-                }
-        }
+        player_projectiles->draw_projectiles();
+        glPopMatrix();
+
+       glPushMatrix();
         enemy_projectiles->draw_projectiles();
        glPopMatrix();
 
         break;
    case State_Final:
 
+    if (HUD->hearts <= 0) // end game if player dies
+        isGameOver = true;
 
        glPushMatrix();      //Loading Final Level map
         glScalef(3.5,3.5,1.0);
@@ -466,17 +530,23 @@ GLint GLScene::drawScene()    // this function runs on a loop
         if(HUD->hearts > 0)
             player->drawPlayer();
         player->actions();
-        /*
+
         if (player->hit_check(enemy_projectiles) && (clock() - Timer->startTime > 60))
         {
 
                 if (HUD->hearts > 0 && !godmode)
                 {
                     HUD->hearts--;
-                    cout << "HUD Hearts: " << HUD->hearts << endl;
                 }
         }
-        */
+
+       for (int i = 0; i < enemies->max_enemies_spawned; i++) {
+            if (enemies->enemyList[i]->hit_check(player_projectiles) && (clock() - Timer->startTime > 60))
+            {
+                enemies->enemyList[i]->melleCounter++;
+            }
+        }
+
         playerPos=player->getPos();
         glEnable(GL_LIGHTING);
        glPopMatrix();
@@ -493,6 +563,14 @@ GLint GLScene::drawScene()    // this function runs on a loop
         enemies->setTarget(playerPos);
          enemies->drawEnemies();
        glPopMatrix();
+
+       glPushMatrix();
+        player_projectiles->draw_projectiles();
+        glPopMatrix();
+
+       glPushMatrix();
+        player_projectiles->draw_projectiles();
+        glPopMatrix();
 
        glPushMatrix();
         if (enemy_projectiles->check_colision(playerPos)) {
@@ -547,15 +625,32 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         player->update();
         switch(wParam)
         {
+            case VK_DECIMAL:
+                {
+                    if (menuState->gState != State_MainMenu && menuState->gState != State_LandingPage && menuState->gState != State_Help)
+                    {
+                        playerWon = true;
+                        break;
+                    }
+                }
+
             case VK_RETURN: // if press is 'Enter'
                 {
-                    if(menuState->gState == State_LandingPage) // And if the current state is at the Landing Page
+                    if (isGameOver == true || playerWon == true)
+                    {
+                        isGameOver = false;
+                        playerWon = false;
+                        menuState->gState = State_MainMenu;
+                        HUD->hearts = 4;
+                    }
+                    else if(menuState->gState == State_LandingPage) // And if the current state is at the Landing Page
                         {
                             menuState->gState = State_MainMenu; // Change to Main Menu page
                         }
                     else if(isPaused == true)
                     {
-                        requestExit = true;
+                        isPaused = false;
+                        menuState->gState = State_MainMenu;
                     }
                     break;
                 }
@@ -643,7 +738,13 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
         switch (wParam)
         {
+
         case VK_ESCAPE:
+
+            if (isGameOver == true || playerWon == true)
+            {
+                requestExit = true;
+            }
             if (menuState->gState == State_Game || menuState->gState == State_Level2 || menuState->gState == State_Level3 || menuState->gState == State_Final)
             {
                 if(isPaused == false)
@@ -672,19 +773,30 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         {
             int mouseX = LOWORD(lParam);
             int mouseY = HIWORD(lParam);
+
+            float xScaler = 5.8 / float(screenWidth);
+            float yScaler = 3.4 / float(screenHeight);
+            float mouseTransX = (mouseX * xScaler) - 2.9;
+            float mouseTransY = ((mouseY * yScaler) - 1.7) * -1;
+            //cout << mouseTransX << " " << mouseTransY << endl;
+
             KbMs->mousEventDown(enemy_projectiles, LOWORD(lParam), HIWORD(lParam));
+            player->shootProjectile(mouseTransX, mouseTransY);
 
-            cout << LOWORD(lParam)<<endl;
-            cout << HIWORD(lParam)<<endl;
+            //player->plPosition.x = mouseTransX;
+            //player->plPosition.y = mouseTransY;
 
-            cout << screenWidth << endl;
-            cout << screenHeight <<endl;
+            //cout << LOWORD(lParam)<<endl;
+            //cout << HIWORD(lParam)<<endl;
+
+            //cout << screenWidth << endl;
+            //cout << screenHeight <<endl;
 
 
-            cout << playerPos.x << endl;
-            cout << playerPos.y << endl;
+            //cout << playerPos.x << endl;
+            //cout << playerPos.y << endl;
 
-            cout <<"\n"<<endl;
+            //cout <<"\n"<<endl;
 
 
 
@@ -736,6 +848,26 @@ GLint GLScene::needsHelp()
         helpPage->parallaxDraw(screenWidth, screenHeight);
         glEnable(GL_LIGHTING);
        glPopMatrix();
+}
+
+GLint GLScene::gameOver()
+{
+    glPushMatrix();  //Loading static game over screen
+        glScalef(3.0,3.0,1.0);
+        glDisable(GL_LIGHTING);
+        gameOverPage->parallaxDraw(screenWidth, screenHeight);
+        glEnable(GL_LIGHTING);
+    glPopMatrix();
+}
+
+GLint GLScene::playerWins()
+{
+    glPushMatrix();  //Loading static you win screen
+        glScalef(3.0,3.0,1.0);
+        glDisable(GL_LIGHTING);
+        youWinPage->parallaxDraw(screenWidth, screenHeight);
+        glEnable(GL_LIGHTING);
+    glPopMatrix();
 }
 
 
