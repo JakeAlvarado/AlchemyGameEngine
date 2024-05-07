@@ -6,6 +6,9 @@
 #include <projectile.h>
 #include<random>
 #include<time.h>
+#include <GLChrono.h>
+
+#include <GLTimer.h>
 
 #include <random>
 
@@ -34,6 +37,9 @@ class enemy
         GLTexture *enemyTex = new GLTexture();
         GLTimer   *myTime = new GLTimer();
         GLTimer   *moveTime = new GLTimer();
+
+        GLChrono *myTimeC = new GLChrono();
+        GLChrono *moveTimeC = new GLChrono();
 
         bool isLive=false;
 

@@ -122,8 +122,6 @@ bool projectile::check_colision(vec3 plPosition)
 
         float d = sqrt((dx*dx)+(dy*dy));
 
-        cout << d << endl;
-
         if (d<0.1) {
 
             projArr[i].isLive = false;

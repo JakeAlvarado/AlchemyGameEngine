@@ -71,7 +71,6 @@ void EnemyLevelHandler::meleAttack(vec3 playPos)
 
         float d = sqrt((dx*dx+dy*dy));
 
-        cout<<d<<endl;
         if (d<0.2){
             enemyList[i]->melleCounter+=1;
 

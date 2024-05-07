@@ -48,6 +48,10 @@ void enemy::initEnemy(float x_init, float y_init, int t)
 
     myTime->startTime = clock();
     moveTime->startTime = clock();
+
+    myTimeC->set_timer();
+    moveTimeC->set_timer();
+
     attackTimer=clock();
 
     pos.z = -1.0;
@@ -100,7 +104,8 @@ void enemy::updateFrame() {
 
     if(!isLive)return;
 
-    if(clock() - myTime->startTime > 200){
+    //if(clock() - myTime->startTime > 200){
+    if(myTimeC->get_delta_time() > 200){
 
         if(melleCounter>2) {
             killEnemy();
@@ -131,11 +136,10 @@ void enemy::updateFrame() {
             xMax=.25;
         }
 
-        myTime->startTime=clock();
-
+        //myTime->startTime=clock();
+        myTimeC->set_timer();
 
     }
-
 }
 
 void enemy::setTarget(vec3 t)
@@ -153,7 +157,8 @@ void enemy::updatePos() {
     }
 
 
-    if(clock() - moveTime->startTime < 600) return;
+    //if(clock() - moveTime->startTime < 600) return;
+    if(moveTimeC->get_delta_time() < 10) return;
 
 
     float dx = Target.x-pos.x;
@@ -177,6 +182,7 @@ void enemy::updatePos() {
         pos.y-=enemySpeed
         ;
     }
+    moveTimeC->set_timer();
 }
 
 
@@ -191,20 +197,20 @@ bool enemy::hit_check(projectile* projList) {
 
     for (int i = 0; i < N_PROJ; i++) {
         if (!projList->projArr[i].isLive) {
-            continue;  
+            continue;
         }
 
         float dx = pos.x - projList->projArr[i].pos.x;
         float dy = pos.y - projList->projArr[i].pos.y;
         float d = sqrt((dx * dx) + (dy * dy));
 
-        if (d < 0.1) {  
+        if (d < 0.1) {
             //cout << "ENEMY TOOK A HIT" << endl;
-            projList->projArr[i].isLive = false;  
-            hitDetected = true;  
-            break;  
+            projList->projArr[i].isLive = false;
+            hitDetected = true;
+            break;
         }
     }
 
-    return hitDetected;  
+    return hitDetected;
 }
