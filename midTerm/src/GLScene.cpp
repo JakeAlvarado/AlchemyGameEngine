@@ -400,7 +400,29 @@ GLint GLScene::drawScene()    // this function runs on a loop
        for (int i = 0; i < enemies->max_enemies_spawned; i++) {
             if (enemies->enemyList[i]->hit_check(player_projectiles) && (clock() - Timer->startTime > 60))
             {
-                enemies->enemyList[i]->melleCounter++;
+                // Critical Hit Checker
+              switch(enemies->enemyList[i]->type) {
+                case AIR:
+                  if(HUD->equipped == EARTH)
+                    enemies->enemyList[i]->melleCounter += 3;
+                  break;
+                case WATER:
+                  if(HUD->equipped == FIRE)
+                    enemies->enemyList[i]->melleCounter += 3;
+                    break;
+                case EARTH:
+                  if(HUD->equipped == AIR)
+                    enemies->enemyList[i]->melleCounter += 3;
+                    break;
+                case FIRE:
+                  if(HUD->equipped == WATER)
+                    enemies->enemyList[i]->melleCounter += 3;
+                    break;
+                default:
+                    break;
+              }
+
+              enemies->enemyList[i]->melleCounter++; // original hit effect
             }
         }
 
@@ -478,11 +500,35 @@ GLint GLScene::drawScene()    // this function runs on a loop
                 }
         }
 
-       for (int i = 0; i < enemies->max_enemies_spawned; i++) {
-            if (enemies->enemyList[i]->hit_check(player_projectiles) && (clock() - Timer->startTime > 60))
+        for (int i = 0; i < enemies->max_enemies_spawned; i++)
+        {
+          if (enemies->enemyList[i]->hit_check(player_projectiles) && (clock() - Timer->startTime > 60))
+          {
+            // Critical Hit Checker
+            switch (enemies->enemyList[i]->type)
             {
-                enemies->enemyList[i]->melleCounter++;
+            case AIR:
+              if (HUD->equipped == EARTH)
+                enemies->enemyList[i]->melleCounter += 3;
+              break;
+            case WATER:
+              if (HUD->equipped == FIRE)
+                enemies->enemyList[i]->melleCounter += 3;
+              break;
+            case EARTH:
+              if (HUD->equipped == AIR)
+                enemies->enemyList[i]->melleCounter += 3;
+              break;
+            case FIRE:
+              if (HUD->equipped == WATER)
+                enemies->enemyList[i]->melleCounter += 3;
+              break;
+            default:
+              break;
             }
+
+            enemies->enemyList[i]->melleCounter++; // original hit effect
+          }
         }
 
         playerPos=player->getPos();
@@ -540,11 +586,42 @@ GLint GLScene::drawScene()    // this function runs on a loop
                 }
         }
 
-       for (int i = 0; i < enemies->max_enemies_spawned; i++) {
-            if (enemies->enemyList[i]->hit_check(player_projectiles) && (clock() - Timer->startTime > 60))
+        for (int i = 0; i < enemies->max_enemies_spawned; i++)
+        {
+          if (enemies->enemyList[i]->hit_check(player_projectiles) && (clock() - Timer->startTime > 60))
+          {
+            // Critical Hit Checker
+            switch (enemies->enemyList[i]->type)
             {
-                enemies->enemyList[i]->melleCounter++;
+            case AIR:
+              if (HUD->equipped == EARTH)
+                enemies->enemyList[i]->melleCounter += 3;
+              break;
+            case WATER:
+              if (HUD->equipped == FIRE)
+                enemies->enemyList[i]->melleCounter += 3;
+              break;
+            case EARTH:
+              if (HUD->equipped == AIR)
+                enemies->enemyList[i]->melleCounter += 3;
+              break;
+            case FIRE:
+              if (HUD->equipped == WATER)
+                enemies->enemyList[i]->melleCounter += 3;
+              break;
+            default:
+              break;
             }
+
+            enemies->enemyList[i]->melleCounter++; // original hit effect
+          }
+        }
+        for (int i = 0; i < enemies->max_enemies_spawned; i++)
+        {
+          if (enemies->enemyList[i]->hit_check(player_projectiles) && (clock() - Timer->startTime > 60))
+          {
+            enemies->enemyList[i]->melleCounter++;
+          }
         }
 
         playerPos=player->getPos();
