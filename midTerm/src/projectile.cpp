@@ -81,6 +81,10 @@ void projectile::draw_projectiles()
           case FIRE:
             fireProjTex->bindTexture();
             break;
+
+          default:
+            projTex->bindTexture();
+            break;
         }
 
           // Legacy code from before elemental projectile textures were added
