@@ -637,22 +637,22 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
             // Changed player equipped element
             case '1' : // if 1 is pressed
                 {
-                    HUD->equipped = HUD->AIR; // change equipped to AIR
+                    HUD->equipped = AIR; // change equipped to AIR
                     break;
                 }
             case '2' : // if 2 is pressed
                 {
-                    HUD->equipped = HUD->WATER; // change equipped to WATER
+                    HUD->equipped = WATER; // change equipped to WATER
                     break;
                 }
             case '3' : // if 3 is pressed
                 {
-                    HUD->equipped = HUD->EARTH; // change equipped to EARTH
+                    HUD->equipped = EARTH; // change equipped to EARTH
                     break;
                 }
             case '4' : // if 4 is pressed
                 {
-                    HUD->equipped = HUD->FIRE; // change equipped to FIRE
+                    HUD->equipped = FIRE; // change equipped to FIRE
                     break;
                 }
 
@@ -812,7 +812,7 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
             //cout << mouseTransX << " " << mouseTransY << endl;
 
             KbMs->mousEventDown(enemy_projectiles, LOWORD(lParam), HIWORD(lParam));
-            player->shootProjectile(mouseTransX, mouseTransY);
+            player->shootProjectile(mouseTransX, mouseTransY, HUD->equipped); //equipped element type
 
             //player->plPosition.x = mouseTransX;
             //player->plPosition.y = mouseTransY;
@@ -844,7 +844,7 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
     case WM_RBUTTONDOWN:
 
 
-         break;
+        break;
 
     case WM_LBUTTONUP:
     case WM_RBUTTONUP:

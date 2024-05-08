@@ -35,7 +35,7 @@ class GLPlayer
         void performAttackDown();
         void performAttackUp();
         void initProjectile(projectile *projectile);
-        void shootProjectile(float mouseX, float mouseY);
+        void shootProjectile(float mouseX, float mouseY, int type);
         bool hit_check(projectile *projList);
 
         vec3 getPos();

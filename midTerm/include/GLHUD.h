@@ -46,7 +46,7 @@ class GLHUD
         int framesXHealth,framesYHealth;
 
         // Equipment Variables
-        enum element {AIR, EARTH, WATER, FIRE};
+        // enum element {AIR, EARTH, WATER, FIRE}; // moved to common.h
         int inventory[4] = {};
         int equipped = -1;
         float xMaxEquipment,xMinEquipment,yMaxEquipment,yMinEquipment, xPosEquipment, yPosEquipment;

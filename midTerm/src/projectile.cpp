@@ -14,6 +14,13 @@ void projectile::initProj()
     projTex->loadTexture("images/cannon_ball.png");
     charProjTex->loadTexture("images/cannon_ball.png");
     enemProjTex->loadTexture("images/fire_ball.png");
+
+    // Load Elemental Projectile Textures
+    airProjTex->loadTexture("images/elements/air.png");
+    waterProjTex->loadTexture("images/elements/water.png");
+    earthProjTex->loadTexture("images/elements/earth.png");
+    fireProjTex->loadTexture("images/elements/fire.png");
+
     hit_check_clock = chrono::steady_clock::now();
 
 }
@@ -57,8 +64,29 @@ void projectile::draw_projectiles()
 
         move_projectiles(i);
 
-        if(projArr[i].type == 0 )projTex->bindTexture();
-        if(projArr[i].type != 0 )enemProjTex->bindTexture();
+        // Case to determine projectile texture
+        switch(projArr[i].type) {
+          case AIR:
+            airProjTex->bindTexture();
+            break;
+          
+          case WATER:
+            waterProjTex->bindTexture();
+            break;
+
+          case EARTH:
+            earthProjTex->bindTexture();
+            break;
+
+          case FIRE:
+            fireProjTex->bindTexture();
+            break;
+        }
+
+          // Legacy code from before elemental projectile textures were added
+        // if(projArr[i].type == 0 )projTex->bindTexture();
+        // if(projArr[i].type != 0 )enemProjTex->bindTexture();
+
         glPushMatrix();
 
         glTranslatef(projArr[i].pos.x*2,projArr[i].pos.y*2,0);

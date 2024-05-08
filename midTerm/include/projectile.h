@@ -35,6 +35,13 @@ class projectile
         GLTexture *charProjTex = new GLTexture();
         GLTexture *enemProjTex = new GLTexture();
 
+        // Elemental Projectile Textures
+        GLTexture *airProjTex   = new GLTexture();
+        GLTexture *waterProjTex = new GLTexture();
+        GLTexture *earthProjTex  = new GLTexture();
+        GLTexture *fireProjTex  = new GLTexture();
+
+
         proj projArr[N_PROJ]; // increase this value to handle more projectiles
 
         chrono::steady_clock::time_point hit_check_clock;

@@ -394,6 +394,6 @@ void GLPlayer::initProjectile(projectile *projectile) {
     playerProjectiles = projectile;
 }
 
-void GLPlayer::shootProjectile(float mouseX, float mouseY) {
-    playerProjectiles->shoot_projectile(0, mouseX, mouseY, plPosition.x, plPosition.y);
+void GLPlayer::shootProjectile(float mouseX, float mouseY, int type) {
+    playerProjectiles->shoot_projectile(type, mouseX, mouseY, plPosition.x, plPosition.y);
 }

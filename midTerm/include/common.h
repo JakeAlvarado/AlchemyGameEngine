@@ -44,5 +44,12 @@ typedef struct{  //  positions in 3D graphics
     float y;
 }vec2;
 
+enum element
+{
+  AIR,
+  EARTH,
+  WATER,
+  FIRE
+};
 
 #endif // COMMON_H_INCLUDED
