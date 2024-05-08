@@ -31,6 +31,7 @@ void projectile::shoot_projectile(int type, float tx, float ty, float sx, float 
 
     projArr[idx].isLive=true;
     projArr[idx].stTime=clock();
+    projArr[idx].moveClock=clock();
     projArr[idx].sPos.x=sx;
     projArr[idx].sPos.y=sy;
     projArr[idx].pos.x=sx;
@@ -69,7 +70,7 @@ void projectile::draw_projectiles()
           case AIR:
             airProjTex->bindTexture();
             break;
-          
+
           case WATER:
             waterProjTex->bindTexture();
             break;
@@ -119,8 +120,14 @@ void projectile::draw_projectiles()
 }
 void projectile::move_projectiles(int i)
 {
+    if (clock()-projArr[i].moveClock<10) {
+        return;
+    }
+    projArr[i].moveClock = clock();
     projArr[i].pos.x+=projArr[i].v.x;
     projArr[i].pos.y+=projArr[i].v.y;
+
+
 }
 void projectile::reset()
 {

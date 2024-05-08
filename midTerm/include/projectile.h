@@ -19,6 +19,7 @@ typedef struct{
     vec2 v;
 
     clock_t stTime;
+    clock_t moveClock;
     bool isLive = false;
 
 } proj;
