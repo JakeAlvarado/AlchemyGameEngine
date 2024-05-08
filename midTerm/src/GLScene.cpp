@@ -137,8 +137,8 @@ GLint GLScene::initGL()
 
     // setting the door that goes from level 2 -> 3
     levelTwoThreeDoor->pos = vec2({-2.8, -0.75});
-    levelTwoThreeDoor->length = 0.1;
-    levelTwoThreeDoor->width = 0.05;
+    levelTwoThreeDoor->length = 0.15;
+    levelTwoThreeDoor->width = 0.1;
 
     // setting the door that goes from level 3 -> 4
     levelThreeFourDoor->pos = vec2({-1.65, 1.1});
@@ -159,7 +159,7 @@ GLint GLScene::initGL()
 
     HUD->initHUD(); // initializing hud
     snds->initSounds();
-    //snds->playMusic("sounds/Power_Surge.mp3");
+    snds->playMusic("sounds/Power_Surge.mp3");
 
     Timer->startTime = clock(); // start the timer
 
