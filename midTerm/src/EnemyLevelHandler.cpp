@@ -46,7 +46,7 @@ void EnemyLevelHandler::initEnemies(int n, projectile *proj)
     n_enemies = MAX_N_ENEMIES;
     for (int i=0;i<n_enemies;i++) {
         enemyList[i] = new enemy(4, proj);
-        enemyList[i]->initEnemy(-1,.2, 3);
+        enemyList[i]->initEnemy(-1,.2, WATER);
     }
     safe_to_draw = true;
 }
@@ -156,25 +156,25 @@ void EnemyLevelHandler::initial_spawn()
         case 2:
 
 
-            enemyList[0]->initEnemy(-1,.2,4);
-            enemyList[1]->initEnemy(0,-.3,2);
+            enemyList[0]->initEnemy(-1,.2,AIR);
+            enemyList[1]->initEnemy(0,-.3,FIRE);
 
             break;
 
         case 3:
-            enemyList[0]->initEnemy(-1,.2,4);
-            enemyList[1]->initEnemy(0,-.3,1);
-            enemyList[2]->initEnemy(.2,.3,1);
+            enemyList[0]->initEnemy(-1,.2,FIRE);
+            enemyList[1]->initEnemy(0,-.3,EARTH);
+            enemyList[2]->initEnemy(.2,.3,EARTH);
             break;
 
         case 4:
 
-            enemyList[0]->initEnemy(1,-.28,1);
-            enemyList[1]->initEnemy(1,.25,1);
-            enemyList[2]->initEnemy(-1,.3,2);
-            enemyList[3]->initEnemy(-1,-.2,2);
-            enemyList[4]->initEnemy(0,-.3,3);
-            enemyList[5]->initEnemy(.2,-.2,4);
+            enemyList[0]->initEnemy(1,-.28,EARTH);
+            enemyList[1]->initEnemy(1,.25,EARTH);
+            enemyList[2]->initEnemy(-1,.3,FIRE);
+            enemyList[3]->initEnemy(-1,-.2,FIRE);
+            enemyList[4]->initEnemy(0,-.3,WATER);
+            enemyList[5]->initEnemy(.2,-.2,AIR);
             break;
 
 

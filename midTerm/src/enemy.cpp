@@ -26,20 +26,20 @@ void enemy::initEnemy(float x_init, float y_init, int t)
 
     switch(type){
 
-    case 1:
+    case EARTH:
         enemyTex->loadTexture(earth_image_path);
         enemySpeed=0.0004;
         break;
-    case 2:
+    case FIRE:
         enemyTex->loadTexture(fire_image_path);
         enemySpeed=0.0005
         ;
         break;
-    case 3:
+    case WATER:
         enemyTex->loadTexture(water_image_path);
         enemySpeed=0.0025;
         break;
-    case 4:
+    case AIR:
         enemyTex->loadTexture(air_image_path);
         enemySpeed=0.002;
         break;
