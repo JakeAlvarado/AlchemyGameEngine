@@ -115,7 +115,7 @@ void enemy::updateFrame() {
         if (clock() - attackTimer > 2500) {
             bool shot = false;
             if(rand()%2==1){
-                gameProjectiles->shoot_projectile(1,Target.x,Target.y,pos.x,pos.y);
+                gameProjectiles->shoot_projectile(type,Target.x,Target.y,pos.x,pos.y);
                 shot = true;
 
             }
