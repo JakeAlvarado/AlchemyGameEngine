@@ -22,13 +22,21 @@ class GLHUD
         GLTexture *equipment3 = new GLTexture();
         GLTexture *equipment4 = new GLTexture();
 
+        GLTexture *air = new GLTexture();
+        GLTexture *earth = new GLTexture();
+        GLTexture *water = new GLTexture();
+        GLTexture *fire = new GLTexture();
+
+
         void initHUD(); // init HUD files
-        void initHealth(int,int,char* fileName); // load hud file
-        void initEquipment(int,int,char* fileName); // load hud file
+        void initHealth(int,int,char* fileName); // load hud health
+        void initEquipment(int,int,char* fileName); // load hud inventory
+        void initElements();
+
         void healthDraw(); // hearts
         void equipmentDraw();
         void hudDraw(); // width and height
-        void drawGraphicAtOGLPos(float x, float y, GLTexture *, float, float, float, float); // Desired screen coordinates
+        void drawGraphicAtOGLPos(float x, float y, GLTexture *, float, float, float, float, float); // Desired screen coordinates
 
         vec3 vert[4];
 
@@ -40,6 +48,7 @@ class GLHUD
         // Equipment Variables
         enum element {AIR, EARTH, WATER, FIRE};
         int inventory[4] = {};
+        int equipped = -1;
         float xMaxEquipment,xMinEquipment,yMaxEquipment,yMinEquipment, xPosEquipment, yPosEquipment;
         int framesXEquipment,framesYEquipment;
 

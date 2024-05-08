@@ -26,6 +26,10 @@ GLHUD::~GLHUD()
 void GLHUD::initHUD() {
     initHealth(5, 1, "images/hud/player_health.png"); // loading player hud health texture
     initEquipment(2, 1, "images/hud/player_equipment.png"); // loading player hud equipment texture
+    air->loadTexture("images/elements/air.png"); // loading air icon
+    water->loadTexture("images/elements/water.png"); // loading water icon
+    earth->loadTexture("images/elements/earth.png"); // loading earth icon
+    fire->loadTexture("images/elements/fire.png"); // loading fire icon
 }
 
 void GLHUD::initHealth(int x,int y, char* fileName)
@@ -71,7 +75,7 @@ void GLHUD::hudDraw()
     equipmentDraw();
 }
 
-void GLHUD::drawGraphicAtOGLPos(float xPos, float yPos, GLTexture *graphic, float xMin, float xMax, float yMin, float yMax)
+void GLHUD::drawGraphicAtOGLPos(float xPos, float yPos, GLTexture *graphic, float xMin, float xMax, float yMin, float yMax, float scale)
 {
     // GLint viewport[4];
     // GLdouble modelview[16];
@@ -96,8 +100,7 @@ void GLHUD::drawGraphicAtOGLPos(float xPos, float yPos, GLTexture *graphic, floa
     glPushMatrix();
 
     glTranslatef(xPos, yPos, -1.0);
-    //glTranslatef(0, -2.6, -1.0);
-    //glScalef(2.0f, 2.0f, 2.0f);
+    glScalef(scale, scale, scale);
     glColor3f(1.0, 1.0, 1.0);
     graphic->bindTexture();
     
@@ -123,48 +126,99 @@ void GLHUD::healthDraw() {
     // logic based on hearts
     switch(hearts) {
         case 0: // no hearts
-            drawGraphicAtOGLPos(-4.0, -7.5, heart1, 0.0, 0.2, 0.0, 1.0);
-            drawGraphicAtOGLPos(-3.0, -7.5, heart2, 0.0, 0.2, 0.0, 1.0);
-            drawGraphicAtOGLPos(-2.0, -7.5, heart3, 0.0, 0.2, 0.0, 1.0);
-            drawGraphicAtOGLPos(-1.0, -7.5, heart4, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-4.0, -7.5, heart1, 0.0, 0.2, 0.0, 1.0, 1.0);
+            drawGraphicAtOGLPos(-3.0, -7.5, heart2, 0.0, 0.2, 0.0, 1.0, 1.0);
+            drawGraphicAtOGLPos(-2.0, -7.5, heart3, 0.0, 0.2, 0.0, 1.0, 1.0);
+            drawGraphicAtOGLPos(-1.0, -7.5, heart4, 0.0, 0.2, 0.0, 1.0, 1.0);
             break;
         case 1: // 1 heart
-            drawGraphicAtOGLPos(-4.0, -7.5, heart1, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-3.0, -7.5, heart2, 0.0, 0.2, 0.0, 1.0);
-            drawGraphicAtOGLPos(-2.0, -7.5, heart3, 0.0, 0.2, 0.0, 1.0);
-            drawGraphicAtOGLPos(-1.0, -7.5, heart4, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-4.0, -7.5, heart1, 0.8, 1.0, 0.0, 1.0, 1.0);
+            drawGraphicAtOGLPos(-3.0, -7.5, heart2, 0.0, 0.2, 0.0, 1.0, 1.0);
+            drawGraphicAtOGLPos(-2.0, -7.5, heart3, 0.0, 0.2, 0.0, 1.0, 1.0);
+            drawGraphicAtOGLPos(-1.0, -7.5, heart4, 0.0, 0.2, 0.0, 1.0, 1.0);
             break;
         case 2: // 2 hearts
-            drawGraphicAtOGLPos(-4.0, -7.5, heart1, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-3.0, -7.5, heart2, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-2.0, -7.5, heart3, 0.0, 0.2, 0.0, 1.0);
-            drawGraphicAtOGLPos(-1.0, -7.5, heart4, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-4.0, -7.5, heart1, 0.8, 1.0, 0.0, 1.0, 1.0);
+            drawGraphicAtOGLPos(-3.0, -7.5, heart2, 0.8, 1.0, 0.0, 1.0, 1.0);
+            drawGraphicAtOGLPos(-2.0, -7.5, heart3, 0.0, 0.2, 0.0, 1.0, 1.0);
+            drawGraphicAtOGLPos(-1.0, -7.5, heart4, 0.0, 0.2, 0.0, 1.0, 1.0);
             break;
         case 3: // 3 hearts
-            drawGraphicAtOGLPos(-4.0, -7.5, heart1, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-3.0, -7.5, heart2, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-2.0, -7.5, heart3, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-1.0, -7.5, heart4, 0.0, 0.2, 0.0, 1.0);
+            drawGraphicAtOGLPos(-4.0, -7.5, heart1, 0.8, 1.0, 0.0, 1.0, 1.0);
+            drawGraphicAtOGLPos(-3.0, -7.5, heart2, 0.8, 1.0, 0.0, 1.0, 1.0);
+            drawGraphicAtOGLPos(-2.0, -7.5, heart3, 0.8, 1.0, 0.0, 1.0, 1.0);
+            drawGraphicAtOGLPos(-1.0, -7.5, heart4, 0.0, 0.2, 0.0, 1.0, 1.0);
             break;
         case 4: // 4 hearts
-            drawGraphicAtOGLPos(-4.0, -7.5, heart1, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-3.0, -7.5, heart2, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-2.0, -7.5, heart3, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-1.0, -7.5, heart4, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-4.0, -7.5, heart1, 0.8, 1.0, 0.0, 1.0, 1.0);
+            drawGraphicAtOGLPos(-3.0, -7.5, heart2, 0.8, 1.0, 0.0, 1.0, 1.0);
+            drawGraphicAtOGLPos(-2.0, -7.5, heart3, 0.8, 1.0, 0.0, 1.0, 1.0);
+            drawGraphicAtOGLPos(-1.0, -7.5, heart4, 0.8, 1.0, 0.0, 1.0, 1.0);
             break;
         default: // 4 hearts
-            drawGraphicAtOGLPos(-4.0, -7.5, heart1, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-3.0, -7.5, heart2, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-2.0, -7.5, heart3, 0.8, 1.0, 0.0, 1.0);
-            drawGraphicAtOGLPos(-1.0, -7.5, heart4, 0.8, 1.0, 0.0, 1.0);
+            drawGraphicAtOGLPos(-4.0, -7.5, heart1, 0.8, 1.0, 0.0, 1.0, 1.0);
+            drawGraphicAtOGLPos(-3.0, -7.5, heart2, 0.8, 1.0, 0.0, 1.0, 1.0);
+            drawGraphicAtOGLPos(-2.0, -7.5, heart3, 0.8, 1.0, 0.0, 1.0, 1.0);
+            drawGraphicAtOGLPos(-1.0, -7.5, heart4, 0.8, 1.0, 0.0, 1.0, 1.0);
             break;
     }
 }
 
 void GLHUD::equipmentDraw() {
-    // logic based on inventory array
-    drawGraphicAtOGLPos(1.0, -7.5, equipment1, 0.0, 0.5, 0.0, 1.0);
-    drawGraphicAtOGLPos(2.0, -7.5, equipment2, 0.0, 0.5, 0.0, 1.0);
-    drawGraphicAtOGLPos(3.0, -7.5, equipment3, 0.0, 0.5, 0.0, 1.0);
-    drawGraphicAtOGLPos(4.0, -7.5, equipment4, 0.0, 0.5, 0.0, 1.0);
+    // draw elements in each slot
+    drawGraphicAtOGLPos(0.6, -5.1, air, 0.0, 1.0, 0.0, 1.0, 0.35); // slot 0 has air
+    drawGraphicAtOGLPos(1.28, -5.1, water, 0.0, 1.0, 0.0, 1.0, 0.35); // slot 1 has water
+    drawGraphicAtOGLPos(1.945, -5.1, earth, 0.0, 1.0, 0.0, 1.0, 0.35); // slot 2 has earth
+    drawGraphicAtOGLPos(2.625, -5.1, fire, 0.0, 1.0, 0.0, 1.0, 0.35); // slot 3 has fire
+
+
+    // render equipment hud based on what item is equipped
+    switch(equipped) {
+      case AIR:
+        drawGraphicAtOGLPos(1.0, -7.5, equipment1, 0.5, 1.0, 0.0, 1.0, 1.0); // slot 0 equipped
+        drawGraphicAtOGLPos(2.0, -7.5, equipment2, 0.0, 0.5, 0.0, 1.0, 1.0); // slot 1 not equipped
+        drawGraphicAtOGLPos(3.0, -7.5, equipment3, 0.0, 0.5, 0.0, 1.0, 1.0); // slot 2 not equipped
+        drawGraphicAtOGLPos(4.0, -7.5, equipment4, 0.0, 0.5, 0.0, 1.0, 1.0); // slot 3 not equipped
+        drawGraphicAtOGLPos(0.6, -5.1, air, 0.0, 1.0, 0.0, 1.0, 0.35); // draw equipped element on top
+        break;
+      case WATER:
+        drawGraphicAtOGLPos(1.0, -7.5, equipment1, 0.0, 0.5, 0.0, 1.0, 1.0); // slot 0 not equipped
+        drawGraphicAtOGLPos(2.0, -7.5, equipment2, 0.5, 1.0, 0.0, 1.0, 1.0); // slot 1 equipped
+        drawGraphicAtOGLPos(3.0, -7.5, equipment3, 0.0, 0.5, 0.0, 1.0, 1.0); // slot 2 not equipped
+        drawGraphicAtOGLPos(4.0, -7.5, equipment4, 0.0, 0.5, 0.0, 1.0, 1.0); // slot 3 not equipped
+        drawGraphicAtOGLPos(1.28, -5.1, water, 0.0, 1.0, 0.0, 1.0, 0.35); // draw equipped element on top
+        break;
+      case EARTH:
+        drawGraphicAtOGLPos(1.0, -7.5, equipment1, 0.0, 0.5, 0.0, 1.0, 1.0); // slot 0 not equipped
+        drawGraphicAtOGLPos(2.0, -7.5, equipment2, 0.0, 0.5, 0.0, 1.0, 1.0); // slot 1 not equipped
+        drawGraphicAtOGLPos(3.0, -7.5, equipment3, 0.5, 1.0, 0.0, 1.0, 1.0); // slot 2 equipped
+        drawGraphicAtOGLPos(4.0, -7.5, equipment4, 0.0, 0.5, 0.0, 1.0, 1.0); // slot 3 not equipped
+        drawGraphicAtOGLPos(1.945, -5.1, earth, 0.0, 1.0, 0.0, 1.0, 0.35); // draw equipped element on top
+        break;
+      case FIRE:
+        drawGraphicAtOGLPos(1.0, -7.5, equipment1, 0.0, 0.5, 0.0, 1.0, 1.0); // slot 0 not equipped
+        drawGraphicAtOGLPos(2.0, -7.5, equipment2, 0.0, 0.5, 0.0, 1.0, 1.0); // slot 1 not equipped
+        drawGraphicAtOGLPos(3.0, -7.5, equipment3, 0.0, 0.5, 0.0, 1.0, 1.0); // slot 2 not equipped
+        drawGraphicAtOGLPos(4.0, -7.5, equipment4, 0.5, 1.0, 0.0, 1.0, 1.0); // slot 3 equipped
+        drawGraphicAtOGLPos(2.625, -5.1, fire, 0.0, 1.0, 0.0, 1.0, 0.35); // draw equipped element on top
+        break;
+      default:
+        drawGraphicAtOGLPos(1.0, -7.5, equipment1, 0.0, 0.5, 0.0, 1.0, 1.0); // slot 0 not equipped
+        drawGraphicAtOGLPos(2.0, -7.5, equipment2, 0.0, 0.5, 0.0, 1.0, 1.0); // slot 1 not equipped
+        drawGraphicAtOGLPos(3.0, -7.5, equipment3, 0.0, 0.5, 0.0, 1.0, 1.0); // slot 2 not equipped
+        drawGraphicAtOGLPos(4.0, -7.5, equipment4, 0.0, 0.5, 0.0, 1.0, 1.0); // slot 3 not equipped
+        break;
+    }
+
+    
+
+    // // logic based on inventory array
+    // if (inventory[AIR] > 0)
+    //   // draw air icon on inventory slot 1
+    // if (inventory[WATER] > 0)
+    //   // draw water icon on inventory slot 2
+    // if (inventory[EARTH] > 0)
+    //   // draw earth icon on inventory slot 3
+    // if (inventory[FIRE] > 0)
+    //  // draw fire icon on inventory slot 4
 }

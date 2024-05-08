@@ -634,6 +634,37 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
                     }
                 }
 
+            // Changed player equipped element
+            case '1' : // if 1 is pressed
+                {
+                    HUD->equipped = HUD->AIR; // change equipped to AIR
+                    break;
+                }
+            case '2' : // if 2 is pressed
+                {
+                    HUD->equipped = HUD->WATER; // change equipped to WATER
+                    break;
+                }
+            case '3' : // if 3 is pressed
+                {
+                    HUD->equipped = HUD->EARTH; // change equipped to EARTH
+                    break;
+                }
+            case '4' : // if 4 is pressed
+                {
+                    HUD->equipped = HUD->FIRE; // change equipped to FIRE
+                    break;
+                }
+
+
+
+
+
+
+
+                
+
+
             case VK_RETURN: // if press is 'Enter'
                 {
                     if (isGameOver == true || playerWon == true)
