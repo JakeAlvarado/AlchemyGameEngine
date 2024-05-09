@@ -702,7 +702,7 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         player->update();
         switch(wParam)
         {
-            case VK_DECIMAL:
+            case 190:
                 {
                     if (menuState->gState != State_MainMenu && menuState->gState != State_LandingPage && menuState->gState != State_Help)
                     {
@@ -739,7 +739,7 @@ int GLScene::windMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
 
 
-                
+
 
 
             case VK_RETURN: // if press is 'Enter'

@@ -1283,3 +1283,292 @@
 1715121886 c:\users\15597\documents\game\alchemygameengine\midterm\include\glchrono.h
 	<common.h>
 
+1713827437 source:c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\src\glcheckcollision.cpp
+	"GLCheckCollision.h"
+
+1713827437 c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\include\glcheckcollision.h
+	<common.h>
+
+1715269897 c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\include\common.h
+	<windows.h>
+	<iostream>
+	<gl/gl.h>
+	<GL/glut.h>
+	<time.h>
+	<math.h>
+	<vector>
+	<unordered_map>
+	<chrono>
+	<SOIL.h>
+	<SNDS/irrKlang.h>
+
+1710879479 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\gl\glut.h
+	<windows.h>
+	<stdlib.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1710879479 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\soil.h
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\snds\irrklang.h
+	"ik_irrKlangTypes.h"
+	"ik_vec3d.h"
+	"ik_IRefCounted.h"
+	"ik_IVirtualRefCounted.h"
+	"ik_ESoundOutputDrivers.h"
+	"ik_ESoundEngineOptions.h"
+	"ik_EStreamModes.h"
+	"ik_SAudioStreamFormat.h"
+	"ik_ISoundEngine.h"
+	"ik_ISoundSource.h"
+	"ik_ISound.h"
+	"ik_IAudioStream.h"
+	"ik_IAudioStreamLoader.h"
+	"ik_ISoundEffectControl.h"
+	"ik_ISoundStopEventReceiver.h"
+	"ik_IFileFactory.h"
+	"ik_IFileReader.h"
+	"ik_ISoundDeviceList.h"
+	"ik_IAudioRecorder.h"
+	"ik_ISoundMixedOutputReceiver.h"
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\snds\ik_irrklangtypes.h
+	<wchar.h>
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\snds\ik_vec3d.h
+	<math.h>
+	"ik_irrKlangTypes.h"
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\snds\ik_irefcounted.h
+	"ik_irrKlangTypes.h"
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\snds\ik_ivirtualrefcounted.h
+	"ik_irrKlangTypes.h"
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\snds\ik_esoundoutputdrivers.h
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\snds\ik_esoundengineoptions.h
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\snds\ik_estreammodes.h
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\snds\ik_saudiostreamformat.h
+	"ik_IRefCounted.h"
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\snds\ik_isoundengine.h
+	"ik_IRefCounted.h"
+	"ik_vec3d.h"
+	"ik_ISoundSource.h"
+	"ik_ISound.h"
+	"ik_EStreamModes.h"
+	"ik_IFileFactory.h"
+	"ik_ISoundMixedOutputReceiver.h"
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\snds\ik_isoundsource.h
+	"ik_IVirtualRefCounted.h"
+	"ik_vec3d.h"
+	"ik_EStreamModes.h"
+	"ik_SAudioStreamFormat.h"
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\snds\ik_isound.h
+	"ik_IVirtualRefCounted.h"
+	"ik_ISoundEffectControl.h"
+	"ik_vec3d.h"
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\snds\ik_isoundeffectcontrol.h
+	"ik_IVirtualRefCounted.h"
+	"ik_vec3d.h"
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\snds\ik_ifilefactory.h
+	"ik_IRefCounted.h"
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\snds\ik_isoundmixedoutputreceiver.h
+	"ik_IRefCounted.h"
+	"ik_SAudioStreamFormat.h"
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\snds\ik_iaudiostream.h
+	"ik_IRefCounted.h"
+	"ik_SAudioStreamFormat.h"
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\snds\ik_iaudiostreamloader.h
+	"ik_IRefCounted.h"
+	"ik_IFileReader.h"
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\snds\ik_ifilereader.h
+	"ik_IRefCounted.h"
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\snds\ik_isoundstopeventreceiver.h
+	"ik_IRefCounted.h"
+	"ik_SAudioStreamFormat.h"
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\snds\ik_isounddevicelist.h
+	"ik_IRefCounted.h"
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\common\include\snds\ik_iaudiorecorder.h
+	"ik_IRefCounted.h"
+	"ik_ISoundSource.h"
+
+1713827437 source:c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\src\glcollisions.cpp
+	"GLCollisions.h"
+
+1713827437 c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\include\glcollisions.h
+	<GLCheckCollision.h>
+	<common.h>
+
+1710879479 source:c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\src\glenms.cpp
+	"GLEnms.h"
+
+1710879479 c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\include\glenms.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+
+1710879479 c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\include\gltexture.h
+	<common.h>
+
+1710879479 c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\include\gltimer.h
+	<common.h>
+
+1713827450 source:c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\src\glinputs.cpp
+	"GLInputs.h"
+
+1713827449 c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\include\glinputs.h
+	<GLModel.h>
+	<GLParallax.h>
+	<GLPlayer.h>
+	<projectile.h>
+	<common.h>
+
+1710879479 c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\include\glmodel.h
+	<common.h>
+
+1710879479 c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\include\glparallax.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+
+1715269897 c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\include\glplayer.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+	<map>
+	<projectile.h>
+
+1715269897 c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\include\projectile.h
+	<GLTexture.h>
+	<common.h>
+	<chrono>
+
+1710879479 source:c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\src\gllight.cpp
+	"GLLight.h"
+
+1710879479 c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\include\gllight.h
+	<GLScene.h>
+
+1715269897 c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\include\glscene.h
+	<common.h>
+
+1710879479 source:c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\src\glmodel.cpp
+	"GLModel.h"
+
+1710973055 source:c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\src\globject.cpp
+	"GLObject.h"
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\include\globject.h
+	<GLTexture.h>
+	<common.h>
+
+1710879479 source:c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\src\glparallax.cpp
+	"GLParallax.h"
+
+1714687403 source:c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\src\glsounds.cpp
+	"GLSounds.h"
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\include\glsounds.h
+	<common.h>
+
+1713827293 source:c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\src\gltexture.cpp
+	"GLTexture.h"
+
+1710879479 source:c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\src\gltimer.cpp
+	"GLTimer.h"
+
+1710879931 source:c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\src\menuscene.cpp
+	"MenuScene.h"
+	<GLScene.h>
+	<common.h>
+
+1714687304 c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\include\menuscene.h
+
+1715269897 source:c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\main.cpp
+	<windows.h>
+	<GLScene.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<iostream>
+	<windows.h>
+
+1715269897 source:c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\src\enemy.cpp
+	"enemy.h"
+
+1715269897 c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\include\enemy.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+	<projectile.h>
+	<random>
+	<time.h>
+	<GLChrono.h>
+	<GLTimer.h>
+	<random>
+
+1715269897 c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\include\glchrono.h
+	<common.h>
+
+1715269897 source:c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\src\enemylevelhandler.cpp
+	"EnemyLevelHandler.h"
+
+1714687403 c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\include\enemylevelhandler.h
+	<enemy.h>
+	<common.h>
+	<projectile.h>
+	<vector>
+
+1715269897 source:c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\src\glchrono.cpp
+	"GLChrono.h"
+
+1715269897 source:c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\src\glhud.cpp
+	"GLHUD.h"
+
+1715269897 c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\include\glhud.h
+	<common.h>
+	<GLTexture.h>
+	<GL/glut.h>
+
+1715269897 source:c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\src\glplayer.cpp
+	"GLPlayer.h"
+
+1715269897 source:c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\src\projectile.cpp
+	"projectile.h"
+
+1715270414 source:c:\users\jakea\onedrive\desktop\alchemygameengine\midterm\src\glscene.cpp
+	<GLScene.h>
+	<GLLight.h>
+	<GLTexture.h>
+	<GLModel.h>
+	<GLInputs.h>
+	<GLParallax.h>
+	<GLPlayer.h>
+	<GLEnms.h>
+	<GLTimer.h>
+	<GLCheckCollision.h>
+	<GLObject.h>
+	<MenuScene.h>
+	<enemy.h>
+	<EnemyLevelHandler.h>
+	<projectile.h>
+	<GLHUD.h>
+	<GLSounds.h>
+	<GLCollisions.h>
+
