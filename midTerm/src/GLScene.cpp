@@ -16,6 +16,7 @@
 #include<GLHUD.h>
 #include<GLSounds.h>
 #include<GLCollisions.h>
+#include<common.h>
 
 //Initializing Objects based on classes (parallax (static or background images), object (image that needs to be in front of background), MenuScene (state controller for navigation)
 GLInputs *KbMs = new GLInputs();
@@ -57,6 +58,7 @@ bool godmode = false; // for testing purposes
 bool isGameOver = false;
 bool playerWon = false;
 
+int regen = 1;
 
 vec3 playerPos;
 
@@ -397,26 +399,27 @@ GLint GLScene::drawScene()    // this function runs on a loop
                 }
         }
 
-       for (int i = 0; i < enemies->max_enemies_spawned; i++) {
+       for (int i = 0; i < MAX_N_ENEMIES; i++) {
+            if (!enemies->enemyList[i]->isLive) continue;
             if (enemies->enemyList[i]->hit_check(player_projectiles) && (clock() - Timer->startTime > 60))
             {
                 // Critical Hit Checker
               switch(enemies->enemyList[i]->type) {
                 case AIR:
                   if(HUD->equipped == EARTH)
-                    enemies->enemyList[i]->melleCounter += 3;
+                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
                   break;
                 case WATER:
                   if(HUD->equipped == FIRE)
-                    enemies->enemyList[i]->melleCounter += 3;
+                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
                     break;
                 case EARTH:
                   if(HUD->equipped == AIR)
-                    enemies->enemyList[i]->melleCounter += 3;
+                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
                     break;
                 case FIRE:
                   if(HUD->equipped == WATER)
-                    enemies->enemyList[i]->melleCounter += 3;
+                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
                     break;
                 default:
                     break;
@@ -500,35 +503,34 @@ GLint GLScene::drawScene()    // this function runs on a loop
                 }
         }
 
-        for (int i = 0; i < enemies->max_enemies_spawned; i++)
-        {
-          if (enemies->enemyList[i]->hit_check(player_projectiles) && (clock() - Timer->startTime > 60))
-          {
-            // Critical Hit Checker
-            switch (enemies->enemyList[i]->type)
+       for (int i = 0; i < MAX_N_ENEMIES; i++) {
+            if (!enemies->enemyList[i]->isLive) continue;
+            if (enemies->enemyList[i]->hit_check(player_projectiles) && (clock() - Timer->startTime > 60))
             {
-            case AIR:
-              if (HUD->equipped == EARTH)
-                enemies->enemyList[i]->melleCounter += 3;
-              break;
-            case WATER:
-              if (HUD->equipped == FIRE)
-                enemies->enemyList[i]->melleCounter += 3;
-              break;
-            case EARTH:
-              if (HUD->equipped == AIR)
-                enemies->enemyList[i]->melleCounter += 3;
-              break;
-            case FIRE:
-              if (HUD->equipped == WATER)
-                enemies->enemyList[i]->melleCounter += 3;
-              break;
-            default:
-              break;
-            }
+                // Critical Hit Checker
+              switch(enemies->enemyList[i]->type) {
+                case AIR:
+                  if(HUD->equipped == EARTH)
+                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                  break;
+                case WATER:
+                  if(HUD->equipped == FIRE)
+                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                    break;
+                case EARTH:
+                  if(HUD->equipped == AIR)
+                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                    break;
+                case FIRE:
+                  if(HUD->equipped == WATER)
+                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                    break;
+                default:
+                    break;
+              }
 
-            enemies->enemyList[i]->melleCounter++; // original hit effect
-          }
+              enemies->enemyList[i]->melleCounter++; // original hit effect
+            }
         }
 
         playerPos=player->getPos();
@@ -586,6 +588,39 @@ GLint GLScene::drawScene()    // this function runs on a loop
                 }
         }
 
+
+       for (int i = 0; i < MAX_N_ENEMIES; i++) {
+            if (!enemies->enemyList[i]->isLive) continue;
+            if (enemies->enemyList[i]->hit_check(player_projectiles) && (clock() - Timer->startTime > 60))
+            {
+                // Critical Hit Checker
+              switch(enemies->enemyList[i]->type) {
+                case AIR:
+                  if(HUD->equipped == EARTH)
+                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                  break;
+                case WATER:
+                  if(HUD->equipped == FIRE)
+                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                    break;
+                case EARTH:
+                  if(HUD->equipped == AIR)
+                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                    break;
+                case FIRE:
+                  if(HUD->equipped == WATER)
+                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                    break;
+                default:
+                    break;
+              }
+
+              enemies->enemyList[i]->melleCounter++; // original hit effect
+            }
+        }
+
+
+
         for (int i = 0; i < enemies->max_enemies_spawned; i++)
         {
           if (enemies->enemyList[i]->hit_check(player_projectiles) && (clock() - Timer->startTime > 60))
@@ -595,19 +630,19 @@ GLint GLScene::drawScene()    // this function runs on a loop
             {
             case AIR:
               if (HUD->equipped == EARTH)
-                enemies->enemyList[i]->melleCounter += 3;
+                enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
               break;
             case WATER:
               if (HUD->equipped == FIRE)
-                enemies->enemyList[i]->melleCounter += 3;
+                enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
               break;
             case EARTH:
               if (HUD->equipped == AIR)
-                enemies->enemyList[i]->melleCounter += 3;
+                enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
               break;
             case FIRE:
               if (HUD->equipped == WATER)
-                enemies->enemyList[i]->melleCounter += 3;
+                enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
               break;
             default:
               break;
@@ -616,6 +651,8 @@ GLint GLScene::drawScene()    // this function runs on a loop
             enemies->enemyList[i]->melleCounter++; // original hit effect
           }
         }
+
+        /*
         for (int i = 0; i < enemies->max_enemies_spawned; i++)
         {
           if (enemies->enemyList[i]->hit_check(player_projectiles) && (clock() - Timer->startTime > 60))
@@ -623,6 +660,7 @@ GLint GLScene::drawScene()    // this function runs on a loop
             enemies->enemyList[i]->melleCounter++;
           }
         }
+        */
 
         playerPos=player->getPos();
         glEnable(GL_LIGHTING);
