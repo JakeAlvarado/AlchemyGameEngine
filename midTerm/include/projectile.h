@@ -13,7 +13,7 @@ typedef struct{
     vec2 tPos;
     vec2 pos;
 
-    float speed=0.01;
+    float speed=0.02;
     int type; // this will determine which tex to use
 
     vec2 v;
