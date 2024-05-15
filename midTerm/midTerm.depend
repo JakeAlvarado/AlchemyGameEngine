@@ -1572,3 +1572,293 @@
 	<GLSounds.h>
 	<GLCollisions.h>
 
+1715212160 source:c:\users\shady\dev\178games\alchemygameengine\midterm\main.cpp
+	<windows.h>
+	<GLScene.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<iostream>
+	<windows.h>
+
+1715139741 c:\users\shady\dev\178games\alchemygameengine\midterm\include\glscene.h
+	<common.h>
+
+1715190193 c:\users\shady\dev\178games\alchemygameengine\midterm\include\common.h
+	<windows.h>
+	<iostream>
+	<gl/gl.h>
+	<GL/glut.h>
+	<time.h>
+	<math.h>
+	<vector>
+	<unordered_map>
+	<chrono>
+	<SOIL.h>
+	<SNDS/irrKlang.h>
+
+1713382179 c:\users\shady\dev\178games\alchemygameengine\common\include\gl\glut.h
+	<windows.h>
+	<stdlib.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1713382179 c:\users\shady\dev\178games\alchemygameengine\common\include\soil.h
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\common\include\snds\irrklang.h
+	"ik_irrKlangTypes.h"
+	"ik_vec3d.h"
+	"ik_IRefCounted.h"
+	"ik_IVirtualRefCounted.h"
+	"ik_ESoundOutputDrivers.h"
+	"ik_ESoundEngineOptions.h"
+	"ik_EStreamModes.h"
+	"ik_SAudioStreamFormat.h"
+	"ik_ISoundEngine.h"
+	"ik_ISoundSource.h"
+	"ik_ISound.h"
+	"ik_IAudioStream.h"
+	"ik_IAudioStreamLoader.h"
+	"ik_ISoundEffectControl.h"
+	"ik_ISoundStopEventReceiver.h"
+	"ik_IFileFactory.h"
+	"ik_IFileReader.h"
+	"ik_ISoundDeviceList.h"
+	"ik_IAudioRecorder.h"
+	"ik_ISoundMixedOutputReceiver.h"
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\common\include\snds\ik_irrklangtypes.h
+	<wchar.h>
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\common\include\snds\ik_vec3d.h
+	<math.h>
+	"ik_irrKlangTypes.h"
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\common\include\snds\ik_irefcounted.h
+	"ik_irrKlangTypes.h"
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\common\include\snds\ik_ivirtualrefcounted.h
+	"ik_irrKlangTypes.h"
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\common\include\snds\ik_esoundoutputdrivers.h
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\common\include\snds\ik_esoundengineoptions.h
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\common\include\snds\ik_estreammodes.h
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\common\include\snds\ik_saudiostreamformat.h
+	"ik_IRefCounted.h"
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\common\include\snds\ik_isoundengine.h
+	"ik_IRefCounted.h"
+	"ik_vec3d.h"
+	"ik_ISoundSource.h"
+	"ik_ISound.h"
+	"ik_EStreamModes.h"
+	"ik_IFileFactory.h"
+	"ik_ISoundMixedOutputReceiver.h"
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\common\include\snds\ik_isoundsource.h
+	"ik_IVirtualRefCounted.h"
+	"ik_vec3d.h"
+	"ik_EStreamModes.h"
+	"ik_SAudioStreamFormat.h"
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\common\include\snds\ik_isound.h
+	"ik_IVirtualRefCounted.h"
+	"ik_ISoundEffectControl.h"
+	"ik_vec3d.h"
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\common\include\snds\ik_isoundeffectcontrol.h
+	"ik_IVirtualRefCounted.h"
+	"ik_vec3d.h"
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\common\include\snds\ik_ifilefactory.h
+	"ik_IRefCounted.h"
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\common\include\snds\ik_isoundmixedoutputreceiver.h
+	"ik_IRefCounted.h"
+	"ik_SAudioStreamFormat.h"
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\common\include\snds\ik_iaudiostream.h
+	"ik_IRefCounted.h"
+	"ik_SAudioStreamFormat.h"
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\common\include\snds\ik_iaudiostreamloader.h
+	"ik_IRefCounted.h"
+	"ik_IFileReader.h"
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\common\include\snds\ik_ifilereader.h
+	"ik_IRefCounted.h"
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\common\include\snds\ik_isoundstopeventreceiver.h
+	"ik_IRefCounted.h"
+	"ik_SAudioStreamFormat.h"
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\common\include\snds\ik_isounddevicelist.h
+	"ik_IRefCounted.h"
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\common\include\snds\ik_iaudiorecorder.h
+	"ik_IRefCounted.h"
+	"ik_ISoundSource.h"
+
+1715276098 source:c:\users\shady\dev\178games\alchemygameengine\midterm\src\enemy.cpp
+	"enemy.h"
+
+1715139741 c:\users\shady\dev\178games\alchemygameengine\midterm\include\enemy.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+	<projectile.h>
+	<random>
+	<time.h>
+	<GLChrono.h>
+	<GLTimer.h>
+	<random>
+
+1713382179 c:\users\shady\dev\178games\alchemygameengine\midterm\include\gltexture.h
+	<common.h>
+
+1713382179 c:\users\shady\dev\178games\alchemygameengine\midterm\include\gltimer.h
+	<common.h>
+
+1715276098 c:\users\shady\dev\178games\alchemygameengine\midterm\include\projectile.h
+	<GLTexture.h>
+	<common.h>
+	<chrono>
+
+1715139741 c:\users\shady\dev\178games\alchemygameengine\midterm\include\glchrono.h
+	<common.h>
+
+1715191250 source:c:\users\shady\dev\178games\alchemygameengine\midterm\src\enemylevelhandler.cpp
+	"EnemyLevelHandler.h"
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\midterm\include\enemylevelhandler.h
+	<enemy.h>
+	<common.h>
+	<projectile.h>
+	<vector>
+
+1713382180 source:c:\users\shady\dev\178games\alchemygameengine\midterm\src\glcheckcollision.cpp
+	"GLCheckCollision.h"
+
+1713382179 c:\users\shady\dev\178games\alchemygameengine\midterm\include\glcheckcollision.h
+	<common.h>
+
+1715139741 source:c:\users\shady\dev\178games\alchemygameengine\midterm\src\glchrono.cpp
+	"GLChrono.h"
+
+1713382180 source:c:\users\shady\dev\178games\alchemygameengine\midterm\src\glcollisions.cpp
+	"GLCollisions.h"
+
+1713382179 c:\users\shady\dev\178games\alchemygameengine\midterm\include\glcollisions.h
+	<GLCheckCollision.h>
+	<common.h>
+
+1713382180 source:c:\users\shady\dev\178games\alchemygameengine\midterm\src\glenms.cpp
+	"GLEnms.h"
+
+1713382179 c:\users\shady\dev\178games\alchemygameengine\midterm\include\glenms.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+
+1715186857 source:c:\users\shady\dev\178games\alchemygameengine\midterm\src\glhud.cpp
+	"GLHUD.h"
+
+1715191456 c:\users\shady\dev\178games\alchemygameengine\midterm\include\glhud.h
+	<common.h>
+	<GLTexture.h>
+	<GL/glut.h>
+
+1713982204 source:c:\users\shady\dev\178games\alchemygameengine\midterm\src\glinputs.cpp
+	"GLInputs.h"
+
+1713982204 c:\users\shady\dev\178games\alchemygameengine\midterm\include\glinputs.h
+	<GLModel.h>
+	<GLParallax.h>
+	<GLPlayer.h>
+	<projectile.h>
+	<common.h>
+
+1713382179 c:\users\shady\dev\178games\alchemygameengine\midterm\include\glmodel.h
+	<common.h>
+
+1713382179 c:\users\shady\dev\178games\alchemygameengine\midterm\include\glparallax.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+
+1715190193 c:\users\shady\dev\178games\alchemygameengine\midterm\include\glplayer.h
+	<common.h>
+	<GLTexture.h>
+	<GLTimer.h>
+	<map>
+	<projectile.h>
+
+1713382180 source:c:\users\shady\dev\178games\alchemygameengine\midterm\src\gllight.cpp
+	"GLLight.h"
+
+1713382179 c:\users\shady\dev\178games\alchemygameengine\midterm\include\gllight.h
+	<GLScene.h>
+
+1713382180 source:c:\users\shady\dev\178games\alchemygameengine\midterm\src\glmodel.cpp
+	"GLModel.h"
+
+1713382180 source:c:\users\shady\dev\178games\alchemygameengine\midterm\src\globject.cpp
+	"GLObject.h"
+
+1713982204 c:\users\shady\dev\178games\alchemygameengine\midterm\include\globject.h
+	<GLTexture.h>
+	<common.h>
+
+1713382180 source:c:\users\shady\dev\178games\alchemygameengine\midterm\src\glparallax.cpp
+	"GLParallax.h"
+
+1715190193 source:c:\users\shady\dev\178games\alchemygameengine\midterm\src\glplayer.cpp
+	"GLPlayer.h"
+
+1714605507 source:c:\users\shady\dev\178games\alchemygameengine\midterm\src\glsounds.cpp
+	"GLSounds.h"
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\midterm\include\glsounds.h
+	<common.h>
+
+1713982204 source:c:\users\shady\dev\178games\alchemygameengine\midterm\src\gltexture.cpp
+	"GLTexture.h"
+
+1713983358 source:c:\users\shady\dev\178games\alchemygameengine\midterm\src\gltimer.cpp
+	"GLTimer.h"
+
+1713382180 source:c:\users\shady\dev\178games\alchemygameengine\midterm\src\menuscene.cpp
+	"MenuScene.h"
+	<GLScene.h>
+	<common.h>
+
+1714605507 c:\users\shady\dev\178games\alchemygameengine\midterm\include\menuscene.h
+
+1715211640 source:c:\users\shady\dev\178games\alchemygameengine\midterm\src\projectile.cpp
+	"projectile.h"
+
+1715279480 source:c:\users\shady\dev\178games\alchemygameengine\midterm\src\glscene.cpp
+	<GLScene.h>
+	<GLLight.h>
+	<GLTexture.h>
+	<GLModel.h>
+	<GLInputs.h>
+	<GLParallax.h>
+	<GLPlayer.h>
+	<GLEnms.h>
+	<GLTimer.h>
+	<GLCheckCollision.h>
+	<GLObject.h>
+	<MenuScene.h>
+	<enemy.h>
+	<EnemyLevelHandler.h>
+	<projectile.h>
+	<GLHUD.h>
+	<GLSounds.h>
+	<GLCollisions.h>
+	<common.h>
+

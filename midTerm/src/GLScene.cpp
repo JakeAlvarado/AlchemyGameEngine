@@ -407,19 +407,19 @@ GLint GLScene::drawScene()    // this function runs on a loop
               switch(enemies->enemyList[i]->type) {
                 case AIR:
                   if(HUD->equipped == EARTH)
-                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                    enemies->enemyList[i]->melleCounter += 3; if(HUD->hearts <4) HUD->hearts += regen;
                   break;
                 case WATER:
                   if(HUD->equipped == FIRE)
-                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                    enemies->enemyList[i]->melleCounter += 3; if(HUD->hearts <4) HUD->hearts += regen;
                     break;
                 case EARTH:
                   if(HUD->equipped == AIR)
-                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                    enemies->enemyList[i]->melleCounter += 3; if(HUD->hearts <4) HUD->hearts += regen;
                     break;
                 case FIRE:
                   if(HUD->equipped == WATER)
-                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                    enemies->enemyList[i]->melleCounter += 3; if(HUD->hearts <4) HUD->hearts += regen;
                     break;
                 default:
                     break;
@@ -511,19 +511,19 @@ GLint GLScene::drawScene()    // this function runs on a loop
               switch(enemies->enemyList[i]->type) {
                 case AIR:
                   if(HUD->equipped == EARTH)
-                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                    enemies->enemyList[i]->melleCounter += 3; if(HUD->hearts <4) HUD->hearts += regen;
                   break;
                 case WATER:
                   if(HUD->equipped == FIRE)
-                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                    enemies->enemyList[i]->melleCounter += 3; if(HUD->hearts <4) HUD->hearts += regen;
                     break;
                 case EARTH:
                   if(HUD->equipped == AIR)
-                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                    enemies->enemyList[i]->melleCounter += 3; if(HUD->hearts <4) HUD->hearts += regen;
                     break;
                 case FIRE:
                   if(HUD->equipped == WATER)
-                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                    enemies->enemyList[i]->melleCounter += 3; if(HUD->hearts <4) HUD->hearts += regen;
                     break;
                 default:
                     break;
@@ -597,19 +597,19 @@ GLint GLScene::drawScene()    // this function runs on a loop
               switch(enemies->enemyList[i]->type) {
                 case AIR:
                   if(HUD->equipped == EARTH)
-                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                    enemies->enemyList[i]->melleCounter += 3; if(HUD->hearts <4) HUD->hearts += regen;
                   break;
                 case WATER:
                   if(HUD->equipped == FIRE)
-                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                    enemies->enemyList[i]->melleCounter += 3; if(HUD->hearts <4) HUD->hearts += regen;
                     break;
                 case EARTH:
                   if(HUD->equipped == AIR)
-                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                    enemies->enemyList[i]->melleCounter += 3; if(HUD->hearts <4) HUD->hearts += regen;
                     break;
                 case FIRE:
                   if(HUD->equipped == WATER)
-                    enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                    enemies->enemyList[i]->melleCounter += 3; if(HUD->hearts <4) HUD->hearts += regen;
                     break;
                 default:
                     break;
@@ -630,19 +630,19 @@ GLint GLScene::drawScene()    // this function runs on a loop
             {
             case AIR:
               if (HUD->equipped == EARTH)
-                enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                enemies->enemyList[i]->melleCounter += 3; if(HUD->hearts <4) HUD->hearts += regen;
               break;
             case WATER:
               if (HUD->equipped == FIRE)
-                enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                enemies->enemyList[i]->melleCounter += 3; if(HUD->hearts <4) HUD->hearts += regen;
               break;
             case EARTH:
               if (HUD->equipped == AIR)
-                enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                enemies->enemyList[i]->melleCounter += 3; if(HUD->hearts <4) HUD->hearts += regen;
               break;
             case FIRE:
               if (HUD->equipped == WATER)
-                enemies->enemyList[i]->melleCounter += 3; HUD->hearts += regen;
+                enemies->enemyList[i]->melleCounter += 3; if(HUD->hearts <4) HUD->hearts += regen;
               break;
             default:
               break;
